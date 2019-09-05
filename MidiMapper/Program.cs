@@ -22,16 +22,8 @@ namespace MidiMapper
             Application.Run(new App());
         }
 
-        public static void Run()
+        public static void Run(InputDevice inputDevice)
         {
-            //Set correct device as input
-            //TODO: Choose correct device instead of picking the 1st one
-            if (InputDevice.InstalledDevices.Count == 0)
-            {
-                MessageBox.Show("No midi controllers detected", "Error");
-                return;
-            }
-            InputDevice inputDevice = InputDevice.InstalledDevices[0];
             inputDevice.Open();
             inputDevice.StartReceiving(null);
             midiDevice = new MidiController(inputDevice);
@@ -42,6 +34,8 @@ namespace MidiMapper
             //Return if connection hasn't been established yet
             if (midiDevice == null)
                 return;
+
+
 
             //HARD CODED
             for (int i = 0; i < midiDevice.GetPressedKeysCount(); i++)
