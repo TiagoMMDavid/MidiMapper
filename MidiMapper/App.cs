@@ -15,10 +15,13 @@ namespace MidiMapper
     {
 
         private InputDevice inputDevice;
+        private Program program;
 
         public App()
         {
             InitializeComponent();
+
+            program = new Program();
 
             //Select input box
             refreshInputs();
@@ -68,12 +71,24 @@ namespace MidiMapper
             refreshInputButton.Enabled = false;
             selectInputBox.Enabled = false;
 
-            Program.Run(inputDevice);
+            program.Start(inputDevice);
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            //Program.PressKeyTest();
+            if (inputDevice != null)
+            {
+                program.CheckForKeys();
+            }
+        }
+
+        //DEBUG PURPOSE ONLY, WILL BE REPLACED BY ACTUAL GUI LATER
+        private void MacroDebugTest()
+        {
+            Profile test = new Profile("Test");
+            test.AddMacro("C4 - Press W", Pitch.C4, "W");
+            test.AddMacro("C5 - Press S", Pitch.C5, "S");
+            program.setProfile(test);
         }
     }
 }

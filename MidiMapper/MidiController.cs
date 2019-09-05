@@ -19,7 +19,7 @@ namespace MidiMapper
 
         public void NoteOn(NoteOnMessage msg)
         {
-            //Fixes a bug where some midi controllers assume a key was pressed with the velocity "0" when a key is released.
+            //Fixes a bug where some midi controllers assume a key is pressed with the velocity "0" when a key is released.
             if (msg.Velocity == 0)
                 NoteReleased(msg.Pitch, msg.Velocity);
             else
@@ -34,13 +34,13 @@ namespace MidiMapper
 
         private void NotePressed(Pitch pitch, int velocity)
         {
-            MessageBox.Show("Pitch - " + pitch, "NotePressed()"); //DEBUG
+            //MessageBox.Show("Pitch - " + pitch, "NotePressed()"); //DEBUG
             pressedKeys.Add(pitch);
         }
 
         private void NoteReleased(Pitch pitch, int velocity)
         {
-            MessageBox.Show("Pitch - " + pitch, "NoteReleased()"); //DEBUG
+            //MessageBox.Show("Pitch - " + pitch, "NoteReleased()"); //DEBUG
             pressedKeys.Remove(pitch);
         }
 

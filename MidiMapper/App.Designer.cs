@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.PressKeyTimer = new System.Windows.Forms.Timer(this.components);
             this.selectInputBox = new System.Windows.Forms.ListBox();
             this.refreshInputButton = new System.Windows.Forms.Button();
             this.connectButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // timer
+            // PressKeyTimer
             // 
-            this.timer.Enabled = true;
-            this.timer.Tick += new System.EventHandler(this.Timer_Tick);
+            this.PressKeyTimer.Enabled = true;
+            this.PressKeyTimer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
             // selectInputBox
             // 
@@ -87,7 +87,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Timer PressKeyTimer;
         private System.Windows.Forms.ListBox selectInputBox;
         private System.Windows.Forms.Button refreshInputButton;
         private System.Windows.Forms.Button connectButton;

@@ -9,7 +9,8 @@ namespace MidiMapper
 {
     public class Program
     {
-        private static MidiController midiDevice; //Why is it static
+        private MidiController midiDevice;
+        private Profile profile;
 
         /// <summary>
         /// The main entry point for the application.
@@ -22,45 +23,35 @@ namespace MidiMapper
             Application.Run(new App());
         }
 
-        public static void Run(InputDevice inputDevice)
+        public void Start(InputDevice inputDevice)
         {
             inputDevice.Open();
             inputDevice.StartReceiving(null);
             midiDevice = new MidiController(inputDevice);
         }
 
-        public static void PressKeyTest()
+        public void CheckForKeys()
         {
             //Return if connection hasn't been established yet
-            if (midiDevice == null)
+            //TODO: CHECK FOR PROFILE
+            if (midiDevice == null || profile == null)
                 return;
 
-
-
-            //HARD CODED
             for (int i = 0; i < midiDevice.GetPressedKeysCount(); i++)
             {
-                if (midiDevice.GetPitchAtIndex(i).Equals(Pitch.C5))
+                for (int j = 0; j < profile.GetMacroCount(); j++)
                 {
-                    SendKeys.Send("C");
-                }
-                else if (midiDevice.GetPitchAtIndex(i).Equals(Pitch.D5))
-                {
-                    SendKeys.Send("D");
-                }
-                else if (midiDevice.GetPitchAtIndex(i).Equals(Pitch.E5))
-                {
-                    SendKeys.Send("E");
-                }
-                else if (midiDevice.GetPitchAtIndex(i).Equals(Pitch.F5))
-                {
-                    SendKeys.Send("F");
-                }
-                else if (midiDevice.GetPitchAtIndex(i).Equals(Pitch.G5))
-                {
-                    SendKeys.Send("G");
+                    if (midiDevice.GetPitchAtIndex(i).Equals(profile.GetMacroAtIndex(j).getPitch()))
+                    {
+                        profile.GetMacroAtIndex(j).Run();
+                    }
                 }
             }
+        }
+
+        public void setProfile(Profile profile)
+        {
+            this.profile = profile;
         }
     }
 }
