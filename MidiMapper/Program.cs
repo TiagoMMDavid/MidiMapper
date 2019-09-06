@@ -11,6 +11,7 @@ namespace MidiMapper
     {
         private MidiController midiDevice;
         private Profile profile;
+        private App app;
 
         /// <summary>
         /// The main entry point for the application.
@@ -23,29 +24,43 @@ namespace MidiMapper
             Application.Run(new App());
         }
 
-        public void Start(InputDevice inputDevice)
+        public void Start(InputDevice inputDevice, App app)
         {
-            inputDevice.Open();
-            inputDevice.StartReceiving(null);
+            this.app = app;
+
+            if (!inputDevice.IsOpen)
+                inputDevice.Open();
+            if (!inputDevice.IsReceiving)
+                inputDevice.StartReceiving(null);
+
             midiDevice = new MidiController(inputDevice);
         }
 
         public void CheckForKeys()
         {
             //Return if connection hasn't been established yet
-            //TODO: CHECK FOR PROFILE
-            if (midiDevice == null || profile == null)
+            if (midiDevice == null)
                 return;
 
+            
             for (int i = 0; i < midiDevice.GetPressedKeysCount(); i++)
             {
-                for (int j = 0; j < profile.GetMacroCount(); j++)
+                Pitch currPitch = midiDevice.GetPitchAtIndex(i);
+                Macro currMacro = null;
+
+                if (profile != null)
                 {
-                    if (midiDevice.GetPitchAtIndex(i).Equals(profile.GetMacroAtIndex(j).getPitch()))
+                    for (int j = 0; j < profile.GetMacroCount(); j++)
                     {
-                        profile.GetMacroAtIndex(j).Run();
+                        if (currPitch.Equals(profile.GetMacroAtIndex(j).getPitch()))
+                        {
+                            currMacro = profile.GetMacroAtIndex(j);
+                            profile.GetMacroAtIndex(j).Run();
+                            break;
+                        }
                     }
                 }
+                app.DisplayEventInLog(currPitch, currMacro);
             }
         }
 

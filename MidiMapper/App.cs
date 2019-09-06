@@ -15,17 +15,13 @@ namespace MidiMapper
     {
 
         private InputDevice inputDevice;
-        private Program program;
+        private Program ctrl;
 
         public App()
         {
             InitializeComponent();
 
-            program = new Program();
-
-            //Select input box
             refreshInputs();
-
         }
 
         //TODO: Not working, inputDevice doesn't refresh while app is open
@@ -41,21 +37,31 @@ namespace MidiMapper
 
                 //Disable list box and connect button if there are no devices connected
                 selectInputBox.Enabled = false;
-                connectButton.Enabled = false;
+                startButton.Enabled = false;
             }
             else
             {
                 for (int i = 0; i < installedDevices; i++)
                 {
-                    selectInputBox.Items.Add(InputDevice.InstalledDevices[i]);
+                    selectInputBox.Items.Add(InputDevice.InstalledDevices[i].Name);
                 }
             }
         }
 
+        //TODO: Check if working when there is a profile
+        public void DisplayEventInLog(Pitch pitch, Macro macro)
+        {
+            String evt = "Pitch - " + pitch + (macro == null ? ", No macro" : macro.ToString()) + "\r\n";
+            eventLog.Text = eventLog.Text.Insert(0, evt);
+        }
+
         private void SelectInput_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (selectInputBox.SelectedIndex < 0 || selectInputBox.SelectedIndex > selectInputBox.Items.Count)
+                return;
+
             inputDevice = InputDevice.InstalledDevices[selectInputBox.SelectedIndex];
-            connectButton.Enabled = true;
+            startButton.Enabled = true;
 
         }
 
@@ -65,20 +71,37 @@ namespace MidiMapper
             refreshInputs();
         }
 
-        private void ConnectButton_Click(object sender, EventArgs e)
+        private void StartButton_Click(object sender, EventArgs e)
         {
-            connectButton.Enabled = false;
+            startButton.Enabled = false;
             refreshInputButton.Enabled = false;
             selectInputBox.Enabled = false;
+            stopButton.Enabled = true;
 
-            program.Start(inputDevice);
+            ctrl = new Program();
+            ctrl.Start(inputDevice, this);
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+        private void StopButton_Click(object sender, EventArgs e)
         {
-            if (inputDevice != null)
+            if (ctrl != null && inputDevice != null)
             {
-                program.CheckForKeys();
+                ctrl = null;
+                inputDevice = null;
+            }
+                
+
+            stopButton.Enabled = false;
+            refreshInputButton.Enabled = true;
+            selectInputBox.Enabled = true;
+            refreshInputs();
+        }
+
+        private void PressKeyTimer_Tick(object sender, EventArgs e)
+        {
+            if (inputDevice != null && ctrl != null)
+            {
+                ctrl.CheckForKeys();
             }
         }
 
@@ -88,7 +111,8 @@ namespace MidiMapper
             Profile test = new Profile("Test");
             test.AddMacro("C4 - Press W", Pitch.C4, "W");
             test.AddMacro("C5 - Press S", Pitch.C5, "S");
-            program.setProfile(test);
+            ctrl.setProfile(test);
         }
+
     }
 }
