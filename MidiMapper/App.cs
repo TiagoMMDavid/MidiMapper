@@ -52,6 +52,7 @@ namespace MidiMapper
         public void DisplayEventInLog(Pitch pitch, Macro macro)
         {
             String evt = "Pitch - " + pitch + (macro == null ? ", No macro" : macro.ToString()) + "\r\n";
+            Console.WriteLine(evt, "App"); //DEBUG
             eventLog.Text = eventLog.Text.Insert(0, evt);
         }
 
@@ -94,6 +95,7 @@ namespace MidiMapper
             stopButton.Enabled = false;
             refreshInputButton.Enabled = true;
             selectInputBox.Enabled = true;
+            eventLog.Clear();
             refreshInputs();
         }
 

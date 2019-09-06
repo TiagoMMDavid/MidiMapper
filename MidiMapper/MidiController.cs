@@ -1,4 +1,5 @@
 ﻿using Midi;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -34,13 +35,13 @@ namespace MidiMapper
 
         private void NotePressed(Pitch pitch, int velocity)
         {
-            //MessageBox.Show("Pitch - " + pitch, "NotePressed()"); //DEBUG
+            Console.WriteLine("Pitch - " + pitch, "NotePressed()"); //DEBUG
             pressedKeys.Add(pitch);
         }
 
         private void NoteReleased(Pitch pitch, int velocity)
         {
-            //MessageBox.Show("Pitch - " + pitch, "NoteReleased()"); //DEBUG
+            Console.WriteLine("Pitch - " + pitch, "NoteReleased()"); //DEBUG
             pressedKeys.Remove(pitch);
         }
 

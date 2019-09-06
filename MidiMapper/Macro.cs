@@ -10,11 +10,11 @@ namespace MidiMapper
 {
     public class Macro
     {
-        private string macroName;
+        private String macroName;
         private Pitch pitchKey;
-        private string keybind;
+        private String keybind;
 
-        public Macro(string macroName, Pitch pitchKey, string keybind)
+        public Macro(String macroName, Pitch pitchKey, String keybind)
         {
             this.macroName = macroName;
             this.pitchKey = pitchKey;
@@ -31,6 +31,11 @@ namespace MidiMapper
         public Pitch getPitch()
         {
             return pitchKey;
+        }
+
+        public String getName()
+        {
+            return macroName;
         }
     }
 }
