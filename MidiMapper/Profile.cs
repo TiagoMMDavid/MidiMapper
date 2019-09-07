@@ -9,13 +9,13 @@ namespace MidiMapper
 {
     public class Profile
     {
-        private String name;
+        private String profileName;
         private List<Macro> macros;
         
 
-        public Profile(String name)
+        public Profile(String profileName)
         {
-            this.name = name;
+            this.profileName = profileName;
             macros = new List<Macro>();
         }
 
@@ -45,9 +45,20 @@ namespace MidiMapper
             return macros[idx];
         }
 
-        public String getName()
+        public String GetProfileName()
         {
-            return name;
+            return profileName;
+        }
+
+        public String SaveProfile()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine(profileName);
+            foreach (Macro macro in macros)
+            {
+                stringBuilder.AppendLine(macro.SaveMacro());
+            }
+            return stringBuilder.ToString();
         }
     }
 }

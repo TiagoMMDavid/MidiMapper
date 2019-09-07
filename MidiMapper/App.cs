@@ -54,8 +54,7 @@ namespace MidiMapper
         public void DisplayEventInLog(Pitch pitch, Macro macro)
         {
             String evt = "Pitch - " + pitch + (macro == null ? " \r\t No macro" : " \r\t Macro: " + macro.ToString()) + "\r\n";
-            Console.WriteLine(evt, "App"); //DEBUG
-            eventLog.Text = eventLog.Text.Insert(0, evt);
+            EventLogWriteLine(evt, 0);
         }
 
         private void SelectInput_SelectedIndexChanged(object sender, EventArgs e)
@@ -86,6 +85,8 @@ namespace MidiMapper
 
             if (profile != null)
                 ctrl.setProfile(profile);
+
+            EventLogWriteLine("Device successfully connected", 0);
         }
 
         private void StopButton_Click(object sender, EventArgs e)
@@ -120,19 +121,38 @@ namespace MidiMapper
         //TODO: CHANGE BUTTONS TO ICONS INSTEAD
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            if (profile != null)
+            {
+                Stream stream;
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Txt files (*.txt)|*.txt";
+                //saveFileDialog.RestoreDirectory = true;
 
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    if ((stream = saveFileDialog.OpenFile()) != null)
+                    {
+                        //Write profile information
+                        StreamWriter sw = new StreamWriter(stream);
+                        sw.Write(profile.SaveProfile());
+                        sw.Close();
+                        stream.Close();
+                    }
+                }
+                EventLogWriteLine("Profile successfully saved to " + saveFileDialog.FileName, 0);
+            }
         }
 
         private void LoadButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFile = new OpenFileDialog();
-            if (openFile.ShowDialog() == DialogResult.OK)
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    StreamReader sr = new StreamReader(openFile.FileName);
+                    StreamReader sr = new StreamReader(openFileDialog.FileName);
                     //Check if its a .txt file
-                    if (!openFile.FileName.Contains(".txt"))
+                    if (!openFileDialog.FileName.Contains(".txt"))
                     {
                         MessageBox.Show("Invalid format file (Needs to be .txt)", "File Error");
                         return;
@@ -166,10 +186,16 @@ namespace MidiMapper
             if (ctrl != null)
                 ctrl.setProfile(profile);
 
-            profileNameTextBox.Text = profile.getName();
-            eventLog.Text = eventLog.Text.Insert(0, "Profile successfully loaded");
+            profileNameTextBox.Text = profile.GetProfileName();
+            EventLogWriteLine("Profile successfully loaded", 0);
+            saveButton.Enabled = true;
 
             sr.Close();
+        }
+
+        private void EventLogWriteLine(String str, int idx)
+        {
+            eventLog.Text = eventLog.Text.Insert(idx, str + " \r\n");
         }
     }
 }
