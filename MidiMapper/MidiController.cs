@@ -35,13 +35,11 @@ namespace MidiMapper
 
         private void NotePressed(Pitch pitch, int velocity)
         {
-            Console.WriteLine("Pitch - " + pitch, "NotePressed()"); //DEBUG
             pressedKeys.Add(pitch);
         }
 
         private void NoteReleased(Pitch pitch, int velocity)
         {
-            Console.WriteLine("Pitch - " + pitch, "NoteReleased()"); //DEBUG
             pressedKeys.Remove(pitch);
         }
 

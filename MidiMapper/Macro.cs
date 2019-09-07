@@ -37,5 +37,11 @@ namespace MidiMapper
         {
             return macroName;
         }
+
+        //TODO: improve ToString()
+        public override String ToString()
+        {
+            return macroName + " (Presses '" + keybind + "' key)";
+        }
     }
 }

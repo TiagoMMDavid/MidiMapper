@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,10 +19,11 @@ namespace MidiMapper
         private InputDevice inputDevice;
         private Program ctrl;
 
+        private Profile profile;
+
         public App()
         {
             InitializeComponent();
-
             refreshInputs();
         }
 
@@ -48,10 +51,9 @@ namespace MidiMapper
             }
         }
 
-        //TODO: Check if working when there is a profile
         public void DisplayEventInLog(Pitch pitch, Macro macro)
         {
-            String evt = "Pitch - " + pitch + (macro == null ? ", No macro" : macro.ToString()) + "\r\n";
+            String evt = "Pitch - " + pitch + (macro == null ? " \r\t No macro" : " \r\t Macro: " + macro.ToString()) + "\r\n";
             Console.WriteLine(evt, "App"); //DEBUG
             eventLog.Text = eventLog.Text.Insert(0, evt);
         }
@@ -81,6 +83,9 @@ namespace MidiMapper
 
             ctrl = new Program();
             ctrl.Start(inputDevice, this);
+
+            if (profile != null)
+                ctrl.setProfile(profile);
         }
 
         private void StopButton_Click(object sender, EventArgs e)
@@ -107,14 +112,62 @@ namespace MidiMapper
             }
         }
 
-        //DEBUG PURPOSE ONLY, WILL BE REPLACED BY ACTUAL GUI LATER
-        private void MacroDebugTest()
+        private void ClearEventLogButton_Click(object sender, EventArgs e)
         {
-            Profile test = new Profile("Test");
-            test.AddMacro("C4 - Press W", Pitch.C4, "W");
-            test.AddMacro("C5 - Press S", Pitch.C5, "S");
-            ctrl.setProfile(test);
+            eventLog.Clear();
         }
 
+        //TODO: CHANGE BUTTONS TO ICONS INSTEAD
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoadButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    StreamReader sr = new StreamReader(openFile.FileName);
+                    //Check if its a .txt file
+                    if (!openFile.FileName.Contains(".txt"))
+                    {
+                        MessageBox.Show("Invalid format file (Needs to be .txt)", "File Error");
+                        return;
+                    }
+
+                    LoadProfile(sr);
+                }
+                catch (SecurityException ex)
+                {
+                    MessageBox.Show($"Security error.\n\nError message: {ex.Message}\n\n" + $"Details:\n\n{ex.StackTrace}");
+                }
+            }
+            
+        }
+
+        //TODO: Give errors if file is not with the correct formula
+        private void LoadProfile(StreamReader sr)
+        {
+            String line = sr.ReadLine();
+            profile = new Profile(line);
+
+            line = sr.ReadLine();
+            //Go through all macros
+            while (line != null)
+            {
+                String[] args = line.Split(':');
+                profile.AddMacro(args[0], (Pitch) Enum.Parse(typeof(Pitch), args[1]), args[2]);
+                line = sr.ReadLine();
+            }
+
+            if (ctrl != null)
+                ctrl.setProfile(profile);
+
+            profileNameTextBox.Text = profile.getName();
+            sr.Close();
+        }
     }
 }

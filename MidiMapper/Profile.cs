@@ -44,5 +44,10 @@ namespace MidiMapper
         {
             return macros[idx];
         }
+
+        public String getName()
+        {
+            return name;
+        }
     }
 }
