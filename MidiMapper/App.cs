@@ -167,6 +167,8 @@ namespace MidiMapper
                 ctrl.setProfile(profile);
 
             profileNameTextBox.Text = profile.getName();
+            eventLog.Text = eventLog.Text.Insert(0, "Profile successfully loaded");
+
             sr.Close();
         }
     }
