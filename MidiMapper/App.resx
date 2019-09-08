@@ -117,6 +117,315 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="$this.Text" xml:space="preserve">
+    <value>MidiMapper</value>
+  </data>
+  <data name="&gt;&gt;stopButton.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;clearEventLogButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;clearEventLogButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="eventLog.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="createMacroButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;stopButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="selectInputBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>519, 65</value>
+  </data>
+  <data name="selectInputBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 43</value>
+  </data>
+  <data name="&gt;&gt;loadButton.Name" xml:space="preserve">
+    <value>loadButton</value>
+  </data>
+  <data name="startButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="startButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>519, 114</value>
+  </data>
+  <data name="startButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 34</value>
+  </data>
+  <data name="saveButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>179, 63</value>
+  </data>
+  <data name="&gt;&gt;saveButton.Name" xml:space="preserve">
+    <value>saveButton</value>
+  </data>
+  <data name="saveButton.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="createMacroButton.Text" xml:space="preserve">
+    <value>New Macro</value>
+  </data>
+  <data name="clearEventLogButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 40</value>
+  </data>
+  <data name="startButton.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="loadButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 40</value>
+  </data>
+  <data name="profileNameTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;profileNameTextBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;clearEventLogButton.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;startButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="createProfileButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>73, 12</value>
+  </data>
+  <data name="eventLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>604, 256</value>
+  </data>
+  <data name="&gt;&gt;createProfileButton.Name" xml:space="preserve">
+    <value>createProfileButton</value>
+  </data>
+  <data name="&gt;&gt;refreshInputButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="stopButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="clearEventLogButton.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="loadButton.Text" xml:space="preserve">
+    <value>LOAD</value>
+  </data>
+  <data name="&gt;&gt;eventLog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="stopButton.Text" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="saveButton.Text" xml:space="preserve">
+    <value>SAVE</value>
+  </data>
+  <data name="&gt;&gt;clearEventLogButton.Name" xml:space="preserve">
+    <value>clearEventLogButton</value>
+  </data>
+  <data name="refreshInputButton.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="startButton.Text" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="&gt;&gt;eventLog.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="createProfileButton.Text" xml:space="preserve">
+    <value>New Profile</value>
+  </data>
+  <data name="&gt;&gt;saveButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;startButton.Name" xml:space="preserve">
+    <value>startButton</value>
+  </data>
+  <data name="&gt;&gt;selectInputBox.Name" xml:space="preserve">
+    <value>selectInputBox</value>
+  </data>
+  <data name="saveButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 40</value>
+  </data>
+  <data name="clearEventLogButton.Text" xml:space="preserve">
+    <value>Clear Text</value>
+  </data>
+  <data name="selectInputBox.ScrollAlwaysVisible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="eventLog.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;refreshInputButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;createMacroButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;createProfileButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="createProfileButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 47</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="&gt;&gt;createProfileButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="stopButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>703, 114</value>
+  </data>
+  <data name="eventLog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 241</value>
+  </data>
+  <data name="&gt;&gt;createMacroButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;loadButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="profileNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
+  </data>
+  <data name="&gt;&gt;refreshInputButton.Name" xml:space="preserve">
+    <value>refreshInputButton</value>
+  </data>
+  <data name="loadButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 63</value>
+  </data>
+  <data name="&gt;&gt;eventLog.Name" xml:space="preserve">
+    <value>eventLog</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="&gt;&gt;profileNameTextBox.Name" xml:space="preserve">
+    <value>profileNameTextBox</value>
+  </data>
+  <data name="loadButton.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="saveButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;startButton.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;selectInputBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="stopButton.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;createProfileButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="createMacroButton.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="selectInputBox.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="clearEventLogButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 195</value>
+  </data>
+  <data name="profileNameTextBox.Text" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="eventLog.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <data name="&gt;&gt;loadButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;selectInputBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;stopButton.Name" xml:space="preserve">
+    <value>stopButton</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="refreshInputButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 40</value>
+  </data>
+  <data name="&gt;&gt;saveButton.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>App</value>
+  </data>
+  <data name="createProfileButton.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;stopButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;createMacroButton.Name" xml:space="preserve">
+    <value>createMacroButton</value>
+  </data>
+  <data name="createMacroButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>150, 10</value>
+  </data>
+  <data name="profileNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>73, 74</value>
+  </data>
+  <data name="&gt;&gt;createMacroButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;saveButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;startButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="createMacroButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 47</value>
+  </data>
+  <data name="stopButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 34</value>
+  </data>
+  <data name="&gt;&gt;profileNameTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;selectInputBox.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;pressKeyTimer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>840, 578</value>
+  </data>
+  <data name="&gt;&gt;eventLog.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pressKeyTimer.Name" xml:space="preserve">
+    <value>pressKeyTimer</value>
+  </data>
+  <data name="&gt;&gt;loadButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="refreshInputButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>703, 68</value>
+  </data>
+  <data name="&gt;&gt;profileNameTextBox.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="refreshInputButton.Text" xml:space="preserve">
+    <value>REFRESH</value>
+  </data>
+  <data name="&gt;&gt;refreshInputButton.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="pressKeyTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

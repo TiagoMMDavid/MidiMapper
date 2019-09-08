@@ -53,10 +53,11 @@ namespace MidiMapper
         public String SaveProfile()
         {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine(profileName);
+            stringBuilder.Append(profileName);
             foreach (Macro macro in macros)
             {
-                stringBuilder.AppendLine(macro.SaveMacro());
+                stringBuilder.AppendLine();
+                stringBuilder.Append(macro.SaveMacro());
             }
             return stringBuilder.ToString();
         }

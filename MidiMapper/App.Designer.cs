@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(App));
             this.pressKeyTimer = new System.Windows.Forms.Timer(this.components);
             this.selectInputBox = new System.Windows.Forms.ListBox();
             this.refreshInputButton = new System.Windows.Forms.Button();
@@ -39,6 +40,8 @@
             this.profileNameTextBox = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.loadButton = new System.Windows.Forms.Button();
+            this.createProfileButton = new System.Windows.Forms.Button();
+            this.createMacroButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pressKeyTimer
@@ -48,101 +51,84 @@
             // 
             // selectInputBox
             // 
+            resources.ApplyResources(this.selectInputBox, "selectInputBox");
             this.selectInputBox.FormattingEnabled = true;
-            this.selectInputBox.Location = new System.Drawing.Point(519, 65);
             this.selectInputBox.Name = "selectInputBox";
-            this.selectInputBox.ScrollAlwaysVisible = true;
-            this.selectInputBox.Size = new System.Drawing.Size(178, 43);
-            this.selectInputBox.TabIndex = 2;
             this.selectInputBox.SelectedIndexChanged += new System.EventHandler(this.SelectInput_SelectedIndexChanged);
             // 
             // refreshInputButton
             // 
-            this.refreshInputButton.Location = new System.Drawing.Point(703, 68);
+            resources.ApplyResources(this.refreshInputButton, "refreshInputButton");
             this.refreshInputButton.Name = "refreshInputButton";
-            this.refreshInputButton.Size = new System.Drawing.Size(38, 40);
-            this.refreshInputButton.TabIndex = 3;
-            this.refreshInputButton.Text = "REFRESH";
             this.refreshInputButton.UseVisualStyleBackColor = true;
             this.refreshInputButton.Click += new System.EventHandler(this.RefreshInputButton_Click);
             // 
             // startButton
             // 
-            this.startButton.Enabled = false;
-            this.startButton.Location = new System.Drawing.Point(519, 114);
+            resources.ApplyResources(this.startButton, "startButton");
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(178, 34);
-            this.startButton.TabIndex = 4;
-            this.startButton.Text = "Start";
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
             // stopButton
             // 
-            this.stopButton.Enabled = false;
-            this.stopButton.Location = new System.Drawing.Point(703, 114);
+            resources.ApplyResources(this.stopButton, "stopButton");
             this.stopButton.Name = "stopButton";
-            this.stopButton.Size = new System.Drawing.Size(38, 34);
-            this.stopButton.TabIndex = 5;
-            this.stopButton.Text = "Stop";
             this.stopButton.UseVisualStyleBackColor = true;
             this.stopButton.Click += new System.EventHandler(this.StopButton_Click);
             // 
             // eventLog
             // 
-            this.eventLog.Location = new System.Drawing.Point(93, 241);
-            this.eventLog.Multiline = true;
+            resources.ApplyResources(this.eventLog, "eventLog");
             this.eventLog.Name = "eventLog";
             this.eventLog.ReadOnly = true;
-            this.eventLog.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.eventLog.Size = new System.Drawing.Size(604, 256);
-            this.eventLog.TabIndex = 6;
             // 
             // clearEventLogButton
             // 
-            this.clearEventLogButton.Location = new System.Drawing.Point(93, 195);
+            resources.ApplyResources(this.clearEventLogButton, "clearEventLogButton");
             this.clearEventLogButton.Name = "clearEventLogButton";
-            this.clearEventLogButton.Size = new System.Drawing.Size(70, 40);
-            this.clearEventLogButton.TabIndex = 7;
-            this.clearEventLogButton.Text = "Clear Text";
             this.clearEventLogButton.UseVisualStyleBackColor = true;
             this.clearEventLogButton.Click += new System.EventHandler(this.ClearEventLogButton_Click);
             // 
             // profileNameTextBox
             // 
-            this.profileNameTextBox.Location = new System.Drawing.Point(73, 65);
+            resources.ApplyResources(this.profileNameTextBox, "profileNameTextBox");
             this.profileNameTextBox.Name = "profileNameTextBox";
             this.profileNameTextBox.ReadOnly = true;
-            this.profileNameTextBox.Size = new System.Drawing.Size(100, 20);
-            this.profileNameTextBox.TabIndex = 8;
-            this.profileNameTextBox.Text = "None";
             // 
             // saveButton
             // 
-            this.saveButton.Enabled = false;
-            this.saveButton.Location = new System.Drawing.Point(179, 54);
+            resources.ApplyResources(this.saveButton, "saveButton");
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(50, 40);
-            this.saveButton.TabIndex = 9;
-            this.saveButton.Text = "SAVE";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // loadButton
             // 
-            this.loadButton.Location = new System.Drawing.Point(235, 54);
+            resources.ApplyResources(this.loadButton, "loadButton");
             this.loadButton.Name = "loadButton";
-            this.loadButton.Size = new System.Drawing.Size(50, 40);
-            this.loadButton.TabIndex = 10;
-            this.loadButton.Text = "LOAD";
             this.loadButton.UseVisualStyleBackColor = true;
             this.loadButton.Click += new System.EventHandler(this.LoadButton_Click);
             // 
+            // createProfileButton
+            // 
+            resources.ApplyResources(this.createProfileButton, "createProfileButton");
+            this.createProfileButton.Name = "createProfileButton";
+            this.createProfileButton.UseVisualStyleBackColor = true;
+            this.createProfileButton.Click += new System.EventHandler(this.CreateProfileButton_Click);
+            // 
+            // createMacroButton
+            // 
+            resources.ApplyResources(this.createMacroButton, "createMacroButton");
+            this.createMacroButton.Name = "createMacroButton";
+            this.createMacroButton.UseVisualStyleBackColor = true;
+            // 
             // App
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(840, 578);
+            this.Controls.Add(this.createMacroButton);
+            this.Controls.Add(this.createProfileButton);
             this.Controls.Add(this.loadButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.profileNameTextBox);
@@ -154,7 +140,6 @@
             this.Controls.Add(this.selectInputBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "App";
-            this.Text = "MidiMapper";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -171,6 +156,8 @@
         private System.Windows.Forms.TextBox profileNameTextBox;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button loadButton;
+        private System.Windows.Forms.Button createProfileButton;
+        private System.Windows.Forms.Button createMacroButton;
     }
 }
 

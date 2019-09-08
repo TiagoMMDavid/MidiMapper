@@ -58,6 +58,12 @@
     <Compile Include="App.Designer.cs">
       <DependentUpon>App.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateProfileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateProfileForm.Designer.cs">
+      <DependentUpon>CreateProfileForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Macro.cs" />
     <Compile Include="MidiController.cs" />
     <Compile Include="Profile.cs" />
@@ -65,6 +71,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="App.resx">
       <DependentUpon>App.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateProfileForm.resx">
+      <DependentUpon>CreateProfileForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

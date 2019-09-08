@@ -118,6 +118,22 @@ namespace MidiMapper
             eventLog.Clear();
         }
 
+        private void CreateProfileButton_Click(object sender, EventArgs e)
+        {
+            
+            CreateProfileForm createProfileForm = new CreateProfileForm(this);
+            createProfileForm.ShowDialog();
+        }
+
+        public void CreateProfile(String profileName)
+        {
+            profile = new Profile(profileName);
+            profileNameTextBox.Text = profile.GetProfileName();
+            createMacroButton.Enabled = true;
+            saveButton.Enabled = true;
+            EventLogWriteLine("Profile successfully created", 0);
+        }
+
         //TODO: CHANGE BUTTONS TO ICONS INSTEAD
         private void SaveButton_Click(object sender, EventArgs e)
         {
@@ -178,7 +194,7 @@ namespace MidiMapper
             //Go through all macros
             while (line != null)
             {
-                String[] args = line.Split(':');
+                String[] args = line.Split(';');
                 profile.AddMacro(args[0], (Pitch) Enum.Parse(typeof(Pitch), args[1]), args[2]);
                 line = sr.ReadLine();
             }
@@ -186,10 +202,11 @@ namespace MidiMapper
             if (ctrl != null)
                 ctrl.setProfile(profile);
 
+            createMacroButton.Enabled = true;
             profileNameTextBox.Text = profile.GetProfileName();
-            EventLogWriteLine("Profile successfully loaded", 0);
             saveButton.Enabled = true;
-
+            EventLogWriteLine("Profile successfully loaded", 0);
+            
             sr.Close();
         }
 
