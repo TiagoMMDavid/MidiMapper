@@ -129,9 +129,15 @@ namespace MidiMapper
         {
             profile = new Profile(profileName);
             profileNameTextBox.Text = profile.GetProfileName();
-            createMacroButton.Enabled = true;
+            macrosButton.Enabled = true;
             saveButton.Enabled = true;
             EventLogWriteLine("Profile successfully created", 0);
+        }
+
+        private void MacrosButton_Click(object sender, EventArgs e)
+        {
+            MacrosForm macrosForm = new MacrosForm(this);
+            macrosForm.ShowDialog();
         }
 
         //TODO: CHANGE BUTTONS TO ICONS INSTEAD
@@ -202,7 +208,7 @@ namespace MidiMapper
             if (ctrl != null)
                 ctrl.setProfile(profile);
 
-            createMacroButton.Enabled = true;
+            macrosButton.Enabled = true;
             profileNameTextBox.Text = profile.GetProfileName();
             saveButton.Enabled = true;
             EventLogWriteLine("Profile successfully loaded", 0);
@@ -213,6 +219,15 @@ namespace MidiMapper
         private void EventLogWriteLine(String str, int idx)
         {
             eventLog.Text = eventLog.Text.Insert(idx, str + " \r\n");
+        }
+
+        public Profile GetProfile()
+        {
+            //TODO: find a better suiting exception
+            if (profile == null)
+                throw new Exception("Profile is null");
+
+            return profile;
         }
     }
 }

@@ -14,11 +14,6 @@ namespace MidiMapper
     {
         private App app;
 
-        public CreateProfileForm()
-        {
-            InitializeComponent();
-        }
-
         public CreateProfileForm(App app)
         {
             InitializeComponent();

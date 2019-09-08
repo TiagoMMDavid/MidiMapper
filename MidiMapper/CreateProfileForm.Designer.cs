@@ -73,6 +73,7 @@
             this.Controls.Add(this.createButton);
             this.Controls.Add(this.insertNameTxtBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "CreateProfileForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create new profile";

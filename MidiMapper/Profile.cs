@@ -25,14 +25,9 @@ namespace MidiMapper
             macros.Add(new Macro(macroName, pitchKey, keybind));
         }
 
-        public void RemoveMacro(String macroName)
+        public void RemoveMacro(Macro macro)
         {
-           //TODO:
-        }
-
-        public void RemoveMacro(int MacroIdx)
-        {
-            //TODO:
+            macros.Remove(macro);
         }
 
         public int GetMacroCount()
@@ -42,6 +37,8 @@ namespace MidiMapper
 
         public Macro GetMacroAtIndex(int idx)
         {
+            if (idx < 0 || idx > macros.Count)
+                throw new IndexOutOfRangeException("Invalid index");
             return macros[idx];
         }
 

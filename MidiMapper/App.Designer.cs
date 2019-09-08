@@ -41,7 +41,7 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.loadButton = new System.Windows.Forms.Button();
             this.createProfileButton = new System.Windows.Forms.Button();
-            this.createMacroButton = new System.Windows.Forms.Button();
+            this.macrosButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pressKeyTimer
@@ -51,8 +51,8 @@
             // 
             // selectInputBox
             // 
-            resources.ApplyResources(this.selectInputBox, "selectInputBox");
             this.selectInputBox.FormattingEnabled = true;
+            resources.ApplyResources(this.selectInputBox, "selectInputBox");
             this.selectInputBox.Name = "selectInputBox";
             this.selectInputBox.SelectedIndexChanged += new System.EventHandler(this.SelectInput_SelectedIndexChanged);
             // 
@@ -117,17 +117,18 @@
             this.createProfileButton.UseVisualStyleBackColor = true;
             this.createProfileButton.Click += new System.EventHandler(this.CreateProfileButton_Click);
             // 
-            // createMacroButton
+            // macrosButton
             // 
-            resources.ApplyResources(this.createMacroButton, "createMacroButton");
-            this.createMacroButton.Name = "createMacroButton";
-            this.createMacroButton.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.macrosButton, "macrosButton");
+            this.macrosButton.Name = "macrosButton";
+            this.macrosButton.UseVisualStyleBackColor = true;
+            this.macrosButton.Click += new System.EventHandler(this.MacrosButton_Click);
             // 
             // App
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.createMacroButton);
+            this.Controls.Add(this.macrosButton);
             this.Controls.Add(this.createProfileButton);
             this.Controls.Add(this.loadButton);
             this.Controls.Add(this.saveButton);
@@ -139,6 +140,7 @@
             this.Controls.Add(this.refreshInputButton);
             this.Controls.Add(this.selectInputBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "App";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -157,7 +159,7 @@
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button loadButton;
         private System.Windows.Forms.Button createProfileButton;
-        private System.Windows.Forms.Button createMacroButton;
+        private System.Windows.Forms.Button macrosButton;
     }
 }
 
