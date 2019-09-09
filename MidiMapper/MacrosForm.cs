@@ -14,7 +14,6 @@ namespace MidiMapper
     {
         private App app;
         private Profile profile;
-        private bool isCreatingMacro = false;
 
         public MacrosForm(App app)
         {
@@ -70,47 +69,7 @@ namespace MidiMapper
 
         private void NewMacroButton_Click(object sender, EventArgs e)
         {
-            isCreatingMacro = true;
-            setCreateMacrosLayoutVisible(true);
-            createMacroButton.Enabled = false;
-            nameTxtBox.Focus();
-        }
 
-        private void setCreateMacrosLayoutVisible(bool state)
-        {
-            nameTxtBox.Visible = state;
-            keybindTxtBox.Visible = state;
-            pitchTxtBox.Visible = state;
-            createMacroButton.Visible = state;
-        }
-
-        //TODO: improve it, probably not best way to do it
-        private void RefreshButtonTimer_Tick(object sender, EventArgs e)
-        {
-            if (isCreatingMacro && nameTxtBox.Text != String.Empty && keybindTxtBox.Text != String.Empty && pitchTxtBox.Text != String.Empty)
-                createMacroButton.Enabled = true;
-            else
-                createMacroButton.Enabled = false;
-        }
-
-        private void CreateMacroButton_Click(object sender, EventArgs e)
-        {
-            /*
-            if (nameTxtBox.Text == String.Empty)
-            {
-                MessageBox.Show("Macro name is empty", "Error");
-                return;
-            }
-            //TODO: Change for special cases later
-            if (!(keybindTxtBox.Text.Length == 1))
-            {
-                MessageBox.Show("Invalid keybind format", "Error");
-                return;
-            }
-            if (pitchTxtBox.Text == )
-            {
-                return;
-            } */
         }
     }
 }

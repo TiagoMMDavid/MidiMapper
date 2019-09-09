@@ -121,17 +121,19 @@ namespace MidiMapper
         private void CreateProfileButton_Click(object sender, EventArgs e)
         {
             
-            CreateProfileForm createProfileForm = new CreateProfileForm(this);
+            InsertNameForm createProfileForm = new InsertNameForm("Create Profile", "Insert profile name", "Create", "Cancel");
             createProfileForm.ShowDialog();
-        }
+            string profileName = createProfileForm.GetName();
 
-        public void CreateProfile(String profileName)
-        {
-            profile = new Profile(profileName);
-            profileNameTextBox.Text = profile.GetProfileName();
-            macrosButton.Enabled = true;
-            saveButton.Enabled = true;
-            EventLogWriteLine("Profile successfully created", 0);
+            //Create profile if cancel button wasn't pressed
+            if (profileName != null)
+            {
+                profile = new Profile(profileName);
+                profileNameTextBox.Text = profile.GetProfileName();
+                macrosButton.Enabled = true;
+                saveButton.Enabled = true;
+                EventLogWriteLine("Profile successfully created", 0);
+            }
         }
 
         private void MacrosButton_Click(object sender, EventArgs e)

@@ -1,6 +1,6 @@
 ﻿namespace MidiMapper
 {
-    partial class CreateProfileForm
+    partial class InsertNameForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,28 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.insertNameTxtBox = new System.Windows.Forms.TextBox();
-            this.createButton = new System.Windows.Forms.Button();
+            this.txtBox = new System.Windows.Forms.TextBox();
+            this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // insertNameTxtBox
+            // txtBox
             // 
-            this.insertNameTxtBox.Location = new System.Drawing.Point(49, 50);
-            this.insertNameTxtBox.Name = "insertNameTxtBox";
-            this.insertNameTxtBox.Size = new System.Drawing.Size(195, 20);
-            this.insertNameTxtBox.TabIndex = 0;
-            this.insertNameTxtBox.Text = "Insert Name";
+            this.txtBox.Location = new System.Drawing.Point(49, 50);
+            this.txtBox.Name = "txtBox";
+            this.txtBox.Size = new System.Drawing.Size(195, 20);
+            this.txtBox.TabIndex = 0;
+            this.txtBox.Text = "txtBoxText";
             // 
-            // createButton
+            // okButton
             // 
-            this.createButton.Location = new System.Drawing.Point(49, 106);
-            this.createButton.Name = "createButton";
-            this.createButton.Size = new System.Drawing.Size(75, 23);
-            this.createButton.TabIndex = 1;
-            this.createButton.Text = "Create";
-            this.createButton.UseVisualStyleBackColor = true;
-            this.createButton.Click += new System.EventHandler(this.CreateButton_Click);
+            this.okButton.Location = new System.Drawing.Point(49, 106);
+            this.okButton.Name = "okButton";
+            this.okButton.Size = new System.Drawing.Size(75, 23);
+            this.okButton.TabIndex = 1;
+            this.okButton.Text = "button1";
+            this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
             // cancelButton
             // 
@@ -58,25 +58,26 @@
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 2;
-            this.cancelButton.Text = "Cancel";
+            this.cancelButton.Text = "button2";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
-            // CreateProfileForm
+            // InsertNameForm
             // 
-            this.AcceptButton = this.createButton;
+            this.AcceptButton = this.okButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(284, 173);
             this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.createButton);
-            this.Controls.Add(this.insertNameTxtBox);
+            this.Controls.Add(this.okButton);
+            this.Controls.Add(this.txtBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "CreateProfileForm";
+            this.Name = "InsertNameForm";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Create new profile";
+            this.Text = "formName";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -84,8 +85,8 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox insertNameTxtBox;
-        private System.Windows.Forms.Button createButton;
+        private System.Windows.Forms.TextBox txtBox;
+        private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button cancelButton;
     }
 }
