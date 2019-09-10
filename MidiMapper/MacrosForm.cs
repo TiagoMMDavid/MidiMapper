@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Midi;
 
 namespace MidiMapper
 {
@@ -69,7 +70,21 @@ namespace MidiMapper
 
         private void NewMacroButton_Click(object sender, EventArgs e)
         {
+            InsertNameForm insertMacroNameForm = new InsertNameForm("Create Macro", "Insert macro name", "Ok", "Cancel");
+            insertMacroNameForm.ShowDialog();
+            string macroName = insertMacroNameForm.GetName();
+            if (macroName == null)
+                return;
 
+            PianoForm pianoForm = new PianoForm();
+            pianoForm.ShowDialog();
+            Pitch macroPitch = pianoForm.GetPitch();
+            if (macroPitch == 0)
+                return;
+
+            //TODO: GUI to pick keybind for the macro
+            KeybindForm keybindForm = new KeybindForm();
         }
+
     }
 }

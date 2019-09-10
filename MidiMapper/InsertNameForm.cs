@@ -12,7 +12,7 @@ namespace MidiMapper
 {
     public partial class InsertNameForm : Form
     {
-        bool nameAccepted = false;
+        private bool nameAccepted = false;
 
         public InsertNameForm(String formName, String txtBoxText, String button1, String button2)
         {
