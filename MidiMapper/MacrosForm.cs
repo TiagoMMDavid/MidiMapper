@@ -70,6 +70,9 @@ namespace MidiMapper
 
         private void NewMacroButton_Click(object sender, EventArgs e)
         {
+            Cursor.Position = new Point(Cursor.Position.X - 50, Cursor.Position.Y);
+
+            /*
             InsertNameForm insertMacroNameForm = new InsertNameForm("Create Macro", "Insert macro name", "Ok", "Cancel");
             insertMacroNameForm.ShowDialog();
             string macroName = insertMacroNameForm.GetName();
@@ -83,7 +86,7 @@ namespace MidiMapper
                 return;
 
             //TODO: GUI to pick keybind for the macro
-            KeybindForm keybindForm = new KeybindForm();
+            //KeybindForm keybindForm = new KeybindForm(); */
         }
 
     }

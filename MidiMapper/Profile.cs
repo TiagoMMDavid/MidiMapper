@@ -30,6 +30,18 @@ namespace MidiMapper
             macros.Remove(macro);
         }
 
+        public Macro RunMacros(Pitch pitch, int velocity)
+        {
+            //TODO: make use of velocity in macros (ex: macros that only take effect if velocity in in a certain velocity limit
+            //TODO: search through all macros if pitch corresponds and call RunMacro() inside macro.cs
+            return null;
+        }
+
+        public void StopMacros(Pitch pitch)
+        {
+            //TODO: search through all macros if pitch correspondsand call StopMacro() inside macro.cs
+        }
+
         public int GetMacroCount()
         {
             return macros.Count;

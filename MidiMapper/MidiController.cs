@@ -8,12 +8,15 @@ namespace MidiMapper
     public class MidiController
     {
         private InputDevice inputDevice;
-        private List<Pitch> pressedKeys;
+        private Profile profile;
+        private App app;
 
-        public MidiController(InputDevice input)
+        public MidiController(App app, InputDevice input)
         {
+            this.app = app;
             this.inputDevice = input;
-            pressedKeys = new List<Pitch>();
+
+            //TODO: fix adding multiple InputDevices everytime a new MidiController is created
             inputDevice.NoteOn += new InputDevice.NoteOnHandler(this.NoteOn);
             inputDevice.NoteOff += new InputDevice.NoteOffHandler(this.NoteOff);
         }
@@ -35,22 +38,31 @@ namespace MidiMapper
 
         private void NotePressed(Pitch pitch, int velocity)
         {
-            pressedKeys.Add(pitch);
+            Macro macro = null;
+            if (profile != null)
+            {
+                macro = profile.RunMacros(pitch, velocity);
+            }
+            app.DisplayEventInLog(pitch, macro);
         }
 
         private void NoteReleased(Pitch pitch, int velocity)
         {
-            pressedKeys.Remove(pitch);
+            if (profile != null)
+            {
+                profile.StopMacros(pitch);
+            }
         }
 
-        public Pitch GetPitchAtIndex(int idx)
+        public void Close()
         {
-            return pressedKeys[idx];
+            inputDevice.NoteOn -= new InputDevice.NoteOnHandler(this.NoteOn);
+            inputDevice.NoteOff -= new InputDevice.NoteOffHandler(this.NoteOff);
         }
 
-        public int GetPressedKeysCount()
+        public void SetProfile(Profile profile)
         {
-            return pressedKeys.Count;
+            this.profile = profile;
         }
     }
 }

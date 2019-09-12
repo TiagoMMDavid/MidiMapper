@@ -25,7 +25,7 @@ namespace MidiMapper
 
         public void Run()
         {
-            SendKeys.Send(keybind);
+            //SendKeys.Send(keybind);
         }
 
         public Pitch getPitch()

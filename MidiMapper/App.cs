@@ -15,10 +15,18 @@ namespace MidiMapper
 {
     public partial class App : Form
     {
+        #region Main()
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new App());
+        }
+        #endregion
 
         private InputDevice inputDevice;
-        private Program ctrl;
-
+        private MidiController midiDevice;
         private Profile profile;
 
         public App()
@@ -38,9 +46,8 @@ namespace MidiMapper
             {
                 selectInputBox.Items.Add("No devices detected");
 
-                //Disable list box and connect button if there are no devices connected
+                //Disable list box if there are no devices connected
                 selectInputBox.Enabled = false;
-                startButton.Enabled = false;
             }
             else
             {
@@ -49,11 +56,12 @@ namespace MidiMapper
                     selectInputBox.Items.Add(InputDevice.InstalledDevices[i].Name);
                 }
             }
+            startButton.Enabled = false;
         }
 
         public void DisplayEventInLog(Pitch pitch, Macro macro)
         {
-            String evt = "Pitch - " + pitch + (macro == null ? " \r\t No macro" : " \r\t Macro: " + macro.ToString()) + "\r\n";
+            String evt = "Pitch - " + pitch + (macro == null ? " \r\t No macro" : " \r\t Macro: " + macro.ToString());
             EventLogWriteLine(evt, 0);
         }
 
@@ -80,20 +88,26 @@ namespace MidiMapper
             selectInputBox.Enabled = false;
             stopButton.Enabled = true;
 
-            ctrl = new Program();
-            ctrl.Start(inputDevice, this);
+            //Start midiController
+            if (!inputDevice.IsOpen)
+                inputDevice.Open();
+            if (!inputDevice.IsReceiving)
+                inputDevice.StartReceiving(null);
 
+            midiDevice = new MidiController(this, inputDevice);
+            
             if (profile != null)
-                ctrl.setProfile(profile);
+                midiDevice.SetProfile(profile);
 
             EventLogWriteLine("Device successfully connected", 0);
         }
 
         private void StopButton_Click(object sender, EventArgs e)
         {
-            if (ctrl != null && inputDevice != null)
+            if (midiDevice != null && inputDevice != null)
             {
-                ctrl = null;
+                midiDevice.Close();
+                midiDevice = null;
                 inputDevice = null;
             }
                 
@@ -102,15 +116,8 @@ namespace MidiMapper
             refreshInputButton.Enabled = true;
             selectInputBox.Enabled = true;
             eventLog.Clear();
+            EventLogWriteLine("Device successfully disconnected", 0);
             refreshInputs();
-        }
-
-        private void PressKeyTimer_Tick(object sender, EventArgs e)
-        {
-            if (inputDevice != null && ctrl != null)
-            {
-                ctrl.CheckForKeys();
-            }
         }
 
         private void ClearEventLogButton_Click(object sender, EventArgs e)
@@ -207,8 +214,8 @@ namespace MidiMapper
                 line = sr.ReadLine();
             }
 
-            if (ctrl != null)
-                ctrl.setProfile(profile);
+            if (midiDevice != null)
+                midiDevice.SetProfile(profile);
 
             macrosButton.Enabled = true;
             profileNameTextBox.Text = profile.GetProfileName();
@@ -230,6 +237,11 @@ namespace MidiMapper
                 throw new Exception("Profile is null");
 
             return profile;
+        }
+
+        private void App_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -36,6 +36,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="InputManager">
+      <HintPath>..\libs\InputManager.dll</HintPath>
+    </Reference>
     <Reference Include="Midi">
       <HintPath>..\..\midi-dot-net_1.1.0\Midi.dll</HintPath>
     </Reference>
@@ -79,7 +82,6 @@
       <DependentUpon>PianoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Profile.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="App.resx">
       <DependentUpon>App.cs</DependentUpon>

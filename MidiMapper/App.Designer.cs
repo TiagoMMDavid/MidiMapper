@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(App));
-            this.pressKeyTimer = new System.Windows.Forms.Timer(this.components);
             this.selectInputBox = new System.Windows.Forms.ListBox();
             this.refreshInputButton = new System.Windows.Forms.Button();
             this.startButton = new System.Windows.Forms.Button();
@@ -43,11 +41,6 @@
             this.createProfileButton = new System.Windows.Forms.Button();
             this.macrosButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // pressKeyTimer
-            // 
-            this.pressKeyTimer.Enabled = true;
-            this.pressKeyTimer.Tick += new System.EventHandler(this.PressKeyTimer_Tick);
             // 
             // selectInputBox
             // 
@@ -142,13 +135,13 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "App";
+            this.Load += new System.EventHandler(this.App_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Timer pressKeyTimer;
         private System.Windows.Forms.ListBox selectInputBox;
         private System.Windows.Forms.Button refreshInputButton;
         private System.Windows.Forms.Button startButton;
