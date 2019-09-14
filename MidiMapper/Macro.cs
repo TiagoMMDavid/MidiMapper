@@ -8,44 +8,36 @@ using Midi;
 
 namespace MidiMapper
 {
-    public class Macro
+    public abstract class Macro
     {
-        private String macroName;
-        private Pitch pitchKey;
-        private String keybind;
+        protected String macroName;
+        protected Pitch pitchKey;
 
-        public Macro(String macroName, Pitch pitchKey, String keybind)
+        public Macro(String macroName, Pitch pitchKey)
         {
             this.macroName = macroName;
             this.pitchKey = pitchKey;
-
-            //TODO: FIX SPECIAL CASES (example: enter key)
-            this.keybind = keybind;
         }
 
-        public void Run()
-        {
-            //SendKeys.Send(keybind);
-        }
+        public abstract void Run();
+
+        public abstract void Stop();
+
+        public abstract String SaveMacro();
 
         public Pitch getPitch()
         {
             return pitchKey;
         }
 
-        public String getName()
+        public String getMacroName()
         {
             return macroName;
         }
 
-        public String SaveMacro()
-        {
-            return macroName + ";" + pitchKey + ";" + keybind;
-        }
-
         public override String ToString()
         {
-            return macroName + " (Presses '" + keybind + "' key)";
+            return macroName;
         }
     }
 }

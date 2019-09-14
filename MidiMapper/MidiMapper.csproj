@@ -67,6 +67,7 @@
     <Compile Include="InsertNameForm.Designer.cs">
       <DependentUpon>InsertNameForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="KeyboardMacro.cs" />
     <Compile Include="Macro.cs" />
     <Compile Include="MacrosForm.cs">
       <SubType>Form</SubType>
@@ -75,6 +76,8 @@
       <DependentUpon>MacrosForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MidiController.cs" />
+    <Compile Include="MouseMovementMacro.cs" />
+    <Compile Include="MousePressMacro.cs" />
     <Compile Include="PianoForm.cs">
       <SubType>Form</SubType>
     </Compile>

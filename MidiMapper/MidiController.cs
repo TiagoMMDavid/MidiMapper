@@ -16,7 +16,6 @@ namespace MidiMapper
             this.app = app;
             this.inputDevice = input;
 
-            //TODO: fix adding multiple InputDevices everytime a new MidiController is created
             inputDevice.NoteOn += new InputDevice.NoteOnHandler(this.NoteOn);
             inputDevice.NoteOff += new InputDevice.NoteOffHandler(this.NoteOff);
         }
@@ -54,6 +53,7 @@ namespace MidiMapper
             }
         }
 
+        //TODO: find a way that doesn't require Closing MidiController to start another
         public void Close()
         {
             inputDevice.NoteOn -= new InputDevice.NoteOnHandler(this.NoteOn);

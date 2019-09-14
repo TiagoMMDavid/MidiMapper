@@ -196,7 +196,6 @@ namespace MidiMapper
                     MessageBox.Show($"Security error.\n\nError message: {ex.Message}\n\n" + $"Details:\n\n{ex.StackTrace}");
                 }
             }
-            
         }
 
         //TODO: Give errors if file is not with the correct formula
@@ -210,7 +209,7 @@ namespace MidiMapper
             while (line != null)
             {
                 String[] args = line.Split(';');
-                profile.AddMacro(args[0], (Pitch) Enum.Parse(typeof(Pitch), args[1]), args[2]);
+                profile.AddMacro(Profile.ReadProfile(args));
                 line = sr.ReadLine();
             }
 
@@ -232,10 +231,6 @@ namespace MidiMapper
 
         public Profile GetProfile()
         {
-            //TODO: find a better suiting exception
-            if (profile == null)
-                throw new Exception("Profile is null");
-
             return profile;
         }
 

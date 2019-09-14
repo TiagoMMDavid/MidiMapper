@@ -70,9 +70,7 @@ namespace MidiMapper
 
         private void NewMacroButton_Click(object sender, EventArgs e)
         {
-            Cursor.Position = new Point(Cursor.Position.X - 50, Cursor.Position.Y);
-
-            /*
+            //TODO: Change order to: bind key -> midi key -> macro name 
             InsertNameForm insertMacroNameForm = new InsertNameForm("Create Macro", "Insert macro name", "Ok", "Cancel");
             insertMacroNameForm.ShowDialog();
             string macroName = insertMacroNameForm.GetName();
