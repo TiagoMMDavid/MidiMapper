@@ -5,9 +5,9 @@ MidiMapper is a Windows Form Application that maps MIDI signals into customizabl
 
 The application allows for profiles to be created and loaded. This way it is possible to easily switch between user-made profiles. These profiles can be described through `.txt` files as explained [here](user-profiles) or can be managed via the application's interface.
 
-The following diagram displays the architecture of the system:
+The following diagram displays the system's overview:
 
-*Overview architecture image to be added...*
+<img src="resources/app-overview.png" width="750">
 
 ## Table of Contents
 - [Functionalities](#functionalities)
@@ -23,6 +23,9 @@ MidiMapper exposes the following functionalities:
 - Profile management
     - Create unlimited profiles with sets of macros
     - Customize macros
+        - Add/Edit/Delete
+        - Add a title to describe a macro
+        - Support for keyboard/mouse actions as macros 
     - Save profiles to `.txt` files
     - Load profiles into MidiMapper
 
