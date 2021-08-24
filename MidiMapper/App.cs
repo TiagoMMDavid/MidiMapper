@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Security;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Midi;
+using MidiMapper.Controller;
+using MidiMapper.Macros;
+using MidiMapper.Forms;
 
 namespace MidiMapper
 {

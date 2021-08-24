@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Midi;
+﻿using Midi;
 using InputManager;
 
-namespace MidiMapper
+namespace MidiMapper.Macros
 {
     class MousePressMacro : Macro
     {

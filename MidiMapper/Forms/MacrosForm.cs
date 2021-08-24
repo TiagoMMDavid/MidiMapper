@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Midi;
+using MidiMapper.Controller;
+using MidiMapper.Macros;
 
-namespace MidiMapper
+namespace MidiMapper.Forms
 {
     public partial class MacrosForm : Form
     {

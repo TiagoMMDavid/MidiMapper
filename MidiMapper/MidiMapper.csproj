@@ -40,7 +40,7 @@
       <HintPath>..\libs\InputManager.dll</HintPath>
     </Reference>
     <Reference Include="Midi">
-      <HintPath>..\..\midi-dot-net_1.1.0\Midi.dll</HintPath>
+      <HintPath>..\libs\midi-dot-net_1.1.0\Midi.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -61,41 +61,41 @@
     <Compile Include="App.Designer.cs">
       <DependentUpon>App.cs</DependentUpon>
     </Compile>
-    <Compile Include="InsertNameForm.cs">
+    <Compile Include="Forms\InsertNameForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InsertNameForm.Designer.cs">
+    <Compile Include="Forms\InsertNameForm.Designer.cs">
       <DependentUpon>InsertNameForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="KeyboardMacro.cs" />
-    <Compile Include="Macro.cs" />
-    <Compile Include="MacrosForm.cs">
+    <Compile Include="Macros\KeyboardMacro.cs" />
+    <Compile Include="Macros\Macro.cs" />
+    <Compile Include="Forms\MacrosForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MacrosForm.Designer.cs">
+    <Compile Include="Forms\MacrosForm.Designer.cs">
       <DependentUpon>MacrosForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MidiController.cs" />
-    <Compile Include="MouseMovementMacro.cs" />
-    <Compile Include="MousePressMacro.cs" />
-    <Compile Include="PianoForm.cs">
+    <Compile Include="Controller\MidiController.cs" />
+    <Compile Include="Macros\MouseMovementMacro.cs" />
+    <Compile Include="Macros\MousePressMacro.cs" />
+    <Compile Include="Forms\PianoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PianoForm.Designer.cs">
+    <Compile Include="Forms\PianoForm.Designer.cs">
       <DependentUpon>PianoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Profile.cs" />
+    <Compile Include="Controller\Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="App.resx">
       <DependentUpon>App.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InsertNameForm.resx">
+    <EmbeddedResource Include="Forms\InsertNameForm.resx">
       <DependentUpon>InsertNameForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MacrosForm.resx">
+    <EmbeddedResource Include="Forms\MacrosForm.resx">
       <DependentUpon>MacrosForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PianoForm.resx">
+    <EmbeddedResource Include="Forms\PianoForm.resx">
       <DependentUpon>PianoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

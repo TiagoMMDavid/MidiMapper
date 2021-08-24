@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using Midi;
 using InputManager;
 
-namespace MidiMapper
+namespace MidiMapper.Macros
 {
     class KeyboardMacro : Macro
     {
@@ -27,7 +22,7 @@ namespace MidiMapper
             Keyboard.KeyUp(kbdKey);
         }
 
-        public override String SaveMacro()
+        public override string SaveMacro()
         {
             return macroName + ";" + pitchKey + ";" + kbdKey.ToString();
         }

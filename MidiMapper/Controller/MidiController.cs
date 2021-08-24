@@ -1,9 +1,7 @@
 ﻿using Midi;
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
+using MidiMapper.Macros;
 
-namespace MidiMapper
+namespace MidiMapper.Controller
 {
     public class MidiController
     {
@@ -14,10 +12,10 @@ namespace MidiMapper
         public MidiController(App app, InputDevice input)
         {
             this.app = app;
-            this.inputDevice = input;
+            inputDevice = input;
 
-            inputDevice.NoteOn += new InputDevice.NoteOnHandler(this.NoteOn);
-            inputDevice.NoteOff += new InputDevice.NoteOffHandler(this.NoteOff);
+            inputDevice.NoteOn += new InputDevice.NoteOnHandler(NoteOn);
+            inputDevice.NoteOff += new InputDevice.NoteOffHandler(NoteOff);
         }
 
         public void NoteOn(NoteOnMessage msg)
@@ -27,7 +25,7 @@ namespace MidiMapper
                 NoteReleased(msg.Pitch, msg.Velocity);
             else
                 NotePressed(msg.Pitch, msg.Velocity);
-       
+
         }
 
         public void NoteOff(NoteOffMessage msg)
@@ -56,8 +54,8 @@ namespace MidiMapper
         //TODO: find a way that doesn't require Closing MidiController to start another
         public void Close()
         {
-            inputDevice.NoteOn -= new InputDevice.NoteOnHandler(this.NoteOn);
-            inputDevice.NoteOff -= new InputDevice.NoteOffHandler(this.NoteOff);
+            inputDevice.NoteOn -= new InputDevice.NoteOnHandler(NoteOn);
+            inputDevice.NoteOff -= new InputDevice.NoteOffHandler(NoteOff);
         }
 
         public void SetProfile(Profile profile)

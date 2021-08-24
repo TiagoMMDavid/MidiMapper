@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Midi;
 using InputManager;
 using System.Windows.Forms;
 
-namespace MidiMapper
+namespace MidiMapper.Macros
 {
     class MouseMovementMacro : Macro
     {

@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Midi;
 using System.Windows.Forms;
 using InputManager;
+using MidiMapper.Macros;
 
-namespace MidiMapper
+namespace MidiMapper.Controller
 {
     public class Profile
     {
-        private String profileName;
+        private string profileName;
         private List<Macro> macros;
-        
 
-        public Profile(String profileName)
+        public Profile(string profileName)
         {
             this.profileName = profileName;
             macros = new List<Macro>();
@@ -34,7 +32,7 @@ namespace MidiMapper
         public Macro RunMacros(Pitch pitch, int velocity)
         {
             //TODO: make use of velocity in macros (ex: macros that only take effect if velocity in in a certain velocity limit
-            
+
             //Find correct macro (same pitch)
             foreach (Macro macro in macros)
             {
@@ -73,12 +71,12 @@ namespace MidiMapper
             return macros[idx];
         }
 
-        public String GetProfileName()
+        public string GetProfileName()
         {
             return profileName;
         }
 
-        public String SaveProfile()
+        public string SaveProfile()
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append(profileName);
@@ -95,9 +93,9 @@ namespace MidiMapper
             //TODO: Improve code
             if (args[2].Contains("Mouse("))
             {
-                String[] mouseMovement = args[2].Split('(');
-                int x = Int32.Parse(mouseMovement[1].Split(',')[0]);
-                int y = Int32.Parse(mouseMovement[1].Split(',')[1].Replace(")", ""));
+                string[] mouseMovement = args[2].Split('(');
+                int x = int.Parse(mouseMovement[1].Split(',')[0]);
+                int y = int.Parse(mouseMovement[1].Split(',')[1].Replace(")", ""));
 
                 return new MouseMovementMacro(args[0],
                     (Pitch)Enum.Parse(typeof(Pitch), args[1]),

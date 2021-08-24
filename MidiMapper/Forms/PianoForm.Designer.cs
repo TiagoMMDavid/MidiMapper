@@ -1,4 +1,4 @@
-﻿namespace MidiMapper
+﻿namespace MidiMapper.Forms
 {
     partial class PianoForm
     {

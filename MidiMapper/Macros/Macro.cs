@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Midi;
+﻿using Midi;
 
-namespace MidiMapper
+namespace MidiMapper.Macros
 {
     public abstract class Macro
     {
-        protected String macroName;
+        protected string macroName;
         protected Pitch pitchKey;
 
-        public Macro(String macroName, Pitch pitchKey)
+        public Macro(string macroName, Pitch pitchKey)
         {
             this.macroName = macroName;
             this.pitchKey = pitchKey;
@@ -23,19 +17,19 @@ namespace MidiMapper
 
         public abstract void Stop();
 
-        public abstract String SaveMacro();
+        public abstract string SaveMacro();
 
         public Pitch getPitch()
         {
             return pitchKey;
         }
 
-        public String getMacroName()
+        public string getMacroName()
         {
             return macroName;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             return macroName;
         }
