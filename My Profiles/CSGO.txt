@@ -1,0 +1,29 @@
+CSGO
+
+Walk forward;D#4;KBD_Press;W
+Walk backwards;C#4;KBD_Press;S
+Walk left;C4;KBD_Press;A
+Walk right;E4;KBD_Press;D
+Reload;F4;KBD_Press;R
+Interact/Use;F#4;KBD_Press;E
+Swap guns;G4;KBD_Press;Q
+Jump;D4;KBD_Press;Space
+Inspect;G#4;KBD_Press;F
+Voice chat;A3;KBD_Press;V
+Drop;A4;KBD_Press;G
+Buy menu;B6;KBD_Press;B
+Weapon 1;F#2;KBD_Press;D1
+Weapon 2;G#2;KBD_Press;D2
+Weapon 3;A#2;KBD_Press;D3
+Weapon 4;C#3;KBD_Press;D4
+Weapon 5;D#3;KBD_Press;D5
+Sneak;A#3;KBD_Press;LShiftKey
+Crouch;B3;KBD_Press;LControlKey
+ScoreBoard;C7;KBD_Press;Tab
+Shoot;D5;Mouse_Press;Left
+Scope;F5;Mouse_Press;Right
+Look up;D#5;Mouse_Move;(0,-1)
+Look down;C#5;Mouse_Move;(0,1)
+Look left;C5;Mouse_Move;(-1,0)
+Look right;E5;Mouse_Move;(1,0)
+Fast Spin;C2;Mouse_Move;(5000,1)

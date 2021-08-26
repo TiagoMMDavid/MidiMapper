@@ -1,0 +1,6 @@
+osu!mania
+
+Press D;C4;KBD_Press;D
+Press F;D4;KBD_Press;F
+Press J;E4;KBD_Press;J
+Press K;F4;KBD_Press;K

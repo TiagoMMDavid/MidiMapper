@@ -1,0 +1,9 @@
+osu!
+
+Press Z;C4;KBD_Press;Z
+Press X;D4;KBD_Press;X
+Press C;E4;KBD_Press;C
+Look up;D#5;Mouse_Move;(0,-20)
+Look down;C#5;Mouse_Move;(0,20)
+Look left;C5;Mouse_Move;(-20,0)
+Look right;E5;Mouse_Move;(20,0)
