@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(App));
-            this.selectInputBox = new System.Windows.Forms.ListBox();
+            this.selectMidiDevice = new System.Windows.Forms.ListBox();
             this.refreshInputButton = new System.Windows.Forms.Button();
             this.startButton = new System.Windows.Forms.Button();
             this.stopButton = new System.Windows.Forms.Button();
@@ -44,10 +44,10 @@
             // 
             // selectInputBox
             // 
-            this.selectInputBox.FormattingEnabled = true;
-            resources.ApplyResources(this.selectInputBox, "selectInputBox");
-            this.selectInputBox.Name = "selectInputBox";
-            this.selectInputBox.SelectedIndexChanged += new System.EventHandler(this.SelectInput_SelectedIndexChanged);
+            this.selectMidiDevice.FormattingEnabled = true;
+            resources.ApplyResources(this.selectMidiDevice, "selectInputBox");
+            this.selectMidiDevice.Name = "selectInputBox";
+            this.selectMidiDevice.SelectedIndexChanged += new System.EventHandler(this.SelectInput_SelectedIndexChanged);
             // 
             // refreshInputButton
             // 
@@ -131,7 +131,7 @@
             this.Controls.Add(this.stopButton);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.refreshInputButton);
-            this.Controls.Add(this.selectInputBox);
+            this.Controls.Add(this.selectMidiDevice);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "App";
@@ -142,7 +142,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.ListBox selectInputBox;
+        private System.Windows.Forms.ListBox selectMidiDevice;
         private System.Windows.Forms.Button refreshInputButton;
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.Button stopButton;

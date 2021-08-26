@@ -1,36 +1,36 @@
-﻿using Midi;
-using InputManager;
+﻿using InputManager;
+using System;
 
 namespace MidiMapper.Macros
 {
     class MousePressMacro : Macro
     {
-        //TODO: add MouseButtons and scroll with the other enums present in Mouse class
-        private Mouse.MouseKeys mouseKey;
+        // TODO: add MouseButtons and scroll with the other enums present in Mouse class
+        private Mouse.MouseKeys _mouseKey;
 
-        public MousePressMacro(string macroName, Pitch pitchKey, Mouse.MouseKeys mouseKey) : base(macroName, pitchKey)
+        public MousePressMacro(string macroName, string note, Mouse.MouseKeys mouseKey) : base(macroName, note)
         {
-            this.mouseKey = mouseKey;
+            this._mouseKey = mouseKey;
         }
 
-        public override void Run()
+        public override void Execute()
         {
-            Mouse.ButtonDown(mouseKey);
+            Mouse.ButtonDown(_mouseKey);
         }
 
         public override void Stop()
         {
-            Mouse.ButtonUp(mouseKey);
+            Mouse.ButtonUp(_mouseKey);
         }
 
-        public override string SaveMacro()
+        public override string SerializeMacro()
         {
-            return macroName + ";" + pitchKey + ";MouseButton" + mouseKey.ToString();
+            return String.Format("{0};{1};{2};{3}", MacroName, Note, MacroType.Mouse_Press.ToString(), _mouseKey);
         }
 
-        public override string ToString()
+        public override string GetMacroInfo()
         {
-            return base.ToString() + ": Presses " + mouseKey + " mouse button";
+            return String.Format("{0}: Presses '{1}' mouse button", MacroName, _mouseKey);
         }
     }
 }

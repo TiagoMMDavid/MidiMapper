@@ -1,37 +1,54 @@
-﻿using Midi;
+﻿using System;
+using System.Windows.Forms;
+using InputManager;
 
 namespace MidiMapper.Macros
 {
     public abstract class Macro
     {
-        protected string macroName;
-        protected Pitch pitchKey;
+        public const char SerializeDelimiter = ';';
 
-        public Macro(string macroName, Pitch pitchKey)
+        public string MacroName { get; set; }
+        public string Note { get; }
+
+        public Macro(string macroName, string note)
         {
-            this.macroName = macroName;
-            this.pitchKey = pitchKey;
+            this.MacroName = macroName;
+            this.Note = note;
         }
 
-        public abstract void Run();
+        public abstract void Execute();
 
         public abstract void Stop();
 
-        public abstract string SaveMacro();
+        public abstract string GetMacroInfo();
 
-        public Pitch getPitch()
+        public abstract string SerializeMacro();
+
+        public enum MacroType
         {
-            return pitchKey;
+            KBD_Press,
+            Mouse_Move,
+            Mouse_Press
         }
 
-        public string getMacroName()
+        public static Macro DeserializeMacro(string macroName, string note, MacroType type, string options)
         {
-            return macroName;
-        }
+            switch(type)
+            {
+                case MacroType.KBD_Press:
+                    return new KeyboardPressMacro(macroName, note, (Keys) Enum.Parse(typeof(Keys), options));
+                case MacroType.Mouse_Press:
+                    return new MousePressMacro(macroName, note, (Mouse.MouseKeys) Enum.Parse(typeof(Mouse.MouseKeys), options));
+                case MacroType.Mouse_Move:
+                    string[] mouseMovement = options.Trim('(', ')').Split(',');
+                    int x = int.Parse(mouseMovement[0]);
+                    int y = int.Parse(mouseMovement[1]);
 
-        public override string ToString()
-        {
-            return macroName;
+                    return new MouseMovementMacro(macroName, note, x, y);
+                default:
+                    throw new ArgumentException(String.Format("Macro type '{0}' is not valid!", type.ToString()));
+            }
         }
     }
 }

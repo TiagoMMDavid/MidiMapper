@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Windows.Forms;
-using Midi;
 
 namespace MidiMapper.Forms
 {
     public partial class PianoForm : Form
     {
         private bool isPitchSet;
-        private Pitch pitch;
+        //private Pitch pitch;
         private String key;
 
         public PianoForm()
@@ -43,7 +42,7 @@ namespace MidiMapper.Forms
                 return;
             }
 
-            pitch = (Pitch)Enum.Parse(typeof(Pitch), pitchString);
+            //pitch = (Pitch)Enum.Parse(typeof(Pitch), pitchString);
             isPitchSet = true;
             this.Close();
         }
@@ -122,10 +121,11 @@ namespace MidiMapper.Forms
         }
         #endregion
 
+        /*
         public Pitch GetPitch()
         {
             return (isPitchSet ? pitch : 0);
         }
-
+        */
     }
 }

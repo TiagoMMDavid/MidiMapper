@@ -2,10 +2,10 @@
 using System.IO;
 using System.Security;
 using System.Windows.Forms;
-using Midi;
 using MidiMapper.Controller;
 using MidiMapper.Macros;
 using MidiMapper.Forms;
+using NAudio.Midi;
 
 namespace MidiMapper
 {
@@ -21,57 +21,64 @@ namespace MidiMapper
         }
         #endregion
 
-        private InputDevice inputDevice;
-        private MidiController midiDevice;
-        private Profile profile;
+        private MidiMapperController _controller;
 
         public App()
         {
             InitializeComponent();
             refreshInputs();
+            _controller = new MidiMapperController();
         }
 
-        //TODO: Not working, inputDevice doesn't refresh while app is open
+        // TODO: Is it possible to delete this method?
+        private void App_Load(object sender, EventArgs e) { }
+
+
         private void refreshInputs()
         {
-            selectInputBox.Enabled = true;
-            selectInputBox.Items.Clear();
+            selectMidiDevice.Enabled = true;
+            selectMidiDevice.Items.Clear();
 
-            int installedDevices = InputDevice.InstalledDevices.Count;
+            int installedDevices = MidiIn.NumberOfDevices;
             if (installedDevices == 0)
             {
-                selectInputBox.Items.Add("No devices detected");
+                selectMidiDevice.Items.Add("No devices detected");
 
-                //Disable list box if there are no devices connected
-                selectInputBox.Enabled = false;
+                // Disable list box if there are no devices connected
+                selectMidiDevice.Enabled = false;
             }
             else
             {
-                for (int i = 0; i < installedDevices; i++)
+                for (int deviceIdx = 0; deviceIdx < installedDevices; deviceIdx++)
                 {
-                    selectInputBox.Items.Add(InputDevice.InstalledDevices[i].Name);
+                    selectMidiDevice.Items.Add(MidiIn.DeviceInfo(deviceIdx).ProductName);
                 }
             }
             startButton.Enabled = false;
         }
 
+        private void LogMessage(String str)
+        {
+            eventLog.Text = eventLog.Text.Insert(0, str + " \r\n");
+        }
+
+        /*
         public void DisplayEventInLog(Pitch pitch, Macro macro)
         {
             String evt = "Pitch - " + pitch + (macro == null ? " \r\t No macro" : " \r\t Macro: " + macro.ToString());
-            EventLogWriteLine(evt, 0);
+            LogMessage(evt);
         }
+        */
 
         private void SelectInput_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (selectInputBox.SelectedIndex < 0 || selectInputBox.SelectedIndex > selectInputBox.Items.Count)
+            if (selectMidiDevice.SelectedIndex < 0 || selectMidiDevice.SelectedIndex > selectMidiDevice.Items.Count)
                 return;
 
-            inputDevice = InputDevice.InstalledDevices[selectInputBox.SelectedIndex];
             startButton.Enabled = true;
-
         }
 
-        //TODO: CHANGE TXT BUTTON TO REFRESH ICON
+        // TODO: Change button to a refresh icon
         private void RefreshInputButton_Click(object sender, EventArgs e)
         {
             refreshInputs();
@@ -79,41 +86,30 @@ namespace MidiMapper
 
         private void StartButton_Click(object sender, EventArgs e)
         {
+            // Update layout
             startButton.Enabled = false;
             refreshInputButton.Enabled = false;
-            selectInputBox.Enabled = false;
+            selectMidiDevice.Enabled = false;
             stopButton.Enabled = true;
 
-            //Start midiController
-            if (!inputDevice.IsOpen)
-                inputDevice.Open();
-            if (!inputDevice.IsReceiving)
-                inputDevice.StartReceiving(null);
+            _controller.CloseMidiDevice(); // Close previous device if necessary
+            MidiIn midiInput = new MidiIn(selectMidiDevice.SelectedIndex);
+            _controller.AddMidiDevice(midiInput);
 
-            midiDevice = new MidiController(this, inputDevice);
-            
-            if (profile != null)
-                midiDevice.SetProfile(profile);
-
-            EventLogWriteLine("Device successfully connected", 0);
+            LogMessage("Device successfully connected");
         }
 
         private void StopButton_Click(object sender, EventArgs e)
         {
-            if (midiDevice != null && inputDevice != null)
-            {
-                midiDevice.Close();
-                midiDevice = null;
-                inputDevice = null;
-            }
-                
-
+            // Update Layout
             stopButton.Enabled = false;
             refreshInputButton.Enabled = true;
-            selectInputBox.Enabled = true;
+            selectMidiDevice.Enabled = true;
             eventLog.Clear();
-            EventLogWriteLine("Device successfully disconnected", 0);
+            LogMessage("Device successfully disconnected");
             refreshInputs();
+
+            _controller.CloseMidiDevice();
         }
 
         private void ClearEventLogButton_Click(object sender, EventArgs e)
@@ -121,9 +117,9 @@ namespace MidiMapper
             eventLog.Clear();
         }
 
+        
         private void CreateProfileButton_Click(object sender, EventArgs e)
-        {
-            
+        {  
             InsertNameForm createProfileForm = new InsertNameForm("Create Profile", "Insert profile name", "Create", "Cancel");
             createProfileForm.ShowDialog();
             string profileName = createProfileForm.GetName();
@@ -131,43 +127,57 @@ namespace MidiMapper
             //Create profile if cancel button wasn't pressed
             if (profileName != null)
             {
-                profile = new Profile(profileName);
-                profileNameTextBox.Text = profile.GetProfileName();
+                _controller.Profile = new Profile(profileName);
+
+                profileNameTextBox.Text = profileName;
                 macrosButton.Enabled = true;
                 saveButton.Enabled = true;
-                EventLogWriteLine("Profile successfully created", 0);
+                LogMessage("Profile successfully created");
             }
         }
 
         private void MacrosButton_Click(object sender, EventArgs e)
         {
-            MacrosForm macrosForm = new MacrosForm(this);
+            MacrosForm macrosForm = new MacrosForm(_controller.Profile);
             macrosForm.ShowDialog();
         }
 
-        //TODO: CHANGE BUTTONS TO ICONS INSTEAD
+        // TODO: Change buttons to icons
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (profile != null)
-            {
-                Stream stream;
-                SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.Filter = "Txt files (*.txt)|*.txt";
-                //saveFileDialog.RestoreDirectory = true;
+            if (_controller.Profile == null)
+                return;
 
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Txt files (*.txt)|*.txt";
+            //saveFileDialog.RestoreDirectory = true;
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllText(saveFileDialog.FileName, _controller.Profile.SerializeProfile());
+                /*
+                using (Stream stream = saveFileDialog.OpenFile())
                 {
-                    if ((stream = saveFileDialog.OpenFile()) != null)
+                    using (StreamWriter sw = new StreamWriter(stream))
                     {
-                        //Write profile information
-                        StreamWriter sw = new StreamWriter(stream);
-                        sw.Write(profile.SaveProfile());
-                        sw.Close();
-                        stream.Close();
+                        sw.Write(_controller.Profile.SerializeProfile());
                     }
                 }
-                EventLogWriteLine("Profile successfully saved to " + saveFileDialog.FileName, 0);
+                using (StreamWriter sw = new StreamWriter(saveFileDialog.OpenFile()))
+                {
+                    
+                }
+                if ((stream = saveFileDialog.OpenFile()) != null)
+                {
+                    //Write profile information
+                    StreamWriter sw = new StreamWriter(stream);
+                    sw.Write(_profile.SaveProfile());
+                    sw.Close();
+                    stream.Close();
+                }
+                */
             }
+            LogMessage("Profile successfully saved to " + saveFileDialog.FileName);
         }
 
         private void LoadButton_Click(object sender, EventArgs e)
@@ -175,64 +185,19 @@ namespace MidiMapper
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                try
+                if (!openFileDialog.FileName.EndsWith(".txt"))
                 {
-                    StreamReader sr = new StreamReader(openFileDialog.FileName);
-                    //Check if its a .txt file
-                    if (!openFileDialog.FileName.Contains(".txt"))
-                    {
-                        MessageBox.Show("Invalid format file (Needs to be .txt)", "File Error");
-                        return;
-                    }
-
-                    LoadProfile(sr);
+                    MessageBox.Show("Invalid format file (Needs to be .txt)", "File Error");
+                    return;
                 }
-                catch (SecurityException ex)
-                {
-                    MessageBox.Show($"Security error.\n\nError message: {ex.Message}\n\n" + $"Details:\n\n{ex.StackTrace}");
-                }
+
+                _controller.Profile = Profile.GetProfileFromFile(openFileDialog.FileName);
+
+                profileNameTextBox.Text = _controller.Profile.ProfileName;
+                macrosButton.Enabled = true;
+                saveButton.Enabled = true;
+                LogMessage("Profile successfully loaded");
             }
-        }
-
-        //TODO: Give errors if file is not with the correct formula
-        private void LoadProfile(StreamReader sr)
-        {
-            String line = sr.ReadLine();
-            profile = new Profile(line);
-
-            line = sr.ReadLine();
-            //Go through all macros
-            while (line != null)
-            {
-                String[] args = line.Split(';');
-                profile.AddMacro(Profile.ReadProfile(args));
-                line = sr.ReadLine();
-            }
-
-            if (midiDevice != null)
-                midiDevice.SetProfile(profile);
-
-            macrosButton.Enabled = true;
-            profileNameTextBox.Text = profile.GetProfileName();
-            saveButton.Enabled = true;
-            EventLogWriteLine("Profile successfully loaded", 0);
-            
-            sr.Close();
-        }
-
-        private void EventLogWriteLine(String str, int idx)
-        {
-            eventLog.Text = eventLog.Text.Insert(idx, str + " \r\n");
-        }
-
-        public Profile GetProfile()
-        {
-            return profile;
-        }
-
-        private void App_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -1,117 +1,110 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Text;
-using Midi;
 using System.Windows.Forms;
 using InputManager;
+using System.IO;
 using MidiMapper.Macros;
 
 namespace MidiMapper.Controller
 {
     public class Profile
     {
-        private string profileName;
-        private List<Macro> macros;
+        public string ProfileName { get; set; }
+        public int MacrosCount { get => _macros.Count; }
+
+        private OrderedDictionary _macros;
 
         public Profile(string profileName)
         {
-            this.profileName = profileName;
-            macros = new List<Macro>();
+            this.ProfileName = profileName;
+            this._macros = new OrderedDictionary();
         }
 
-        public void AddMacro(Macro macro)
+        public void AddMacro(string note, Macro macro)
         {
-            macros.Add(macro);
+            if (_macros.Contains(note))
+                throw new ArgumentException(String.Format("Macro in note '{0}' already exists!", note));
+
+            _macros.Add(note, macro);
         }
 
-        public void RemoveMacro(Macro macro)
+        public Macro GetMacro(string note)
         {
-            macros.Remove(macro);
-        }
+            Macro macro = _macros[note] as Macro;
+            if (macro == null)
+                throw new ArgumentException(String.Format("Macro in note '{0}' does not exist!", note));
 
-        public Macro RunMacros(Pitch pitch, int velocity)
-        {
-            //TODO: make use of velocity in macros (ex: macros that only take effect if velocity in in a certain velocity limit
-
-            //Find correct macro (same pitch)
-            foreach (Macro macro in macros)
-            {
-                if (macro.getPitch() == pitch)
-                {
-                    macro.Run();
-                    return macro;
-                }
-            }
-            return null;
-        }
-
-        public Macro StopMacros(Pitch pitch)
-        {
-            //Find correct macro (same pitch)
-            foreach (Macro macro in macros)
-            {
-                if (macro.getPitch() == pitch)
-                {
-                    macro.Stop();
-                    return macro;
-                }
-            }
-            return null;
-        }
-
-        public int GetMacroCount()
-        {
-            return macros.Count;
+            return macro;
         }
 
         public Macro GetMacroAtIndex(int idx)
         {
-            if (idx < 0 || idx > macros.Count)
+            if (idx < 0 || idx > _macros.Count)
                 throw new IndexOutOfRangeException("Invalid index");
-            return macros[idx];
+
+            return _macros[idx] as Macro;
         }
 
-        public string GetProfileName()
+        public void RemoveMacro(string note)
         {
-            return profileName;
+            if (!_macros.Contains(note))
+                throw new ArgumentException(String.Format("Macro in note '{0}' does not exist!", note));
+
+            _macros.Remove(note);
         }
 
-        public string SaveProfile()
+        public Macro ExecuteMacroIfExists(string note, int velocity)
+        {
+            Macro macro = _macros[note] as Macro;
+            macro?.Execute();
+
+            return macro;
+        }
+
+        public Macro StopMacroIfExists(string note)
+        {
+            Macro macro = _macros[note] as Macro;
+            macro?.Stop();
+
+            return macro;
+        }
+
+        public string SerializeProfile()
         {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.Append(profileName);
-            foreach (Macro macro in macros)
+            stringBuilder.Append(ProfileName).AppendLine().AppendLine();
+            foreach (Macro macro in _macros.Values)
             {
-                stringBuilder.AppendLine();
-                stringBuilder.Append(macro.SaveMacro());
+                stringBuilder.AppendLine(macro.SerializeMacro());
             }
             return stringBuilder.ToString();
         }
 
-        public static Macro ReadProfile(string[] args)
+        public static Profile GetProfileFromFile(string filePath)
         {
-            //TODO: Improve code
-            if (args[2].Contains("Mouse("))
+            using (StreamReader reader = new StreamReader(filePath))
             {
-                string[] mouseMovement = args[2].Split('(');
-                int x = int.Parse(mouseMovement[1].Split(',')[0]);
-                int y = int.Parse(mouseMovement[1].Split(',')[1].Replace(")", ""));
+                // Read profile name
+                Profile profile = new Profile(reader.ReadLine());
 
-                return new MouseMovementMacro(args[0],
-                    (Pitch)Enum.Parse(typeof(Pitch), args[1]),
-                    x, y);
-            }
-            else if (args[2].Contains("Mouse"))
-            {
-                return new MousePressMacro(args[0],
-                (Pitch)Enum.Parse(typeof(Pitch), args[1]),
-                (Mouse.MouseKeys)Enum.Parse(typeof(Mouse.MouseKeys), args[2].Replace("MouseButton", "")));
-            }
-            else
-            {
-                return new KeyboardMacro(args[0],
-                (Pitch)Enum.Parse(typeof(Pitch), args[1]),
-                (Keys)Enum.Parse(typeof(Keys), args[2]));
+                string line;
+                while ((line = reader.ReadLine()) != null) 
+                {
+                    // Ignore empty lines
+                    if (String.IsNullOrWhiteSpace(line))
+                        continue;
+
+                    // TODO: Do not hardcode index values
+                    string[] serializedMacro = line.Split(Macro.SerializeDelimiter);
+                    string note = serializedMacro[1];
+                    Macro.MacroType type = (Macro.MacroType) Enum.Parse(typeof(Macro.MacroType), serializedMacro[2]);
+
+                    profile.AddMacro(note, Macro.DeserializeMacro(serializedMacro[0], note, type, serializedMacro[3]));
+                }
+
+                return profile;
             }
         }
     }
