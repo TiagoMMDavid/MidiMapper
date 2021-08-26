@@ -23,14 +23,14 @@ namespace MidiMapper.Macros
             Keyboard.KeyUp(_kbdKey);
         }
 
-        public override string SerializeMacro()
-        {
-            return String.Format("{0};{1};{2};{3}", MacroName, Note, MacroType.KBD_Press.ToString(), _kbdKey.ToString());
-        }
-
         public override string GetMacroInfo()
         {
-            return String.Format("{0}: Presses '{1}' key", MacroName, _kbdKey);
+            return GetMacroInfo(MacroName, String.Format("Presses '{0}' key", _kbdKey), Note);
+        }
+
+        public override string SerializeMacro()
+        {
+            return SerializeMacro(MacroName, Note, MacroType.KBD_Press, _kbdKey.ToString());
         }
     }
 }

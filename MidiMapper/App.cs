@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Security;
 using System.Windows.Forms;
 using MidiMapper.Controller;
 using MidiMapper.Macros;
@@ -62,13 +61,16 @@ namespace MidiMapper
             eventLog.Text = eventLog.Text.Insert(0, str + " \r\n");
         }
 
-        /*
-        public void DisplayEventInLog(Pitch pitch, Macro macro)
+        private void OnKeyPressed(string note, int velocity, Macro macro)
         {
-            String evt = "Pitch - " + pitch + (macro == null ? " \r\t No macro" : " \r\t Macro: " + macro.ToString());
-            LogMessage(evt);
+            // Callback for when a midi key is pressed
+            LogMessage(String.Format("[{0} Velocity: {1}]\r\t\r\tMacro: {2}", note, velocity, macro != null ? macro.MacroName : "No macro"));
         }
-        */
+
+        private void OnKeyReleased(string note, Macro macro)
+        {
+            // Callback for when a midi key is released
+        }
 
         private void SelectInput_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -94,7 +96,7 @@ namespace MidiMapper
 
             _controller.CloseMidiDevice(); // Close previous device if necessary
             MidiIn midiInput = new MidiIn(selectMidiDevice.SelectedIndex);
-            _controller.AddMidiDevice(midiInput);
+            _controller.AddMidiDevice(midiInput, OnKeyPressed, OnKeyReleased);
 
             LogMessage("Device successfully connected");
         }
@@ -155,29 +157,8 @@ namespace MidiMapper
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 File.WriteAllText(saveFileDialog.FileName, _controller.Profile.SerializeProfile());
-                /*
-                using (Stream stream = saveFileDialog.OpenFile())
-                {
-                    using (StreamWriter sw = new StreamWriter(stream))
-                    {
-                        sw.Write(_controller.Profile.SerializeProfile());
-                    }
-                }
-                using (StreamWriter sw = new StreamWriter(saveFileDialog.OpenFile()))
-                {
-                    
-                }
-                if ((stream = saveFileDialog.OpenFile()) != null)
-                {
-                    //Write profile information
-                    StreamWriter sw = new StreamWriter(stream);
-                    sw.Write(_profile.SaveProfile());
-                    sw.Close();
-                    stream.Close();
-                }
-                */
+                LogMessage("Profile successfully saved to " + saveFileDialog.FileName);
             }
-            LogMessage("Profile successfully saved to " + saveFileDialog.FileName);
         }
 
         private void LoadButton_Click(object sender, EventArgs e)

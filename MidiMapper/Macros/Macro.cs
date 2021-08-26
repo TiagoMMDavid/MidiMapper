@@ -21,9 +21,20 @@ namespace MidiMapper.Macros
 
         public abstract void Stop();
 
+        // TODO: Maybe stop using GetMacroInfo and replace it with GetMacroDescription instead (Describes the macro function)
         public abstract string GetMacroInfo();
 
         public abstract string SerializeMacro();
+
+        public static string GetMacroInfo(string macroName, string macroDescription, string note)
+        {
+            return String.Format("{0}: {1} [{2}]", macroName, macroDescription, note);
+        }
+
+        public static string SerializeMacro(string macroName, string note, MacroType type, string macroOptions)
+        {
+            return String.Format("{0};{1};{2};{3}", macroName, note, type.ToString(), macroOptions);
+        }
 
         public enum MacroType
         {

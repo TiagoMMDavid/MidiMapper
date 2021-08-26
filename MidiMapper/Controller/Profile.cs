@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Text;
-using System.Windows.Forms;
-using InputManager;
 using System.IO;
 using MidiMapper.Macros;
 
@@ -96,7 +93,7 @@ namespace MidiMapper.Controller
                     if (String.IsNullOrWhiteSpace(line))
                         continue;
 
-                    // TODO: Do not hardcode index values
+                    // TODO: Do not hardcode index values and throw exception if macro is invalid
                     string[] serializedMacro = line.Split(Macro.SerializeDelimiter);
                     string note = serializedMacro[1];
                     Macro.MacroType type = (Macro.MacroType) Enum.Parse(typeof(Macro.MacroType), serializedMacro[2]);

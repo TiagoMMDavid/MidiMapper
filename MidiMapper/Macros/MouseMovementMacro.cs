@@ -40,14 +40,14 @@ namespace MidiMapper.Macros
                 Mouse.MoveRelative(_xAxis, _yAxis);
         }
 
-        public override string SerializeMacro()
-        {
-            return String.Format("{0};{1};{2};({3},{4})", MacroName, Note, MacroType.Mouse_Move.ToString(), _xAxis, _yAxis);
-        }
-
         public override string GetMacroInfo()
         {
-            return String.Format("{0}: Moves mouse by ({1},{2})", MacroName, _xAxis, _yAxis);
+            return GetMacroInfo(MacroName, String.Format("Moves mouse by ({0},{1})", _xAxis, _yAxis), Note);
+        }
+
+        public override string SerializeMacro()
+        {
+            return SerializeMacro(MacroName, Note, MacroType.Mouse_Move, String.Format("({0},{1})", _xAxis, _yAxis));
         }
     }
 }

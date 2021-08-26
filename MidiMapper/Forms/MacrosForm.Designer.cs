@@ -75,6 +75,7 @@
             this.Controls.Add(this.newMacroButton);
             this.Controls.Add(this.macrosList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "MacrosForm";
             this.ShowIcon = false;

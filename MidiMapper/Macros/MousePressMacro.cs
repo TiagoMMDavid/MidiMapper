@@ -23,14 +23,14 @@ namespace MidiMapper.Macros
             Mouse.ButtonUp(_mouseKey);
         }
 
-        public override string SerializeMacro()
-        {
-            return String.Format("{0};{1};{2};{3}", MacroName, Note, MacroType.Mouse_Press.ToString(), _mouseKey);
-        }
-
         public override string GetMacroInfo()
         {
-            return String.Format("{0}: Presses '{1}' mouse button", MacroName, _mouseKey);
+            return GetMacroInfo(MacroName, String.Format("Presses '{0}' mouse button", _mouseKey), Note);
+        }
+
+        public override string SerializeMacro()
+        {
+            return SerializeMacro(MacroName, Note, MacroType.Mouse_Press, _mouseKey.ToString());
         }
     }
 }
