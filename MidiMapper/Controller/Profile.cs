@@ -11,23 +11,23 @@ namespace MidiMapper.Controller
     public class Profile
     {
         public string ProfileName { get; set; }
-        public int MacrosCount { get => _macros.Count; }
+        public int MacrosCount => _macros.Count;
 
-        private OrderedDictionary _macros; // Dictionary<string, Macro> (key is the noteName)
+        private readonly OrderedDictionary _macros; // Dictionary<string, Macro> (key is the noteName)
 
         public Profile(string profileName)
         {
-            this.ProfileName = profileName;
-            this._macros = new OrderedDictionary();
+            ProfileName = profileName;
+            _macros = new OrderedDictionary();
         }
 
         public void AddMacro(string note, Macro macro)
         {
             if (!MidiUtils.IsNoteNameValid(note))
-                throw new ArgumentException(note + " is not a valid note name");
+                throw new ArgumentException($"'{note}' is not a valid note name");
 
             if (_macros.Contains(note))
-                throw new ArgumentException(String.Format("Macro in note '{0}' already exists", note));
+                throw new ArgumentException($"Macro in note '{note}' already exists");
 
             _macros.Add(note, macro);
         }
@@ -36,7 +36,7 @@ namespace MidiMapper.Controller
         {
             Macro macro = _macros[note] as Macro;
             if (macro == null)
-                throw new ArgumentException(String.Format("Macro in note '{0}' does not exist", note));
+                throw new ArgumentException($"Macro in note '{note}' does not exist");
 
             return macro;
         }
@@ -52,7 +52,7 @@ namespace MidiMapper.Controller
         public void RemoveMacro(string note)
         {
             if (!_macros.Contains(note))
-                throw new ArgumentException(String.Format("Macro in note '{0}' does not exist", note));
+                throw new ArgumentException($"Macro in note '{note}' does not exist");
 
             _macros.Remove(note);
         }
@@ -89,7 +89,7 @@ namespace MidiMapper.Controller
             {
                 // Read profile name
                 string profileName = reader.ReadLine();
-                if (profileName == null || String.IsNullOrWhiteSpace(profileName))
+                if (profileName == null || string.IsNullOrWhiteSpace(profileName))
                     throw new ParseProfileFileException("First line of file must be the profile name");
 
                 Profile profile = new Profile(profileName);
@@ -101,7 +101,7 @@ namespace MidiMapper.Controller
                     lineNumber++;
 
                     // Ignore empty lines
-                    if (String.IsNullOrWhiteSpace(line))
+                    if (string.IsNullOrWhiteSpace(line))
                         continue;
 
                     Macro macro = ParseMacro(line, lineNumber, out string note);
@@ -110,7 +110,7 @@ namespace MidiMapper.Controller
                         profile.AddMacro(note, macro);
                     } catch (ArgumentException)
                     {
-                        throw new ParseProfileFileException("Notes can only be defined once [" + note + " is repeated]");
+                        throw new ParseProfileFileException($"Notes can only be defined once ['{note}' is repeated]");
                     }
                 }
 
@@ -122,16 +122,19 @@ namespace MidiMapper.Controller
         {
             string[] parameters = serializedMacro.Split(Macro.SerializeDelimiter);
             if (parameters.Length != Macro.SerializeParamsCount)
-                throw new ParseProfileFileException(GetErrorMessage("Macro needs to have exactly " + Macro.SerializeParamsCount + " parameters", lineNumber));
+                throw new ParseProfileFileException(GetErrorMessage($"Macro needs to have exactly {Macro.SerializeParamsCount} parameters", lineNumber));
 
+            // Parse and validate macro name
             string macroName = parameters[Macro.SerializeNameIndex];
-            if (String.IsNullOrWhiteSpace(macroName))
+            if (string.IsNullOrWhiteSpace(macroName))
                 throw new ParseProfileFileException(GetErrorMessage("Macro name can not be empty", lineNumber, Macro.SerializeNameIndex + 1));
 
+            // Parse and validate note name
             note = parameters[Macro.SerializeNoteIndex];
             if (!MidiUtils.IsNoteNameValid(note))
                 throw new ParseProfileFileException(GetErrorMessage("Invalid note name", lineNumber, Macro.SerializeNoteIndex + 1));
 
+            // Parse and validate macro type
             Macro.MacroType type;
             try
             {
@@ -142,10 +145,12 @@ namespace MidiMapper.Controller
                 throw new ParseProfileFileException(GetErrorMessage("Invalid macro type", lineNumber, Macro.SerializeTypeIndex + 1));
             }
 
+            // Parse and validate macro options
             string macroOptions = parameters[Macro.SerializeOptionsIndex];
-            if (String.IsNullOrWhiteSpace(macroOptions))
+            if (string.IsNullOrWhiteSpace(macroOptions))
                 throw new ParseProfileFileException(GetErrorMessage("Macro options can not be empty", lineNumber, Macro.SerializeOptionsIndex + 1));
 
+            // Deserialize macro
             try
             {
                 return Macro.DeserializeMacro(macroName, note, type, macroOptions);
@@ -157,10 +162,9 @@ namespace MidiMapper.Controller
 
         private static string GetErrorMessage(string message, int lineNumber, int? paramNumber = null)
         {
-            if (paramNumber != null) 
-                return String.Format("{0} [Line {1} - Param {2}]", message, lineNumber, paramNumber);
-
-            return String.Format("{0} [Line {1}]", message, lineNumber);
+            return paramNumber == null ? 
+                $"{message} [Line {lineNumber}]" :
+                $"{message} [Line {lineNumber} - Param {paramNumber}]";
         }
     }
 }

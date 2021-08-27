@@ -1,5 +1,5 @@
-﻿using NAudio.Midi;
-using System;
+﻿using System;
+using NAudio.Midi;
 using MidiMapper.Utils;
 
 namespace MidiMapper.Controller
@@ -9,15 +9,15 @@ namespace MidiMapper.Controller
 
     public class MidiDevice
     {
-        private MidiIn _midiInput;
-        private OnNoteOn _onNoteOnListener;
-        private OnNoteOff _onNoteOffListener;
+        private readonly MidiIn _midiInput;
+        private readonly OnNoteOn _onNoteOnListener;
+        private readonly OnNoteOff _onNoteOffListener;
 
         public MidiDevice(MidiIn midiInput, OnNoteOn onNoteOnListener, OnNoteOff onNoteOffListener)
         {
-            this._midiInput = midiInput;
-            this._onNoteOnListener = onNoteOnListener;
-            this._onNoteOffListener = onNoteOffListener;
+            _midiInput = midiInput;
+            _onNoteOnListener = onNoteOnListener;
+            _onNoteOffListener = onNoteOffListener;
 
             _midiInput.MessageReceived += OnMidiMessage;
             _midiInput.ErrorReceived += OnMidiError;
@@ -31,23 +31,18 @@ namespace MidiMapper.Controller
 
             NoteEvent noteEvent = evt.MidiEvent as NoteEvent;
             string noteName = MidiUtils.GetNoteNameFromMidiNoteNumber(noteEvent.NoteNumber);
+            
             if (noteEvent.Velocity != 0 && evt.MidiEvent.CommandCode == MidiCommandCode.NoteOn)
-            {
-                // Key pressed event
                 _onNoteOnListener(noteName, noteEvent.Velocity);
-            }
             else
-            {
-                // Key released event
                 _onNoteOffListener(noteName);
-            }
 
         }
 
         private void OnMidiError(object sender, MidiInMessageEventArgs evt)
         {
-            Console.WriteLine("Error received: " + String.Format("Time {0} Message 0x{1:X8} Event {2}", 
-                evt.Timestamp, evt.RawMessage, evt.MidiEvent));
+            Console.WriteLine($"Error received: " +
+                              $"Time {evt.Timestamp} Message 0x{evt.RawMessage:X8} Event {evt.MidiEvent}");
         }
 
         public void Close()

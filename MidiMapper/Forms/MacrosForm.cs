@@ -7,98 +7,79 @@ namespace MidiMapper.Forms
 {
     public partial class MacrosForm : Form
     {
-        private Profile _profile;
+        private readonly Profile _profile;
 
         public MacrosForm(Profile profile)
         {
             InitializeComponent();
 
-            this._profile = profile;
-            this.KeyDown += MacrosForm_KeyDown;
-            refreshMacros();
+            _profile = profile;
+            KeyDown += MacrosForm_KeyDown;
+            LoadMacrosList();
         }
 
-        private void refreshMacros()
+        private void LoadMacrosList()
         {
             macrosList.Items.Clear();
             if (_profile.MacrosCount == 0)
             {
                 macrosList.Enabled = false;
                 macrosList.Items.Add("No macros");
+                return;
             }
-            else
+
+            // Fill macros list
+            macrosList.Enabled = true;
+            for (int i = 0; i < _profile.MacrosCount; i++)
             {
-                macrosList.Enabled = true;
-                for (int i = 0; i < _profile.MacrosCount; i++)
-                {
-                    // TODO: Customize macro description
-                    macrosList.Items.Add(_profile.GetMacroAtIndex(i).GetMacroInfo());
-                }
+                // TODO: Customize macro description
+                macrosList.Items.Add(_profile.GetMacroAtIndex(i).GetMacroInfo());
             }
         }
 
         private void MacrosList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (macrosList.SelectedIndex < 0 || macrosList.SelectedIndex > macrosList.Items.Count)
-            {
-                delMacroButton.Enabled = false;
-                return;
-            }
-
-            if (_profile.MacrosCount > 0)
-                delMacroButton.Enabled = true;
+            delMacroButton.Enabled = macrosList.SelectedIndex != -1;
         }
 
         private void DelMacroButton_Click(object sender, EventArgs e)
         {
             DeleteSelectedMacro();
         }
-
-        private void NewMacroButton_Click(object sender, EventArgs e)
-        {
-            /*
-            //TODO: Change order to: bind key -> midi key -> macro name 
-            InsertNameForm insertMacroNameForm = new InsertNameForm("Create Macro", "Insert macro name", "Ok", "Cancel");
-            insertMacroNameForm.ShowDialog();
-            string macroName = insertMacroNameForm.GetName();
-            if (macroName == null)
-                return;
-
-            PianoForm pianoForm = new PianoForm();
-            pianoForm.ShowDialog();
-            Pitch macroPitch = pianoForm.GetPitch();
-            if (macroPitch == 0)
-                return;
-
-            // TODO: GUI to pick keybind for the macro
-            //KeybindForm keybindForm = new KeybindForm(); */
-        }
-
+        
         // Listen to keyboard events
         private void MacrosForm_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Delete)
-                DeleteSelectedMacro();
+            // Delete selected macro when pressing delete key
+            if (e.KeyCode == Keys.Delete) DeleteSelectedMacro();
+        }
+
+        private void NewMacroButton_Click(object sender, EventArgs e)
+        {
+            // TODO: New macro functionality
+            InsertNameForm insertMacroNameForm = new InsertNameForm("Create Macro", "Insert macro name", "Ok", "Cancel");
+            insertMacroNameForm.ShowDialog();
+            string macroName = insertMacroNameForm.GetName();
+            if (macroName == null) return;
+
+            PianoForm pianoForm = new PianoForm();
+            pianoForm.ShowDialog();
+            
+            // KeybindForm keybindForm = new KeybindForm();
         }
 
         private void DeleteSelectedMacro()
         {
-            if (macrosList.SelectedIndex < 0 || macrosList.SelectedIndex >= macrosList.Items.Count)
-                return;
+            if (macrosList.SelectedIndex == -1) return;
 
             Macro macro = _profile.GetMacroAtIndex(macrosList.SelectedIndex);
             macrosList.Items.RemoveAt(macrosList.SelectedIndex);
             _profile.RemoveMacro(macro.Note);
             delMacroButton.Enabled = false;
-
-            if (_profile.MacrosCount <= 1)
-            {
-                if (_profile.MacrosCount == 0)
-                {
-                    macrosList.Items.Add("No macros");
-                    macrosList.Enabled = false;
-                }
-            }
+            
+            if (_profile.MacrosCount != 0) return;
+            macrosList.Items.Add("No macros");
+            macrosList.Enabled = false;
         }
     }
 }

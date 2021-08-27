@@ -5,9 +5,8 @@ namespace MidiMapper.Forms
 {
     public partial class PianoForm : Form
     {
-        private bool isPitchSet;
-        //private Pitch pitch;
-        private String key;
+        private bool _isNoteSet;
+        private string _noteName;
 
         public PianoForm()
         {
@@ -21,7 +20,7 @@ namespace MidiMapper.Forms
 
         private void RefreshTxtBox()
         {
-            pitchTxtBox.Text = key + octaveTrackBar.Value;
+            pitchTxtBox.Text = $"{_noteName}{octaveTrackBar.Value}";
             okButton.Enabled = true;
         }
 
@@ -32,100 +31,96 @@ namespace MidiMapper.Forms
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            String pitchString = pitchTxtBox.Text;
-
-            //TODO: fix possible wrong inputs format cases
+            string note = pitchTxtBox.Text;
+            
             //If String is not correct return
-            if (pitchString.Length != 2 && pitchString.Length != 7)
+            if (note.Length != 2 && note.Length != 7)
             {
-                MessageBox.Show("Invalid pitch", "Error");
+                MessageBox.Show("Invalid note", "Error");
                 return;
             }
-
-            //pitch = (Pitch)Enum.Parse(typeof(Pitch), pitchString);
-            isPitchSet = true;
-            this.Close();
+            
+            _isNoteSet = true;
+            Close();
         }
 
-        #region piano buttons methods
+        #region Piano keys callback methods
         private void CButton_Click(object sender, EventArgs e)
         {
-            key = "C";
+            _noteName = "C";
             RefreshTxtBox();
         }
 
         private void CSharpButton_Click(object sender, EventArgs e)
         {
-            key = "CSharp";
+            _noteName = "C#";
             RefreshTxtBox();
         }
 
         private void DButton_Click(object sender, EventArgs e)
         {
-            key = "D";
+            _noteName = "D";
             RefreshTxtBox();
         }
 
         private void DSharpButton_Click(object sender, EventArgs e)
         {
-            key = "DSharp";
+            _noteName = "D#";
             RefreshTxtBox();
         }
 
         private void EButton_Click(object sender, EventArgs e)
         {
-            key = "E";
+            _noteName = "E";
             RefreshTxtBox();
         }
 
         private void FButton_Click(object sender, EventArgs e)
         {
-            key = "F";
+            _noteName = "F";
             RefreshTxtBox();
         }
 
         private void FSharpButton_Click(object sender, EventArgs e)
         {
-            key = "FSharp";
+            _noteName = "F#";
             RefreshTxtBox();
         }
 
         private void GButton_Click(object sender, EventArgs e)
         {
-            key = "G";
+            _noteName = "G";
             RefreshTxtBox();
         }
 
         private void GSharpButton_Click(object sender, EventArgs e)
         {
-            key = "GSharp";
+            _noteName = "G#";
             RefreshTxtBox();
         }
 
         private void AButton_Click(object sender, EventArgs e)
         {
-            key = "A";
+            _noteName = "A";
             RefreshTxtBox();
         }
 
         private void ASharpButton_Click(object sender, EventArgs e)
         {
-            key = "ASharp";
+            _noteName = "A#";
             RefreshTxtBox();
         }
 
         private void BButton_Click(object sender, EventArgs e)
         {
-            key = "B";
+            _noteName = "B";
             RefreshTxtBox();
         }
         #endregion
-
-        /*
-        public Pitch GetPitch()
+        
+        public string GetNote()
         {
-            return (isPitchSet ? pitch : 0);
+            return _isNoteSet ? $"{_noteName}{octaveTrackBar.Value}" : null;
         }
-        */
     }
 }

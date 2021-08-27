@@ -118,111 +118,111 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="selectInputBox.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="selectMidiDevice.Location" type="System.Drawing.Point, System.Drawing">
     <value>519, 65</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="selectInputBox.ScrollAlwaysVisible" type="System.Boolean, mscorlib">
+  <data name="selectMidiDevice.ScrollAlwaysVisible" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="selectInputBox.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="selectMidiDevice.Size" type="System.Drawing.Size, System.Drawing">
     <value>178, 43</value>
   </data>
-  <data name="selectInputBox.TabIndex" type="System.Int32, mscorlib">
+  <data name="selectMidiDevice.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;selectInputBox.Name" xml:space="preserve">
-    <value>selectInputBox</value>
+  <data name="&gt;&gt;selectMidiDevice.Name" xml:space="preserve">
+    <value>selectMidiDevice</value>
   </data>
-  <data name="&gt;&gt;selectInputBox.Type" xml:space="preserve">
+  <data name="&gt;&gt;selectMidiDevice.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;selectInputBox.Parent" xml:space="preserve">
+  <data name="&gt;&gt;selectMidiDevice.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;selectInputBox.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;selectMidiDevice.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="refreshInputButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="refreshMidiDevicesButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="refreshInputButton.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="refreshMidiDevicesButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>703, 68</value>
   </data>
-  <data name="refreshInputButton.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="refreshMidiDevicesButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>46, 40</value>
   </data>
-  <data name="refreshInputButton.TabIndex" type="System.Int32, mscorlib">
+  <data name="refreshMidiDevicesButton.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="refreshInputButton.Text" xml:space="preserve">
+  <data name="refreshMidiDevicesButton.Text" xml:space="preserve">
     <value>REFRESH</value>
   </data>
-  <data name="&gt;&gt;refreshInputButton.Name" xml:space="preserve">
-    <value>refreshInputButton</value>
+  <data name="&gt;&gt;refreshMidiDevicesButton.Name" xml:space="preserve">
+    <value>refreshMidiDevicesButton</value>
   </data>
-  <data name="&gt;&gt;refreshInputButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;refreshMidiDevicesButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;refreshInputButton.Parent" xml:space="preserve">
+  <data name="&gt;&gt;refreshMidiDevicesButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;refreshInputButton.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;refreshMidiDevicesButton.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="startButton.Enabled" type="System.Boolean, mscorlib">
+  <data name="startMidiButton.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="startButton.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="startMidiButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>519, 114</value>
   </data>
-  <data name="startButton.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="startMidiButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>178, 34</value>
   </data>
-  <data name="startButton.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="startMidiButton.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
   </data>
-  <data name="startButton.Text" xml:space="preserve">
+  <data name="startMidiButton.Text" xml:space="preserve">
     <value>Start</value>
   </data>
-  <data name="&gt;&gt;startButton.Name" xml:space="preserve">
-    <value>startButton</value>
+  <data name="&gt;&gt;startMidiButton.Name" xml:space="preserve">
+    <value>startMidiButton</value>
   </data>
-  <data name="&gt;&gt;startButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;startMidiButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;startButton.Parent" xml:space="preserve">
+  <data name="&gt;&gt;startMidiButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;startButton.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;startMidiButton.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="stopButton.Enabled" type="System.Boolean, mscorlib">
+  <data name="stopMidiButton.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="stopButton.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="stopMidiButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>703, 114</value>
   </data>
-  <data name="stopButton.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="stopMidiButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>38, 34</value>
   </data>
-  <data name="stopButton.TabIndex" type="System.Int32, mscorlib">
+  <data name="stopMidiButton.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="stopButton.Text" xml:space="preserve">
+  <data name="stopMidiButton.Text" xml:space="preserve">
     <value>Stop</value>
   </data>
-  <data name="&gt;&gt;stopButton.Name" xml:space="preserve">
-    <value>stopButton</value>
+  <data name="&gt;&gt;stopMidiButton.Name" xml:space="preserve">
+    <value>stopMidiButton</value>
   </data>
-  <data name="&gt;&gt;stopButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;stopMidiButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;stopButton.Parent" xml:space="preserve">
+  <data name="&gt;&gt;stopMidiButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;stopButton.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;stopMidiButton.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
   <data name="eventLog.Location" type="System.Drawing.Point, System.Drawing">
@@ -300,55 +300,55 @@
   <data name="&gt;&gt;profileNameTextBox.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="saveButton.Enabled" type="System.Boolean, mscorlib">
+  <data name="saveProfileButton.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="saveButton.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="saveProfileButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>179, 63</value>
   </data>
-  <data name="saveButton.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="saveProfileButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 40</value>
   </data>
-  <data name="saveButton.TabIndex" type="System.Int32, mscorlib">
+  <data name="saveProfileButton.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="saveButton.Text" xml:space="preserve">
+  <data name="saveProfileButton.Text" xml:space="preserve">
     <value>SAVE</value>
   </data>
-  <data name="&gt;&gt;saveButton.Name" xml:space="preserve">
-    <value>saveButton</value>
+  <data name="&gt;&gt;saveProfileButton.Name" xml:space="preserve">
+    <value>saveProfileButton</value>
   </data>
-  <data name="&gt;&gt;saveButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;saveProfileButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;saveButton.Parent" xml:space="preserve">
+  <data name="&gt;&gt;saveProfileButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;saveButton.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;saveProfileButton.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="loadButton.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="loadProfileButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>235, 63</value>
   </data>
-  <data name="loadButton.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="loadProfileButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 40</value>
   </data>
-  <data name="loadButton.TabIndex" type="System.Int32, mscorlib">
+  <data name="loadProfileButton.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="loadButton.Text" xml:space="preserve">
+  <data name="loadProfileButton.Text" xml:space="preserve">
     <value>LOAD</value>
   </data>
-  <data name="&gt;&gt;loadButton.Name" xml:space="preserve">
-    <value>loadButton</value>
+  <data name="&gt;&gt;loadProfileButton.Name" xml:space="preserve">
+    <value>loadProfileButton</value>
   </data>
-  <data name="&gt;&gt;loadButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;loadProfileButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;loadButton.Parent" xml:space="preserve">
+  <data name="&gt;&gt;loadProfileButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;loadButton.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;loadProfileButton.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="createProfileButton.Location" type="System.Drawing.Point, System.Drawing">
@@ -411,11 +411,11 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>840, 578</value>
   </data>
+  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 15</value>
+  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>MidiMapper</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>App</value>

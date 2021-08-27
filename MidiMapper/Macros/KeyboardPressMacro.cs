@@ -1,17 +1,17 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using InputManager;
-using System;
 using MidiMapper.Exceptions;
 
 namespace MidiMapper.Macros
 {
-    class KeyboardPressMacro : Macro
+    public class KeyboardPressMacro : Macro
     {
-        private Keys _kbdKey;
+        private readonly Keys _kbdKey;
 
         public KeyboardPressMacro(string macroName, string note, Keys kbdKey) : base(macroName, note)
         {
-            this._kbdKey = kbdKey;
+            _kbdKey = kbdKey;
         }
 
         public override void Execute()
@@ -26,7 +26,7 @@ namespace MidiMapper.Macros
 
         public override string GetMacroInfo()
         {
-            return GetMacroInfo(MacroName, String.Format("Presses '{0}' key", _kbdKey), Note);
+            return GetMacroInfo(MacroName, $"Presses '{_kbdKey}' keyboard key", Note);
         }
 
         public override string SerializeMacro()
@@ -42,7 +42,7 @@ namespace MidiMapper.Macros
             }
             catch (ArgumentException)
             {
-                throw new DeserializeMacroException("'" + options + "' is not a valid keyboard key");
+                throw new DeserializeMacroException($"'{options}' is not a valid keyboard key");
             }
         }
     }

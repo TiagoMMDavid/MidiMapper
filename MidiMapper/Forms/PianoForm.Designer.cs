@@ -45,7 +45,7 @@
             this.pitchTxtBox = new System.Windows.Forms.TextBox();
             this.cancelButton = new System.Windows.Forms.Button();
             this.okButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.octaveTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.octaveTrackBar)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,7 +84,7 @@
             // aSharpButton
             // 
             this.aSharpButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.aSharpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aSharpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.aSharpButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.aSharpButton.Location = new System.Drawing.Point(362, 0);
             this.aSharpButton.Name = "aSharpButton";
@@ -98,7 +98,7 @@
             // gSharpButton
             // 
             this.gSharpButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.gSharpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gSharpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.gSharpButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.gSharpButton.Location = new System.Drawing.Point(295, 0);
             this.gSharpButton.Name = "gSharpButton";
@@ -112,7 +112,7 @@
             // fSharpButton
             // 
             this.fSharpButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.fSharpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fSharpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.fSharpButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.fSharpButton.Location = new System.Drawing.Point(232, 0);
             this.fSharpButton.Name = "fSharpButton";
@@ -126,7 +126,7 @@
             // dSharpButton
             // 
             this.dSharpButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.dSharpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dSharpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.dSharpButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.dSharpButton.Location = new System.Drawing.Point(105, 0);
             this.dSharpButton.Name = "dSharpButton";
@@ -140,7 +140,7 @@
             // cSharpButton
             // 
             this.cSharpButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.cSharpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cSharpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.cSharpButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.cSharpButton.Location = new System.Drawing.Point(40, 0);
             this.cSharpButton.Name = "cSharpButton";
@@ -154,7 +154,7 @@
             // bButton
             // 
             this.bButton.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.bButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.bButton.Location = new System.Drawing.Point(381, 0);
             this.bButton.Name = "bButton";
             this.bButton.Size = new System.Drawing.Size(57, 199);
@@ -167,7 +167,7 @@
             // aButton
             // 
             this.aButton.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.aButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.aButton.Location = new System.Drawing.Point(318, 0);
             this.aButton.Name = "aButton";
             this.aButton.Size = new System.Drawing.Size(57, 199);
@@ -180,7 +180,7 @@
             // gButton
             // 
             this.gButton.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.gButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.gButton.Location = new System.Drawing.Point(255, 0);
             this.gButton.Name = "gButton";
             this.gButton.Size = new System.Drawing.Size(57, 199);
@@ -193,7 +193,7 @@
             // fButton
             // 
             this.fButton.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.fButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.fButton.Location = new System.Drawing.Point(192, 0);
             this.fButton.Name = "fButton";
             this.fButton.Size = new System.Drawing.Size(57, 199);
@@ -206,7 +206,7 @@
             // eButton
             // 
             this.eButton.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.eButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.eButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.eButton.Location = new System.Drawing.Point(129, 0);
             this.eButton.Name = "eButton";
             this.eButton.Size = new System.Drawing.Size(57, 199);
@@ -219,7 +219,7 @@
             // dButton
             // 
             this.dButton.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.dButton.Location = new System.Drawing.Point(66, 0);
             this.dButton.Name = "dButton";
             this.dButton.Size = new System.Drawing.Size(57, 199);
@@ -232,7 +232,7 @@
             // cButton
             // 
             this.cButton.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.cButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.cButton.Location = new System.Drawing.Point(3, 0);
             this.cButton.Name = "cButton";
             this.cButton.Size = new System.Drawing.Size(57, 199);
@@ -290,31 +290,30 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Select Pitch";
-            ((System.ComponentModel.ISupportInitialize)(this.octaveTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.octaveTrackBar)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
-        #endregion
-
-        private System.Windows.Forms.TrackBar octaveTrackBar;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button cButton;
-        private System.Windows.Forms.Button bButton;
         private System.Windows.Forms.Button aButton;
-        private System.Windows.Forms.Button gButton;
-        private System.Windows.Forms.Button fButton;
-        private System.Windows.Forms.Button eButton;
-        private System.Windows.Forms.Button dButton;
         private System.Windows.Forms.Button aSharpButton;
-        private System.Windows.Forms.Button gSharpButton;
-        private System.Windows.Forms.Button fSharpButton;
-        private System.Windows.Forms.Button dSharpButton;
-        private System.Windows.Forms.Button cSharpButton;
-        private System.Windows.Forms.TextBox pitchTxtBox;
+        private System.Windows.Forms.Button bButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button cButton;
+        private System.Windows.Forms.Button cSharpButton;
+        private System.Windows.Forms.Button dButton;
+        private System.Windows.Forms.Button dSharpButton;
+        private System.Windows.Forms.Button eButton;
+        private System.Windows.Forms.Button fButton;
+        private System.Windows.Forms.Button fSharpButton;
+        private System.Windows.Forms.Button gButton;
+        private System.Windows.Forms.Button gSharpButton;
+        private System.Windows.Forms.TrackBar octaveTrackBar;
         private System.Windows.Forms.Button okButton;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox pitchTxtBox;
+
+        #endregion
     }
 }

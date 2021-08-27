@@ -5,50 +5,51 @@ using MidiMapper.Exceptions;
 
 namespace MidiMapper.Macros
 {
-    class MouseMovementMacro : Macro
+    public class MouseMovementMacro : Macro
     {
-        private int _xAxis;
-        private int _yAxis;
+        private readonly int _xAxis;
+        private readonly int _yAxis;
 
-        private Timer _timer;
+        private readonly Timer _timer;
         private const int TimerInterval = 1;
-        bool _timerRunning = false;
 
         public MouseMovementMacro(string macroName, string note, int xAxis, int yAxis) : base(macroName, note)
         {
-            this._xAxis = xAxis;
-            this._yAxis = yAxis;
+            _xAxis = xAxis;
+            _yAxis = yAxis;
 
-            _timer = new Timer();
-            _timer.Interval = TimerInterval;
-            _timer.Enabled = true;
-            _timer.Tick += new EventHandler(Timer_Tick);
+            _timer = new Timer
+            {
+                Interval = TimerInterval, 
+                Enabled = false,
+            };
+            _timer.Tick += Timer_Tick;
         }
 
         public override void Execute()
         {
-            _timerRunning = true;
+            _timer.Enabled = true;
         }
 
         public override void Stop()
         {
-            _timerRunning = false;
+            _timer.Enabled = false;
         }
 
-        private void Timer_Tick(object Sender, EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
-            if (_timerRunning)
-                Mouse.MoveRelative(_xAxis, _yAxis);
+            // Timer only ticks when the macro is being executed
+            Mouse.MoveRelative(_xAxis, _yAxis);
         }
 
         public override string GetMacroInfo()
         {
-            return GetMacroInfo(MacroName, String.Format("Moves mouse by ({0},{1})", _xAxis, _yAxis), Note);
+            return GetMacroInfo(MacroName, $"Moves mouse by ({_xAxis},{_yAxis})", Note);
         }
 
         public override string SerializeMacro()
         {
-            return SerializeMacro(MacroName, Note, MacroType.MOUSE_MOVE, String.Format("({0},{1})", _xAxis, _yAxis));
+            return SerializeMacro(MacroName, Note, MacroType.MOUSE_MOVE, $"({_xAxis},{_yAxis})");
         }
 
         public static MouseMovementMacro DeserializeMacro(string macroName, string note, string options)

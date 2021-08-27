@@ -36,8 +36,7 @@
             // macrosList
             // 
             this.macrosList.FormattingEnabled = true;
-            this.macrosList.Items.AddRange(new object[] {
-            "No macros"});
+            this.macrosList.Items.AddRange(new object[] {"No macros"});
             this.macrosList.Location = new System.Drawing.Point(12, 173);
             this.macrosList.Name = "macrosList";
             this.macrosList.ScrollAlwaysVisible = true;
@@ -82,13 +81,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Macros";
             this.ResumeLayout(false);
-
         }
 
-        #endregion
-
+        private System.Windows.Forms.Button delMacroButton;
         private System.Windows.Forms.ListBox macrosList;
         private System.Windows.Forms.Button newMacroButton;
-        private System.Windows.Forms.Button delMacroButton;
+
+        #endregion
     }
 }
