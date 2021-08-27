@@ -1,6 +1,7 @@
 ﻿using System.Windows.Forms;
 using InputManager;
 using System;
+using MidiMapper.Exceptions;
 
 namespace MidiMapper.Macros
 {
@@ -30,7 +31,19 @@ namespace MidiMapper.Macros
 
         public override string SerializeMacro()
         {
-            return SerializeMacro(MacroName, Note, MacroType.KBD_Press, _kbdKey.ToString());
+            return SerializeMacro(MacroName, Note, MacroType.KBD_PRESS, _kbdKey.ToString());
+        }
+
+        public static KeyboardPressMacro DeserializeMacro(string macroName, string note, string options)
+        {
+            try
+            {
+                return new KeyboardPressMacro(macroName, note, (Keys) Enum.Parse(typeof(Keys), options));
+            }
+            catch (ArgumentException)
+            {
+                throw new DeserializeMacroException("'" + options + "' is not a valid keyboard key");
+            }
         }
     }
 }

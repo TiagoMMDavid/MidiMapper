@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using MidiMapper.Controller;
 using MidiMapper.Macros;
 using MidiMapper.Forms;
+using MidiMapper.Exceptions;
 using NAudio.Midi;
 
 namespace MidiMapper
@@ -172,7 +173,14 @@ namespace MidiMapper
                     return;
                 }
 
-                _controller.Profile = Profile.GetProfileFromFile(openFileDialog.FileName);
+                try
+                {
+                    _controller.Profile = Profile.ParseProfileFromFile(openFileDialog.FileName);
+                } catch(ParseProfileFileException ex)
+                {
+                    MessageBox.Show(ex.Message, "Load Profile Error");
+                    return;
+                }
 
                 profileNameTextBox.Text = _controller.Profile.ProfileName;
                 macrosButton.Enabled = true;

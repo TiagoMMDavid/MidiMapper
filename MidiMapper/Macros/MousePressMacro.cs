@@ -1,5 +1,6 @@
 ﻿using InputManager;
 using System;
+using MidiMapper.Exceptions;
 
 namespace MidiMapper.Macros
 {
@@ -30,7 +31,19 @@ namespace MidiMapper.Macros
 
         public override string SerializeMacro()
         {
-            return SerializeMacro(MacroName, Note, MacroType.Mouse_Press, _mouseKey.ToString());
+            return SerializeMacro(MacroName, Note, MacroType.MOUSE_PRESS, _mouseKey.ToString());
+        }
+
+        public static MousePressMacro DeserializeMacro(string macroName, string note, string options)
+        {
+            try
+            {
+                return new MousePressMacro(macroName, note, (Mouse.MouseKeys) Enum.Parse(typeof(Mouse.MouseKeys), options));
+            }
+            catch (ArgumentException)
+            {
+                throw new DeserializeMacroException("'" + options + "' is not a valid mouse key");
+            }
         }
     }
 }

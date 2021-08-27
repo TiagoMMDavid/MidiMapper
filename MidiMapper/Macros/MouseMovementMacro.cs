@@ -1,6 +1,7 @@
 ﻿using System;
 using InputManager;
 using System.Windows.Forms;
+using MidiMapper.Exceptions;
 
 namespace MidiMapper.Macros
 {
@@ -47,7 +48,26 @@ namespace MidiMapper.Macros
 
         public override string SerializeMacro()
         {
-            return SerializeMacro(MacroName, Note, MacroType.Mouse_Move, String.Format("({0},{1})", _xAxis, _yAxis));
+            return SerializeMacro(MacroName, Note, MacroType.MOUSE_MOVE, String.Format("({0},{1})", _xAxis, _yAxis));
+        }
+
+        public static MouseMovementMacro DeserializeMacro(string macroName, string note, string options)
+        {
+            // Extract (x,y)
+            string[] mouseMovement = options.Trim('(', ')').Split(',');
+            if (mouseMovement.Length != 2)
+                throw new DeserializeMacroException("Invalid coordinates format");
+
+            try
+            {
+                int x = int.Parse(mouseMovement[0]);
+                int y = int.Parse(mouseMovement[1]);
+                return new MouseMovementMacro(macroName, note, x, y);
+            }
+            catch (FormatException)
+            {
+                throw new DeserializeMacroException("x and/or y is not an integer");
+            }
         }
     }
 }

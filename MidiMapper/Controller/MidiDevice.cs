@@ -1,5 +1,6 @@
 ﻿using NAudio.Midi;
 using System;
+using MidiMapper.Utils;
 
 namespace MidiMapper.Controller
 {
@@ -29,12 +30,11 @@ namespace MidiMapper.Controller
                 return; // Ignore non note events
 
             NoteEvent noteEvent = evt.MidiEvent as NoteEvent;
-            string noteName = GetNoteNameFromMidiNoteNumber(noteEvent.NoteNumber);
+            string noteName = MidiUtils.GetNoteNameFromMidiNoteNumber(noteEvent.NoteNumber);
             if (noteEvent.Velocity != 0 && evt.MidiEvent.CommandCode == MidiCommandCode.NoteOn)
             {
                 // Key pressed event
                 _onNoteOnListener(noteName, noteEvent.Velocity);
-                var noteOnEvent = new NoteOnEvent(0, 1, noteEvent.NoteNumber, 60, 10);
             }
             else
             {
@@ -57,14 +57,6 @@ namespace MidiMapper.Controller
 
             _midiInput.Stop();
             _midiInput.Dispose();
-        }
-
-        private static readonly string[] noteNames = new string[] { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
-
-        private static string GetNoteNameFromMidiNoteNumber(int noteNumber)
-        {
-            int octave = (noteNumber / 12) - 1;
-            return String.Format("{0}{1}", noteNames[noteNumber % 12], octave);
         }
     }
 }

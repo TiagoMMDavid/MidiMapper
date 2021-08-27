@@ -3,6 +3,8 @@ using System.Collections.Specialized;
 using System.Text;
 using System.IO;
 using MidiMapper.Macros;
+using MidiMapper.Exceptions;
+using MidiMapper.Utils;
 
 namespace MidiMapper.Controller
 {
@@ -11,7 +13,7 @@ namespace MidiMapper.Controller
         public string ProfileName { get; set; }
         public int MacrosCount { get => _macros.Count; }
 
-        private OrderedDictionary _macros;
+        private OrderedDictionary _macros; // Dictionary<string, Macro> (key is the noteName)
 
         public Profile(string profileName)
         {
@@ -21,8 +23,11 @@ namespace MidiMapper.Controller
 
         public void AddMacro(string note, Macro macro)
         {
+            if (!MidiUtils.IsNoteNameValid(note))
+                throw new ArgumentException(note + " is not a valid note name");
+
             if (_macros.Contains(note))
-                throw new ArgumentException(String.Format("Macro in note '{0}' already exists!", note));
+                throw new ArgumentException(String.Format("Macro in note '{0}' already exists", note));
 
             _macros.Add(note, macro);
         }
@@ -31,7 +36,7 @@ namespace MidiMapper.Controller
         {
             Macro macro = _macros[note] as Macro;
             if (macro == null)
-                throw new ArgumentException(String.Format("Macro in note '{0}' does not exist!", note));
+                throw new ArgumentException(String.Format("Macro in note '{0}' does not exist", note));
 
             return macro;
         }
@@ -47,7 +52,7 @@ namespace MidiMapper.Controller
         public void RemoveMacro(string note)
         {
             if (!_macros.Contains(note))
-                throw new ArgumentException(String.Format("Macro in note '{0}' does not exist!", note));
+                throw new ArgumentException(String.Format("Macro in note '{0}' does not exist", note));
 
             _macros.Remove(note);
         }
@@ -73,36 +78,89 @@ namespace MidiMapper.Controller
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append(ProfileName).AppendLine().AppendLine();
             foreach (Macro macro in _macros.Values)
-            {
                 stringBuilder.AppendLine(macro.SerializeMacro());
-            }
+
             return stringBuilder.ToString();
         }
 
-        public static Profile GetProfileFromFile(string filePath)
+        public static Profile ParseProfileFromFile(string filePath)
         {
             using (StreamReader reader = new StreamReader(filePath))
             {
                 // Read profile name
-                Profile profile = new Profile(reader.ReadLine());
+                string profileName = reader.ReadLine();
+                if (profileName == null || String.IsNullOrWhiteSpace(profileName))
+                    throw new ParseProfileFileException("First line of file must be the profile name");
+
+                Profile profile = new Profile(profileName);
 
                 string line;
+                int lineNumber = 1;
                 while ((line = reader.ReadLine()) != null) 
                 {
+                    lineNumber++;
+
                     // Ignore empty lines
                     if (String.IsNullOrWhiteSpace(line))
                         continue;
 
-                    // TODO: Do not hardcode index values and throw exception if macro is invalid
-                    string[] serializedMacro = line.Split(Macro.SerializeDelimiter);
-                    string note = serializedMacro[1];
-                    Macro.MacroType type = (Macro.MacroType) Enum.Parse(typeof(Macro.MacroType), serializedMacro[2]);
-
-                    profile.AddMacro(note, Macro.DeserializeMacro(serializedMacro[0], note, type, serializedMacro[3]));
+                    Macro macro = ParseMacro(line, lineNumber, out string note);
+                    try
+                    {
+                        profile.AddMacro(note, macro);
+                    } catch (ArgumentException)
+                    {
+                        throw new ParseProfileFileException("Notes can only be defined once [" + note + " is repeated]");
+                    }
                 }
 
                 return profile;
             }
+        }
+
+        private static Macro ParseMacro(string serializedMacro, int lineNumber, out string note)
+        {
+            string[] parameters = serializedMacro.Split(Macro.SerializeDelimiter);
+            if (parameters.Length != Macro.SerializeParamsCount)
+                throw new ParseProfileFileException(GetErrorMessage("Macro needs to have exactly " + Macro.SerializeParamsCount + " parameters", lineNumber));
+
+            string macroName = parameters[Macro.SerializeNameIndex];
+            if (String.IsNullOrWhiteSpace(macroName))
+                throw new ParseProfileFileException(GetErrorMessage("Macro name can not be empty", lineNumber, Macro.SerializeNameIndex + 1));
+
+            note = parameters[Macro.SerializeNoteIndex];
+            if (!MidiUtils.IsNoteNameValid(note))
+                throw new ParseProfileFileException(GetErrorMessage("Invalid note name", lineNumber, Macro.SerializeNoteIndex + 1));
+
+            Macro.MacroType type;
+            try
+            {
+                string typeName = parameters[Macro.SerializeTypeIndex].ToUpper();
+                type = (Macro.MacroType) Enum.Parse(typeof(Macro.MacroType), typeName);
+            } catch (ArgumentException)
+            {
+                throw new ParseProfileFileException(GetErrorMessage("Invalid macro type", lineNumber, Macro.SerializeTypeIndex + 1));
+            }
+
+            string macroOptions = parameters[Macro.SerializeOptionsIndex];
+            if (String.IsNullOrWhiteSpace(macroOptions))
+                throw new ParseProfileFileException(GetErrorMessage("Macro options can not be empty", lineNumber, Macro.SerializeOptionsIndex + 1));
+
+            try
+            {
+                return Macro.DeserializeMacro(macroName, note, type, macroOptions);
+            } catch (DeserializeMacroException ex)
+            {
+                throw new ParseProfileFileException(GetErrorMessage(ex.Message, lineNumber, Macro.SerializeOptionsIndex + 1));
+            }
+        }
+
+        private static string GetErrorMessage(string message, int lineNumber, int? paramNumber = null)
+        {
+            if (paramNumber != null) 
+                return String.Format("{0} [Line {1} - Param {2}]", message, lineNumber, paramNumber);
+
+            return String.Format("{0} [Line {1}]", message, lineNumber);
         }
     }
 }
