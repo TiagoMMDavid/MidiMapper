@@ -225,6 +225,9 @@
   <data name="&gt;&gt;stopMidiButton.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="eventLog.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Consolas, 8.25pt</value>
+  </data>
   <data name="eventLog.Location" type="System.Drawing.Point, System.Drawing">
     <value>93, 241</value>
   </data>

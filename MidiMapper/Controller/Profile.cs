@@ -10,6 +10,8 @@ namespace MidiMapper.Controller
 {
     public class Profile
     {
+        public const int MaxProfileNameSize = 30;
+        
         public string ProfileName { get; set; }
         public int MacrosCount => _macros.Count;
 
@@ -17,6 +19,9 @@ namespace MidiMapper.Controller
 
         public Profile(string profileName)
         {
+            if (profileName.Length > MaxProfileNameSize)
+                throw new ArgumentException($"Profile name must not exceed {MaxProfileNameSize} characters");
+            
             ProfileName = profileName;
             _macros = new OrderedDictionary();
         }
@@ -91,6 +96,8 @@ namespace MidiMapper.Controller
                 string profileName = reader.ReadLine();
                 if (profileName == null || string.IsNullOrWhiteSpace(profileName))
                     throw new ParseProfileFileException("First line of file must be the profile name");
+                if (profileName.Length > MaxProfileNameSize)
+                    throw new ParseProfileFileException($"Profile name must not exceed {MaxProfileNameSize} characters [Line 1]");
 
                 Profile profile = new Profile(profileName);
 
@@ -126,8 +133,10 @@ namespace MidiMapper.Controller
 
             // Parse and validate macro name
             string macroName = parameters[Macro.SerializeNameIndex];
-            if (string.IsNullOrWhiteSpace(macroName))
-                throw new ParseProfileFileException(GetErrorMessage("Macro name can not be empty", lineNumber, Macro.SerializeNameIndex + 1));
+            if (string.IsNullOrWhiteSpace(macroName) || macroName.Length > Macro.MaxMacroNameSize)
+                throw new ParseProfileFileException(GetErrorMessage(
+                    $"Macro name size needs to be between 1-{Macro.MaxMacroNameSize} characters", lineNumber, Macro.SerializeNameIndex + 1)
+                );
 
             // Parse and validate note name
             note = parameters[Macro.SerializeNoteIndex];
@@ -135,24 +144,18 @@ namespace MidiMapper.Controller
                 throw new ParseProfileFileException(GetErrorMessage("Invalid note name", lineNumber, Macro.SerializeNoteIndex + 1));
 
             // Parse and validate macro type
-            Macro.MacroType type;
-            try
-            {
-                string typeName = parameters[Macro.SerializeTypeIndex].ToUpper();
-                type = (Macro.MacroType) Enum.Parse(typeof(Macro.MacroType), typeName);
-            } catch (ArgumentException)
-            {
+            string typeName = parameters[Macro.SerializeTypeIndex].Replace("_", "");
+            if (!Enum.TryParse(typeName, true, out Macro.MacroType type))
                 throw new ParseProfileFileException(GetErrorMessage("Invalid macro type", lineNumber, Macro.SerializeTypeIndex + 1));
-            }
 
             // Parse and validate macro options
             string macroOptions = parameters[Macro.SerializeOptionsIndex];
             if (string.IsNullOrWhiteSpace(macroOptions))
-                throw new ParseProfileFileException(GetErrorMessage("Macro options can not be empty", lineNumber, Macro.SerializeOptionsIndex + 1));
-
-            // Deserialize macro
+                throw new ParseProfileFileException(GetErrorMessage("Macro options must not be empty", lineNumber, Macro.SerializeOptionsIndex + 1));
+            
             try
             {
+                // Deserialize macro
                 return Macro.DeserializeMacro(macroName, note, type, macroOptions);
             } catch (DeserializeMacroException ex)
             {

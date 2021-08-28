@@ -42,14 +42,14 @@ namespace MidiMapper.Macros
             Mouse.MoveRelative(_xAxis, _yAxis);
         }
 
-        public override string GetMacroInfo()
+        public override string GetMacroTaskDescription()
         {
-            return GetMacroInfo(MacroName, $"Moves mouse by ({_xAxis},{_yAxis})", Note);
+            return $"Moves mouse by ({_xAxis},{_yAxis})";
         }
 
         public override string SerializeMacro()
         {
-            return SerializeMacro(MacroName, Note, MacroType.MOUSE_MOVE, $"({_xAxis},{_yAxis})");
+            return SerializeMacro(MacroName, Note, MacroType.MouseMove, $"({_xAxis},{_yAxis})");
         }
 
         public static MouseMovementMacro DeserializeMacro(string macroName, string note, string options)

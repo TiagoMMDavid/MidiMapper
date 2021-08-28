@@ -4,7 +4,7 @@ using MidiMapper.Exceptions;
 
 namespace MidiMapper.Macros
 {
-    class MousePressMacro : Macro
+    public class MousePressMacro : Macro
     {
         // TODO: add MouseButtons and scroll with the other enums present in Mouse class
         private readonly Mouse.MouseKeys _mouseKey;
@@ -24,26 +24,22 @@ namespace MidiMapper.Macros
             Mouse.ButtonUp(_mouseKey);
         }
 
-        public override string GetMacroInfo()
+        public override string GetMacroTaskDescription()
         {
-            return GetMacroInfo(MacroName, $"Presses '{_mouseKey}' mouse button", Note);
+            return $"Presses '{_mouseKey}' mouse button";
         }
 
         public override string SerializeMacro()
         {
-            return SerializeMacro(MacroName, Note, MacroType.MOUSE_PRESS, _mouseKey.ToString());
+            return SerializeMacro(MacroName, Note, MacroType.MousePress, _mouseKey.ToString());
         }
 
         public static MousePressMacro DeserializeMacro(string macroName, string note, string options)
         {
-            try
-            {
-                return new MousePressMacro(macroName, note, (Mouse.MouseKeys) Enum.Parse(typeof(Mouse.MouseKeys), options));
-            }
-            catch (ArgumentException)
-            {
+            if (!Enum.TryParse(options, false, out Mouse.MouseKeys mKey))
                 throw new DeserializeMacroException($"'{options}' is not a valid mouse key");
-            }
+                
+            return new MousePressMacro(macroName, note, mKey);
         }
     }
 }

@@ -35,6 +35,7 @@
             // 
             // macrosList
             // 
+            this.macrosList.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.macrosList.FormattingEnabled = true;
             this.macrosList.Items.AddRange(new object[] {"No macros"});
             this.macrosList.Location = new System.Drawing.Point(12, 173);

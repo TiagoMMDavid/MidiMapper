@@ -32,8 +32,9 @@ namespace MidiMapper.Forms
             macrosList.Enabled = true;
             for (int i = 0; i < _profile.MacrosCount; i++)
             {
-                // TODO: Customize macro description
-                macrosList.Items.Add(_profile.GetMacroAtIndex(i).GetMacroInfo());
+                Macro macro = _profile.GetMacroAtIndex(i);
+                string macroDesc = $"{$"[{macro.Note}]", -6}{macro.MacroName, -25}{macro.GetMacroTaskDescription()}";
+                macrosList.Items.Add(macroDesc);
             }
         }
 

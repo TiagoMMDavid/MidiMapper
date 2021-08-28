@@ -24,26 +24,22 @@ namespace MidiMapper.Macros
             Keyboard.KeyUp(_kbdKey);
         }
 
-        public override string GetMacroInfo()
+        public override string GetMacroTaskDescription()
         {
-            return GetMacroInfo(MacroName, $"Presses '{_kbdKey}' keyboard key", Note);
+            return $"Presses '{_kbdKey}' keyboard key";
         }
 
         public override string SerializeMacro()
         {
-            return SerializeMacro(MacroName, Note, MacroType.KBD_PRESS, _kbdKey.ToString());
+            return SerializeMacro(MacroName, Note, MacroType.KbdPress, _kbdKey.ToString());
         }
 
         public static KeyboardPressMacro DeserializeMacro(string macroName, string note, string options)
         {
-            try
-            {
-                return new KeyboardPressMacro(macroName, note, (Keys) Enum.Parse(typeof(Keys), options));
-            }
-            catch (ArgumentException)
-            {
+            if (!Enum.TryParse(options, false, out Keys key))
                 throw new DeserializeMacroException($"'{options}' is not a valid keyboard key");
-            }
+            
+            return new KeyboardPressMacro(macroName, note, key);
         }
     }
 }

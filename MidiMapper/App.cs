@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 using NAudio.Midi;
@@ -30,9 +31,10 @@ namespace MidiMapper
             _controller = new MidiMapperController();
         }
 
-        private void LogMessage(string str)
+        private void LogMessage(string msg)
         {
-            eventLog.Text = eventLog.Text.Insert(0, str + " \r\n");
+            string time = $"{DateTime.Now:HH:mm:ss}";
+            eventLog.Text = eventLog.Text.Insert(0, $"[{time}] {msg}\r\n");
         }
         
         private void LoadMidiDevices()
@@ -58,7 +60,7 @@ namespace MidiMapper
         private void OnKeyPressed(string note, int velocity, Macro macro)
         {
             string macroName = macro != null ? macro.MacroName : "No macro"; 
-            LogMessage($"[{note} Velocity: {velocity}]\r\t\r\tMacro: {macroName}");
+            LogMessage($"{$"[{note} Velocity: {velocity}]", -25}Macro: {macroName}");
         }
 
         private void RefreshMidiDeviceButton_Click(object sender, EventArgs e)
@@ -128,8 +130,12 @@ namespace MidiMapper
                 Filter = "Txt files (*.txt)|*.txt",
                 //RestoreDirectory = true
             };
-            
-            if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
+
+            if (saveFileDialog.ShowDialog() != DialogResult.OK)
+            {
+                LogMessage("Save profile was cancelled");
+                return;
+            }
             
             // Save file
             File.WriteAllText(saveFileDialog.FileName, _controller.Profile.SerializeProfile());
@@ -139,11 +145,16 @@ namespace MidiMapper
         private void LoadProfileButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            if (openFileDialog.ShowDialog() != DialogResult.OK) return;
+            if (openFileDialog.ShowDialog() != DialogResult.OK)
+            {
+                LogMessage("Load profile was cancelled");
+                return;
+            }
             
             if (!openFileDialog.FileName.EndsWith(".txt"))
             {
                 MessageBox.Show("Invalid format file (Needs to be .txt)", "File Error");
+                LogMessage("Error loading profile");
                 return;
             }
 
@@ -153,6 +164,7 @@ namespace MidiMapper
             } catch(ParseProfileFileException ex)
             {
                 MessageBox.Show(ex.Message, "Load Profile Error");
+                LogMessage("Error loading profile");
                 return;
             }
 
