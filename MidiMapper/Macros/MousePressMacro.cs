@@ -6,7 +6,6 @@ namespace MidiMapper.Macros
 {
     public class MousePressMacro : Macro
     {
-        // TODO: add MouseButtons and scroll with the other enums present in Mouse class
         private readonly Mouse.MouseKeys _mouseKey;
 
         public MousePressMacro(string macroName, string note, Mouse.MouseKeys mouseKey) : base(macroName, note)

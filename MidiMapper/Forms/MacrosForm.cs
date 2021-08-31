@@ -58,15 +58,6 @@ namespace MidiMapper.Forms
         private void NewMacroButton_Click(object sender, EventArgs e)
         {
             // TODO: New macro functionality
-            InsertNameForm insertMacroNameForm = new InsertNameForm("Create Macro", "Insert macro name", "Ok", "Cancel");
-            insertMacroNameForm.ShowDialog();
-            string macroName = insertMacroNameForm.GetName();
-            if (macroName == null) return;
-
-            PianoForm pianoForm = new PianoForm();
-            pianoForm.ShowDialog();
-            
-            // KeybindForm keybindForm = new KeybindForm();
         }
 
         private void DeleteSelectedMacro()

@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
+using System.Threading.Tasks;
 using NAudio.Midi;
 using MidiMapper.Controller;
 using MidiMapper.Macros;
@@ -27,6 +27,11 @@ namespace MidiMapper
         private App()
         {
             InitializeComponent();
+            profileNameTextBox.MaxLength = Profile.MaxProfileNameSize;
+            profileNameTextBox.KeyDown += ProfileNameTextBox_KeyDown;
+            // TODO: Figure out way to lose focus when pressing anywhere on form
+            profileNameTextBox.LostFocus += ProfileNameTextBox_FocusLost;
+
             LoadMidiDevices();
             _controller = new MidiMapperController();
         }
@@ -36,7 +41,13 @@ namespace MidiMapper
             string time = $"{DateTime.Now:HH:mm:ss}";
             eventLog.Text = eventLog.Text.Insert(0, $"[{time}] {msg}\r\n");
         }
-        
+
+        private void ClearEventLogButton_Click(object sender, EventArgs e)
+        {
+            eventLog.Clear();
+        }
+
+        #region MIDI Devices controls
         private void LoadMidiDevices()
         {
             startMidiButton.Enabled = false;
@@ -98,21 +109,67 @@ namespace MidiMapper
             _controller.CloseMidiDevice();
             LogMessage("Device successfully disconnected");
         }
+        #endregion
 
+        #region Profile controls
         private void CreateProfileButton_Click(object sender, EventArgs e)
-        {  
-            InsertNameForm createProfileForm = new InsertNameForm("Create Profile", "Insert profile name", "Create", "Cancel");
-            createProfileForm.ShowDialog();
-            string profileName = createProfileForm.GetName();
+        {
+            // Confirm new profile creation
+            // TODO: Improve Message box
+            string message = "Are you sure you want to create a new profile?\r\n\r\nUnsaved changes may be lost!";
+            DialogResult result = MessageBox.Show(message, "Create New Profile", MessageBoxButtons.YesNo);
 
-            // Return if create profile was cancelled
-            if (profileName == null) return;
-            _controller.Profile = new Profile(profileName);
+            if (result != DialogResult.Yes)
+            {
+                LogMessage("Profile creation was cancelled");
+                return;
+            }
 
-            profileNameTextBox.Text = profileName;
+            _controller.Profile = new Profile("New Profile");
+            
+            profileNameTextBox.Text = "New Profile";
+            profileNameTextBox.Enabled = true;
+            profileNameTextBox.ReadOnly = false;
+            profileNameTextBox.Focus();
+            profileNameTextBox.SelectAll();
+            
             macrosButton.Enabled = true;
             saveProfileButton.Enabled = true;
+
+            editProfileNameButton.Enabled = false;
             LogMessage("Profile successfully created");
+        }
+
+        private void EditProfileNameButton_Click(object sender, EventArgs e)
+        {
+            profileNameTextBox.Enabled = true;
+            profileNameTextBox.ReadOnly = false;
+            profileNameTextBox.Focus();
+            profileNameTextBox.SelectAll();
+
+            editProfileNameButton.Enabled = false;
+        }
+
+        private void ProfileNameTextBox_FocusLost(object sender, EventArgs e)
+        {
+            UpdateProfileName();
+        }
+
+        private void ProfileNameTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Update profile name when 'enter' or 'escape' is pressed
+            if (e.KeyCode != Keys.Enter && e.KeyCode != Keys.Escape) return;
+
+            UpdateProfileName();
+        }
+
+        private void UpdateProfileName()
+        {
+            _controller.Profile.ProfileName = profileNameTextBox.Text;
+            profileNameTextBox.Enabled = false;
+            profileNameTextBox.ReadOnly = true;
+            editProfileNameButton.Visible = true;
+            editProfileNameButton.Enabled = true;
         }
 
         private void MacrosButton_Click(object sender, EventArgs e)
@@ -171,12 +228,10 @@ namespace MidiMapper
             profileNameTextBox.Text = _controller.Profile.ProfileName;
             macrosButton.Enabled = true;
             saveProfileButton.Enabled = true;
+            editProfileNameButton.Visible = true;
+            editProfileNameButton.Enabled = true;
             LogMessage("Profile successfully loaded");
         }
-        
-        private void ClearEventLogButton_Click(object sender, EventArgs e)
-        {
-            eventLog.Clear();
-        }
+        #endregion
     }
 }

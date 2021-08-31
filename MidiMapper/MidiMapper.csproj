@@ -91,12 +91,6 @@
     <Compile Include="Controller\MidiMapperController.cs" />
     <Compile Include="Exceptions\DeserializeMacroException.cs" />
     <Compile Include="Exceptions\ParseProfileFileException.cs" />
-    <Compile Include="Forms\InsertNameForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\InsertNameForm.Designer.cs">
-      <DependentUpon>InsertNameForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Macros\KeyboardPressMacro.cs" />
     <Compile Include="Macros\Macro.cs" />
     <Compile Include="Forms\MacrosForm.cs">
@@ -120,9 +114,6 @@
     <EmbeddedResource Include="App.resx">
       <DependentUpon>App.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\InsertNameForm.resx">
-      <DependentUpon>InsertNameForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MacrosForm.resx">
       <DependentUpon>MacrosForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,6 +128,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -151,6 +143,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\load-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stop-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\start-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
