@@ -171,5 +171,8 @@
   <ItemGroup>
     <None Include="Resources\plus-icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notification-icon.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

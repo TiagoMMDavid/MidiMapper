@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
-using System.Threading.Tasks;
 using NAudio.Midi;
 using MidiMapper.Controller;
 using MidiMapper.Macros;
@@ -23,6 +22,7 @@ namespace MidiMapper
         #endregion
 
         private readonly MidiMapperController _controller;
+        private bool _isCloseApp;
 
         private App()
         {
@@ -31,6 +31,8 @@ namespace MidiMapper
             profileNameTextBox.KeyDown += ProfileNameTextBox_KeyDown;
             // TODO: Figure out way to lose focus when pressing anywhere on form
             profileNameTextBox.LostFocus += ProfileNameTextBox_FocusLost;
+
+            this.FormClosing += App_FormClosing;
 
             LoadMidiDevices();
             _controller = new MidiMapperController();
@@ -115,14 +117,17 @@ namespace MidiMapper
         private void CreateProfileButton_Click(object sender, EventArgs e)
         {
             // Confirm new profile creation
-            // TODO: Improve Message box
-            string message = "Are you sure you want to create a new profile?\r\n\r\nUnsaved changes may be lost!";
-            DialogResult result = MessageBox.Show(message, "Create New Profile", MessageBoxButtons.YesNo);
-
-            if (result != DialogResult.Yes)
+            if (_controller.Profile?.MacrosCount > 0)
             {
-                LogMessage("Profile creation was cancelled");
-                return;
+                // TODO: Improve Message box
+                string message = "Are you sure you want to create a new profile?\r\n\r\nUnsaved changes may be lost!";
+                DialogResult result = MessageBox.Show(message, "Create New Profile", MessageBoxButtons.YesNo);
+
+                if (result != DialogResult.Yes)
+                {
+                    LogMessage("Profile creation was cancelled");
+                    return;
+                }
             }
 
             _controller.Profile = new Profile("New Profile");
@@ -201,7 +206,11 @@ namespace MidiMapper
 
         private void LoadProfileButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            OpenFileDialog openFileDialog = new OpenFileDialog()
+            {
+                Title = "MidiMapper - Load Profile"
+            };
+
             if (openFileDialog.ShowDialog() != DialogResult.OK)
             {
                 LogMessage("Load profile was cancelled");
@@ -231,6 +240,31 @@ namespace MidiMapper
             editProfileNameButton.Visible = true;
             editProfileNameButton.Enabled = true;
             LogMessage("Profile successfully loaded");
+        }
+        #endregion
+
+        #region Notification Area
+        private void App_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason != CloseReason.UserClosing || _isCloseApp) return;
+            e.Cancel = true;
+
+            // Minimize app to tray icon
+            this.ShowIcon = false;
+            this.Hide();
+            //appNotifyIcon.ShowBalloonTip(1000);
+        }
+
+        private void AppNotifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.ShowInTaskbar = true;
+            this.Show();
+        }
+
+        private void ExitMidiMapperToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _isCloseApp = true;
+            this.Close();
         }
         #endregion
     }
