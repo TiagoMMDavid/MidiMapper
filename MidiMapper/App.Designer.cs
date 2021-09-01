@@ -34,6 +34,15 @@
             this.eventLog = new System.Windows.Forms.TextBox();
             this.profileNameTextBox = new System.Windows.Forms.TextBox();
             this.macrosButton = new System.Windows.Forms.Button();
+            this.eventLogLabel = new System.Windows.Forms.Label();
+            this.appNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.notificationMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.midiMapperMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.aboutMidiMapperMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.hideShowAppToolStripItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitMidiMapperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editProfileNameButton = new System.Windows.Forms.Button();
             this.createProfileButton = new System.Windows.Forms.Button();
             this.loadProfileButton = new System.Windows.Forms.Button();
@@ -43,17 +52,8 @@
             this.startMidiButton = new System.Windows.Forms.Button();
             this.refreshMidiDevicesButton = new System.Windows.Forms.Button();
             this.userAvatar = new System.Windows.Forms.PictureBox();
-            this.eventLogLabel = new System.Windows.Forms.Label();
-            this.appNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.notificationMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.hideShowAppToolStripItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitMidiMapperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.userAvatar)).BeginInit();
             this.notificationMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userAvatar)).BeginInit();
             this.SuspendLayout();
             // 
             // selectMidiDevice
@@ -83,6 +83,63 @@
             this.macrosButton.Name = "macrosButton";
             this.macrosButton.UseVisualStyleBackColor = true;
             this.macrosButton.Click += new System.EventHandler(this.MacrosButton_Click);
+            // 
+            // eventLogLabel
+            // 
+            resources.ApplyResources(this.eventLogLabel, "eventLogLabel");
+            this.eventLogLabel.Name = "eventLogLabel";
+            // 
+            // appNotifyIcon
+            // 
+            resources.ApplyResources(this.appNotifyIcon, "appNotifyIcon");
+            this.appNotifyIcon.ContextMenuStrip = this.notificationMenuStrip;
+            this.appNotifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.AppNotifyIcon_MouseDoubleClick);
+            // 
+            // notificationMenuStrip
+            // 
+            this.notificationMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.midiMapperMenuItem,
+            this.toolStripSeparator2,
+            this.aboutMidiMapperMenuItem,
+            this.toolStripSeparator1,
+            this.hideShowAppToolStripItem,
+            this.exitMidiMapperToolStripMenuItem});
+            this.notificationMenuStrip.Name = "notificationMenuStrip";
+            resources.ApplyResources(this.notificationMenuStrip, "notificationMenuStrip");
+            // 
+            // midiMapperMenuItem
+            // 
+            resources.ApplyResources(this.midiMapperMenuItem, "midiMapperMenuItem");
+            this.midiMapperMenuItem.Image = global::MidiMapper.Properties.Resources.notification_icon;
+            this.midiMapperMenuItem.Name = "midiMapperMenuItem";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
+            // 
+            // aboutMidiMapperMenuItem
+            // 
+            this.aboutMidiMapperMenuItem.Name = "aboutMidiMapperMenuItem";
+            resources.ApplyResources(this.aboutMidiMapperMenuItem, "aboutMidiMapperMenuItem");
+            this.aboutMidiMapperMenuItem.Click += new System.EventHandler(this.AboutMidiMapperMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            // 
+            // hideShowAppToolStripItem
+            // 
+            this.hideShowAppToolStripItem.Name = "hideShowAppToolStripItem";
+            resources.ApplyResources(this.hideShowAppToolStripItem, "hideShowAppToolStripItem");
+            this.hideShowAppToolStripItem.Click += new System.EventHandler(this.HideShowAppToolStripItem_Click);
+            // 
+            // exitMidiMapperToolStripMenuItem
+            // 
+            this.exitMidiMapperToolStripMenuItem.Name = "exitMidiMapperToolStripMenuItem";
+            resources.ApplyResources(this.exitMidiMapperToolStripMenuItem, "exitMidiMapperToolStripMenuItem");
+            this.exitMidiMapperToolStripMenuItem.Click += new System.EventHandler(this.ExitMidiMapperToolStripMenuItem_Click);
             // 
             // editProfileNameButton
             // 
@@ -157,85 +214,30 @@
             this.userAvatar.Name = "userAvatar";
             this.userAvatar.TabStop = false;
             // 
-            // eventLogLabel
-            // 
-            resources.ApplyResources(this.eventLogLabel, "eventLogLabel");
-            this.eventLogLabel.Name = "eventLogLabel";
-            // 
-            // appNotifyIcon
-            // 
-            resources.ApplyResources(this.appNotifyIcon, "appNotifyIcon");
-            this.appNotifyIcon.ContextMenuStrip = this.notificationMenuStrip;
-            this.appNotifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.AppNotifyIcon_MouseDoubleClick);
-            // 
-            // notificationMenuStrip
-            // 
-            this.notificationMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2,
-            this.toolStripSeparator2,
-            this.toolStripMenuItem1,
-            this.toolStripSeparator1,
-            this.hideShowAppToolStripItem,
-            this.exitMidiMapperToolStripMenuItem});
-            this.notificationMenuStrip.Name = "notificationMenuStrip";
-            resources.ApplyResources(this.notificationMenuStrip, "notificationMenuStrip");
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
-            // 
-            // hideShowAppToolStripItem
-            // 
-            this.hideShowAppToolStripItem.Name = "hideShowAppToolStripItem";
-            resources.ApplyResources(this.hideShowAppToolStripItem, "hideShowAppToolStripItem");
-            // 
-            // exitMidiMapperToolStripMenuItem
-            // 
-            this.exitMidiMapperToolStripMenuItem.Name = "exitMidiMapperToolStripMenuItem";
-            resources.ApplyResources(this.exitMidiMapperToolStripMenuItem, "exitMidiMapperToolStripMenuItem");
-            this.exitMidiMapperToolStripMenuItem.Click += new System.EventHandler(this.ExitMidiMapperToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
-            this.toolStripMenuItem2.Image = global::MidiMapper.Properties.Resources.notification_icon;
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            // 
             // App
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.eventLogLabel);
             this.Controls.Add(this.editProfileNameButton);
             this.Controls.Add(this.macrosButton);
             this.Controls.Add(this.createProfileButton);
             this.Controls.Add(this.loadProfileButton);
             this.Controls.Add(this.saveProfileButton);
             this.Controls.Add(this.profileNameTextBox);
-            this.Controls.Add(this.clearEventLogButton);
             this.Controls.Add(this.eventLog);
             this.Controls.Add(this.stopMidiButton);
             this.Controls.Add(this.startMidiButton);
             this.Controls.Add(this.refreshMidiDevicesButton);
             this.Controls.Add(this.selectMidiDevice);
             this.Controls.Add(this.userAvatar);
+            this.Controls.Add(this.clearEventLogButton);
+            this.Controls.Add(this.eventLogLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "App";
-            ((System.ComponentModel.ISupportInitialize)(this.userAvatar)).EndInit();
             this.notificationMenuStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.userAvatar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,8 +266,8 @@
         private System.Windows.Forms.ToolStripMenuItem hideShowAppToolStripItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem aboutMidiMapperMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem midiMapperMenuItem;
     }
 }
 

@@ -126,7 +126,7 @@
     <value>15</value>
   </data>
   <data name="selectMidiDevice.Location" type="System.Drawing.Point, System.Drawing">
-    <value>579, 32</value>
+    <value>520, 32</value>
   </data>
   <data name="selectMidiDevice.ScrollAlwaysVisible" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -147,13 +147,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;selectMidiDevice.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>11</value>
   </data>
   <data name="eventLog.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Consolas, 8.25pt</value>
+    <value>Consolas, 9.75pt</value>
   </data>
   <data name="eventLog.Location" type="System.Drawing.Point, System.Drawing">
-    <value>57, 257</value>
+    <value>32, 247</value>
   </data>
   <data name="eventLog.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -163,7 +163,7 @@
     <value>Horizontal</value>
   </data>
   <data name="eventLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>728, 274</value>
+    <value>721, 274</value>
   </data>
   <data name="eventLog.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -178,7 +178,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;eventLog.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>7</value>
   </data>
   <data name="profileNameTextBox.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -190,7 +190,7 @@
     <value>151, 39</value>
   </data>
   <data name="profileNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 33</value>
+    <value>286, 33</value>
   </data>
   <data name="profileNameTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -208,7 +208,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;profileNameTextBox.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="macrosButton.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -241,259 +241,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;macrosButton.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="editProfileNameButton.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="editProfileNameButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="editProfileNameButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>367, 45</value>
-  </data>
-  <data name="editProfileNameButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 28</value>
-  </data>
-  <data name="editProfileNameButton.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="editProfileNameButton.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;editProfileNameButton.Name" xml:space="preserve">
-    <value>editProfileNameButton</value>
-  </data>
-  <data name="&gt;&gt;editProfileNameButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;editProfileNameButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;editProfileNameButton.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="createProfileButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt</value>
-  </data>
-  <data name="createProfileButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="createProfileButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 18</value>
-  </data>
-  <data name="createProfileButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 35</value>
-  </data>
-  <data name="createProfileButton.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;createProfileButton.Name" xml:space="preserve">
-    <value>createProfileButton</value>
-  </data>
-  <data name="&gt;&gt;createProfileButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;createProfileButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;createProfileButton.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="loadProfileButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="loadProfileButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 58</value>
-  </data>
-  <data name="loadProfileButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 35</value>
-  </data>
-  <data name="loadProfileButton.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;loadProfileButton.Name" xml:space="preserve">
-    <value>loadProfileButton</value>
-  </data>
-  <data name="&gt;&gt;loadProfileButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;loadProfileButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;loadProfileButton.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="saveProfileButton.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="saveProfileButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="saveProfileButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>295, 86</value>
-  </data>
-  <data name="saveProfileButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 49</value>
-  </data>
-  <data name="saveProfileButton.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="saveProfileButton.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="&gt;&gt;saveProfileButton.Name" xml:space="preserve">
-    <value>saveProfileButton</value>
-  </data>
-  <data name="&gt;&gt;saveProfileButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;saveProfileButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;saveProfileButton.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="clearEventLogButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="clearEventLogButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>743, 212</value>
-  </data>
-  <data name="clearEventLogButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 42</value>
-  </data>
-  <data name="clearEventLogButton.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;clearEventLogButton.Name" xml:space="preserve">
-    <value>clearEventLogButton</value>
-  </data>
-  <data name="&gt;&gt;clearEventLogButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;clearEventLogButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;clearEventLogButton.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="stopMidiButton.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="stopMidiButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="stopMidiButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>763, 86</value>
-  </data>
-  <data name="stopMidiButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 49</value>
-  </data>
-  <data name="stopMidiButton.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;stopMidiButton.Name" xml:space="preserve">
-    <value>stopMidiButton</value>
-  </data>
-  <data name="&gt;&gt;stopMidiButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;stopMidiButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;stopMidiButton.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="startMidiButton.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="startMidiButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 12.75pt</value>
-  </data>
-  <data name="startMidiButton.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="startMidiButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="startMidiButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>579, 86</value>
-  </data>
-  <data name="startMidiButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 49</value>
-  </data>
-  <data name="startMidiButton.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="startMidiButton.Text" xml:space="preserve">
-    <value> Start MIDI Device</value>
-  </data>
-  <data name="startMidiButton.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;startMidiButton.Name" xml:space="preserve">
-    <value>startMidiButton</value>
-  </data>
-  <data name="&gt;&gt;startMidiButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;startMidiButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;startMidiButton.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="refreshMidiDevicesButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="refreshMidiDevicesButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>763, 32</value>
-  </data>
-  <data name="refreshMidiDevicesButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 49</value>
-  </data>
-  <data name="refreshMidiDevicesButton.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;refreshMidiDevicesButton.Name" xml:space="preserve">
-    <value>refreshMidiDevicesButton</value>
-  </data>
-  <data name="&gt;&gt;refreshMidiDevicesButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;refreshMidiDevicesButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;refreshMidiDevicesButton.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="userAvatar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="userAvatar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 32</value>
-  </data>
-  <data name="userAvatar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 112</value>
-  </data>
-  <data name="userAvatar.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>StretchImage</value>
-  </data>
-  <data name="userAvatar.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;userAvatar.Name" xml:space="preserve">
-    <value>userAvatar</value>
-  </data>
-  <data name="&gt;&gt;userAvatar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;userAvatar.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;userAvatar.ZOrder" xml:space="preserve">
-    <value>14</value>
   </data>
   <data name="eventLogLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -501,8 +249,11 @@
   <data name="eventLogLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Calibri, 21.75pt</value>
   </data>
+  <data name="eventLogLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="eventLogLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>63, 221</value>
+    <value>30, 212</value>
   </data>
   <data name="eventLogLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 36</value>
@@ -523,7 +274,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;eventLogLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>14</value>
   </data>
   <metadata name="appNotifyIcon.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -537,22 +288,22 @@
   <metadata name="notificationMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>146, 17</value>
   </metadata>
-  <data name="toolStripMenuItem2.Enabled" type="System.Boolean, mscorlib">
+  <data name="midiMapperMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="midiMapperMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
-  <data name="toolStripMenuItem2.Text" xml:space="preserve">
+  <data name="midiMapperMenuItem.Text" xml:space="preserve">
     <value>MidiMapper</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>177, 6</value>
   </data>
-  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="aboutMidiMapperMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
-  <data name="toolStripMenuItem1.Text" xml:space="preserve">
+  <data name="aboutMidiMapperMenuItem.Text" xml:space="preserve">
     <value>About MidiMapper</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
@@ -2358,6 +2109,258 @@
   <data name="appNotifyIcon.Visible" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="editProfileNameButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="editProfileNameButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="editProfileNameButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>129, 22</value>
+  </data>
+  <data name="editProfileNameButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="editProfileNameButton.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="editProfileNameButton.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;editProfileNameButton.Name" xml:space="preserve">
+    <value>editProfileNameButton</value>
+  </data>
+  <data name="&gt;&gt;editProfileNameButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;editProfileNameButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;editProfileNameButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="createProfileButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="createProfileButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="createProfileButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 18</value>
+  </data>
+  <data name="createProfileButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 35</value>
+  </data>
+  <data name="createProfileButton.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;createProfileButton.Name" xml:space="preserve">
+    <value>createProfileButton</value>
+  </data>
+  <data name="&gt;&gt;createProfileButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;createProfileButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;createProfileButton.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="loadProfileButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="loadProfileButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 58</value>
+  </data>
+  <data name="loadProfileButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 35</value>
+  </data>
+  <data name="loadProfileButton.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;loadProfileButton.Name" xml:space="preserve">
+    <value>loadProfileButton</value>
+  </data>
+  <data name="&gt;&gt;loadProfileButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;loadProfileButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;loadProfileButton.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="saveProfileButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="saveProfileButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="saveProfileButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>295, 86</value>
+  </data>
+  <data name="saveProfileButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 49</value>
+  </data>
+  <data name="saveProfileButton.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="saveProfileButton.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;saveProfileButton.Name" xml:space="preserve">
+    <value>saveProfileButton</value>
+  </data>
+  <data name="&gt;&gt;saveProfileButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;saveProfileButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;saveProfileButton.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="clearEventLogButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="clearEventLogButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>712, 206</value>
+  </data>
+  <data name="clearEventLogButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 42</value>
+  </data>
+  <data name="clearEventLogButton.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;clearEventLogButton.Name" xml:space="preserve">
+    <value>clearEventLogButton</value>
+  </data>
+  <data name="&gt;&gt;clearEventLogButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;clearEventLogButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;clearEventLogButton.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="stopMidiButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="stopMidiButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="stopMidiButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>704, 86</value>
+  </data>
+  <data name="stopMidiButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 49</value>
+  </data>
+  <data name="stopMidiButton.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;stopMidiButton.Name" xml:space="preserve">
+    <value>stopMidiButton</value>
+  </data>
+  <data name="&gt;&gt;stopMidiButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;stopMidiButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;stopMidiButton.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="startMidiButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="startMidiButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri, 12.75pt</value>
+  </data>
+  <data name="startMidiButton.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="startMidiButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="startMidiButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>520, 86</value>
+  </data>
+  <data name="startMidiButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 49</value>
+  </data>
+  <data name="startMidiButton.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="startMidiButton.Text" xml:space="preserve">
+    <value>    Connect Device</value>
+  </data>
+  <data name="startMidiButton.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;startMidiButton.Name" xml:space="preserve">
+    <value>startMidiButton</value>
+  </data>
+  <data name="&gt;&gt;startMidiButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;startMidiButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;startMidiButton.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="refreshMidiDevicesButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="refreshMidiDevicesButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>704, 32</value>
+  </data>
+  <data name="refreshMidiDevicesButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 49</value>
+  </data>
+  <data name="refreshMidiDevicesButton.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;refreshMidiDevicesButton.Name" xml:space="preserve">
+    <value>refreshMidiDevicesButton</value>
+  </data>
+  <data name="&gt;&gt;refreshMidiDevicesButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;refreshMidiDevicesButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;refreshMidiDevicesButton.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="userAvatar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="userAvatar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="userAvatar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 112</value>
+  </data>
+  <data name="userAvatar.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>StretchImage</value>
+  </data>
+  <data name="userAvatar.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;userAvatar.Name" xml:space="preserve">
+    <value>userAvatar</value>
+  </data>
+  <data name="&gt;&gt;userAvatar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;userAvatar.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;userAvatar.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -2365,7 +2368,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>840, 578</value>
+    <value>784, 561</value>
   </data>
   <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 15</value>
@@ -2382,16 +2385,22 @@
   <data name="&gt;&gt;appNotifyIcon.Type" xml:space="preserve">
     <value>System.Windows.Forms.NotifyIcon, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;midiMapperMenuItem.Name" xml:space="preserve">
+    <value>midiMapperMenuItem</value>
+  </data>
+  <data name="&gt;&gt;midiMapperMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
     <value>toolStripSeparator2</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">
-    <value>toolStripMenuItem1</value>
+  <data name="&gt;&gt;aboutMidiMapperMenuItem.Name" xml:space="preserve">
+    <value>aboutMidiMapperMenuItem</value>
   </data>
-  <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
+  <data name="&gt;&gt;aboutMidiMapperMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
@@ -2410,12 +2419,6 @@
     <value>exitMidiMapperToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;exitMidiMapperToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem2.Name" xml:space="preserve">
-    <value>toolStripMenuItem2</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

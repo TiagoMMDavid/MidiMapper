@@ -21,7 +21,11 @@ namespace MidiMapper
         }
         #endregion
 
+        const string GitHubProjectURL= "https://github.com/TiagoMMDavid/MidiMapper";
+
         private readonly MidiMapperController _controller;
+        private string _previousName;
+        private bool _isMinimized;
         private bool _isCloseApp;
 
         private App()
@@ -131,6 +135,7 @@ namespace MidiMapper
             }
 
             _controller.Profile = new Profile("New Profile");
+            _previousName = "New Profile";
             
             profileNameTextBox.Text = "New Profile";
             profileNameTextBox.Enabled = true;
@@ -147,6 +152,8 @@ namespace MidiMapper
 
         private void EditProfileNameButton_Click(object sender, EventArgs e)
         {
+            _previousName = profileNameTextBox.Text;
+
             profileNameTextBox.Enabled = true;
             profileNameTextBox.ReadOnly = false;
             profileNameTextBox.Focus();
@@ -162,8 +169,11 @@ namespace MidiMapper
 
         private void ProfileNameTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            // Update profile name when 'enter' or 'escape' is pressed
+            // Update profile name when 'enter' is pressed or cancel name change when 'escape' is pressed
             if (e.KeyCode != Keys.Enter && e.KeyCode != Keys.Escape) return;
+
+            if (e.KeyCode == Keys.Escape)
+                profileNameTextBox.Text = _previousName; // Cancel new name
 
             UpdateProfileName();
         }
@@ -173,6 +183,9 @@ namespace MidiMapper
             _controller.Profile.ProfileName = profileNameTextBox.Text;
             profileNameTextBox.Enabled = false;
             profileNameTextBox.ReadOnly = true;
+            profileNameTextBox.Select(0, 0); // Move text to left side of box
+            // TODO: Text wrap name if its too long
+
             editProfileNameButton.Visible = true;
             editProfileNameButton.Enabled = true;
         }
@@ -252,13 +265,39 @@ namespace MidiMapper
             // Minimize app to tray icon
             this.ShowIcon = false;
             this.Hide();
-            //appNotifyIcon.ShowBalloonTip(1000);
         }
 
         private void AppNotifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             this.ShowInTaskbar = true;
             this.Show();
+        }
+
+        private void AboutMidiMapperMenuItem_Click(object sender, EventArgs e)
+        {
+            // TODO: Check if it works in release mode
+            System.Diagnostics.Process.Start(GitHubProjectURL);
+        }
+
+        private void HideShowAppToolStripItem_Click(object sender, EventArgs e)
+        {
+            if (_isMinimized)
+            {
+                // Show Form
+                this.ShowInTaskbar = true;
+                this.Show();
+
+                _isMinimized = false;
+                hideShowAppToolStripItem.Text = "Minimize to Tray";
+            } else
+            {
+                // Hide Form
+                this.ShowIcon = false;
+                this.Hide();
+
+                _isMinimized = true;
+                hideShowAppToolStripItem.Text = "Show MidiMapper";
+            }
         }
 
         private void ExitMidiMapperToolStripMenuItem_Click(object sender, EventArgs e)
