@@ -24,13 +24,13 @@ namespace MidiMapper.Controller
         private void OnNoteOn(string note, int velocity)
         {
             Macro macro = Profile?.ExecuteMacroIfExists(note, velocity);
-            _onKeyPressedListener(note, velocity, macro);
+            _onKeyPressedListener?.Invoke(note, velocity, macro);
         }
 
         private void OnNoteOff(string note)
         {
             Macro macro = Profile?.StopMacroIfExists(note);
-            _onKeyReleasedListener(note, macro);
+            _onKeyReleasedListener?.Invoke(note, macro);
         }
 
 

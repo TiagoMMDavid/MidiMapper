@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Timers;
 using InputManager;
-using System.Windows.Forms;
 using MidiMapper.Exceptions;
 
 namespace MidiMapper.Macros
@@ -10,35 +10,35 @@ namespace MidiMapper.Macros
         private readonly int _xAxis;
         private readonly int _yAxis;
 
-        private readonly Timer _timer;
         private const int TimerInterval = 1;
+        private readonly Timer _timer;
 
         public MouseMovementMacro(string macroName, string note, int xAxis, int yAxis) : base(macroName, note)
         {
             _xAxis = xAxis;
             _yAxis = yAxis;
 
-            _timer = new Timer
+            _timer = new Timer()
             {
-                Interval = TimerInterval, 
-                Enabled = false,
+                Interval = TimerInterval,
+                AutoReset = true
             };
-            _timer.Tick += Timer_Tick;
+            _timer.Elapsed += Timer_OnTimedEvent;
         }
 
         public override void Execute()
         {
-            _timer.Enabled = true;
+            _timer.Start();
         }
 
         public override void Stop()
         {
-            _timer.Enabled = false;
+            _timer.Stop();
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+        private void Timer_OnTimedEvent(object sender, ElapsedEventArgs e)
         {
-            // Timer only ticks when the macro is being executed
+            // Event is only called when the macro is being executed
             Mouse.MoveRelative(_xAxis, _yAxis);
         }
 

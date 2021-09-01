@@ -21,7 +21,7 @@ namespace MidiMapper
         }
         #endregion
 
-        const string GitHubProjectURL= "https://github.com/TiagoMMDavid/MidiMapper";
+        private const string GitHubProjectUrl= "https://github.com/TiagoMMDavid/MidiMapper";
 
         private readonly MidiMapperController _controller;
         private string _previousName;
@@ -45,7 +45,7 @@ namespace MidiMapper
         private void LogMessage(string msg)
         {
             string time = $"{DateTime.Now:HH:mm:ss}";
-            eventLog.Text = eventLog.Text.Insert(0, $"[{time}] {msg}\r\n");
+            eventLog.Text = eventLog.Text.Insert(0, $"[{time}]    {msg}\r\n");
         }
 
         private void ClearEventLogButton_Click(object sender, EventArgs e)
@@ -76,8 +76,9 @@ namespace MidiMapper
         // Callback for when a midi key is pressed
         private void OnKeyPressed(string note, int velocity, Macro macro)
         {
+            string prefix = "MIDI Key Press";
             string macroName = macro != null ? macro.MacroName : "No macro"; 
-            LogMessage($"{$"[{note} Velocity: {velocity}]", -25}Macro: {macroName}");
+            LogMessage($"{prefix, -19}[{note, -3} Velocity: {velocity+"]", -4}    Macro: {macroName}");
         }
 
         private void RefreshMidiDeviceButton_Click(object sender, EventArgs e)
@@ -276,7 +277,7 @@ namespace MidiMapper
         private void AboutMidiMapperMenuItem_Click(object sender, EventArgs e)
         {
             // TODO: Check if it works in release mode
-            System.Diagnostics.Process.Start(GitHubProjectURL);
+            System.Diagnostics.Process.Start(GitHubProjectUrl);
         }
 
         private void HideShowAppToolStripItem_Click(object sender, EventArgs e)
