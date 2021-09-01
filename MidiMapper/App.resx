@@ -160,7 +160,7 @@
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="eventLog.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Horizontal</value>
+    <value>Vertical</value>
   </data>
   <data name="eventLog.Size" type="System.Drawing.Size, System.Drawing">
     <value>721, 274</value>
@@ -292,37 +292,37 @@
     <value>False</value>
   </data>
   <data name="midiMapperMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="midiMapperMenuItem.Text" xml:space="preserve">
     <value>MidiMapper</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>172, 6</value>
   </data>
   <data name="aboutMidiMapperMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="aboutMidiMapperMenuItem.Text" xml:space="preserve">
     <value>About MidiMapper</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>172, 6</value>
   </data>
   <data name="hideShowAppToolStripItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="hideShowAppToolStripItem.Text" xml:space="preserve">
     <value>Minimize to Tray</value>
   </data>
   <data name="exitMidiMapperToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="exitMidiMapperToolStripMenuItem.Text" xml:space="preserve">
     <value>Exit MidiMapper</value>
   </data>
   <data name="notificationMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 126</value>
+    <value>176, 104</value>
   </data>
   <data name="&gt;&gt;notificationMenuStrip.Name" xml:space="preserve">
     <value>notificationMenuStrip</value>

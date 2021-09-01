@@ -22,11 +22,16 @@ namespace MidiMapper
         #endregion
 
         private const string GitHubProjectUrl= "https://github.com/TiagoMMDavid/MidiMapper";
+        private const int EventLogMaxLinesLength = 50;
 
         private readonly MidiMapperController _controller;
-        private string _previousName;
+
+        private string _previousName; // Used to cancel profile name edit
+
         private bool _isMinimized;
         private bool _isCloseApp;
+
+        private int _eventLogLinesCount;
 
         private App()
         {
@@ -44,12 +49,19 @@ namespace MidiMapper
 
         private void LogMessage(string msg)
         {
-            string time = $"{DateTime.Now:HH:mm:ss}";
-            eventLog.Text = eventLog.Text.Insert(0, $"[{time}]    {msg}\r\n");
+            // Remove last lines if max number of lines has exceeded
+            if (_eventLogLinesCount >= EventLogMaxLinesLength - 1)
+                eventLog.Text = eventLog.Text.Substring(0, eventLog.Text.LastIndexOf('\n'));
+            else
+                _eventLogLinesCount++;
+
+            string message = $"[{DateTime.Now:HH:mm:ss}]    {msg}\r\n";
+            eventLog.Text = eventLog.Text.Insert(0, message);
         }
 
         private void ClearEventLogButton_Click(object sender, EventArgs e)
         {
+            _eventLogLinesCount = 0;
             eventLog.Clear();
         }
 
@@ -77,8 +89,12 @@ namespace MidiMapper
         private void OnKeyPressed(string note, int velocity, Macro macro)
         {
             string prefix = "MIDI Key Press";
-            string macroName = macro != null ? macro.MacroName : "No macro"; 
-            LogMessage($"{prefix, -19}[{note, -3} Velocity: {velocity+"]", -4}    Macro: {macroName}");
+            string macroName = macro != null ? macro.MacroName : "No macro";
+            string message = $"{prefix,-19}[{note,-3} Velocity: {velocity + "]",-4}    Macro: {macroName}";
+
+            // By using Invoke, the LogMessage method will only be called on the UI thread
+            Action logMessage = delegate { LogMessage(message); };
+            eventLog.Invoke(logMessage);
         }
 
         private void RefreshMidiDeviceButton_Click(object sender, EventArgs e)
