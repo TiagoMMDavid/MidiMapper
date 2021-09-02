@@ -18,6 +18,7 @@ namespace MidiMapper.Forms
             LoadMacrosList();
         }
 
+        #region Macros List
         private void LoadMacrosList()
         {
             macrosList.Items.Clear();
@@ -33,31 +34,57 @@ namespace MidiMapper.Forms
             for (int i = 0; i < _profile.MacrosCount; i++)
             {
                 Macro macro = _profile.GetMacroAtIndex(i);
-                string macroDesc = $"{$"[{macro.Note}]", -6}{macro.MacroName, -25}{macro.GetMacroTaskDescription()}";
+                string macroDesc = $"{$"[{macro.Note}]", -8}{macro.MacroName, -28}{macro.GetMacroTaskDescription()}";
                 macrosList.Items.Add(macroDesc);
             }
         }
 
         private void MacrosList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            delMacroButton.Enabled = macrosList.SelectedIndex != -1;
+            deleteMacroButton.Enabled = macrosList.SelectedIndex != -1;
+            editMacroButton.Enabled = macrosList.SelectedIndex != -1; ;
+        }
+        #endregion
+
+        #region Macro Buttons
+        private void NewMacroButton_Click(object sender, EventArgs e)
+        {
+            MacroForm newMacroForm = new MacroForm(_profile, newMacro =>
+            {
+                // Called when new macro has been created
+                // TODO:
+            });
+            newMacroForm.ShowDialog();
         }
 
-        private void DelMacroButton_Click(object sender, EventArgs e)
+        private void EditMacroButton_Click(object sender, EventArgs e)
         {
-            DeleteSelectedMacro();
+            Macro selectedMacro = _profile.GetMacroAtIndex(macrosList.SelectedIndex);
+            MacroForm editMacroForm = new MacroForm(selectedMacro, _profile, newMacro =>
+            {
+                // Called when new macro has been edited
+                // TODO:
+            });
+            editMacroForm.ShowDialog();
         }
-        
+
+        private void DeleteMacroButton_Click(object sender, EventArgs e) => DeleteSelectedMacro();
+        #endregion
+
         // Listen to keyboard events
         private void MacrosForm_KeyDown(object sender, KeyEventArgs e)
         {
-            // Delete selected macro when pressing delete key
-            if (e.KeyCode == Keys.Delete) DeleteSelectedMacro();
-        }
-
-        private void NewMacroButton_Click(object sender, EventArgs e)
-        {
-            // TODO: New macro functionality
+            switch(e.KeyCode)
+            {
+                case Keys.Delete:
+                    // Delete selected macro when pressing delete key
+                    DeleteSelectedMacro();
+                    break;
+                case Keys.Escape:
+                    // Close Form
+                    this.Close();
+                    break;
+            }
         }
 
         private void DeleteSelectedMacro()
@@ -67,7 +94,8 @@ namespace MidiMapper.Forms
             Macro macro = _profile.GetMacroAtIndex(macrosList.SelectedIndex);
             macrosList.Items.RemoveAt(macrosList.SelectedIndex);
             _profile.RemoveMacro(macro.Note);
-            delMacroButton.Enabled = false;
+            editMacroButton.Enabled = false;
+            deleteMacroButton.Enabled = false;
             
             if (_profile.MacrosCount != 0) return;
             macrosList.Items.Add("No macros");
