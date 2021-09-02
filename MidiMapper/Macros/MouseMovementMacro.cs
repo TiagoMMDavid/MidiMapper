@@ -26,31 +26,16 @@ namespace MidiMapper.Macros
             _timer.Elapsed += Timer_OnTimedEvent;
         }
 
-        public override void Execute()
-        {
-            _timer.Start();
-        }
+        public override void Execute() => _timer.Start();
 
-        public override void Stop()
-        {
-            _timer.Stop();
-        }
+        public override void Stop() => _timer.Stop();
 
-        private void Timer_OnTimedEvent(object sender, ElapsedEventArgs e)
-        {
-            // Event is only called when the macro is being executed
-            Mouse.MoveRelative(_xAxis, _yAxis);
-        }
+        // Event is only called when the macro is being executed
+        private void Timer_OnTimedEvent(object sender, ElapsedEventArgs e) => Mouse.MoveRelative(_xAxis, _yAxis);
 
-        public override string GetMacroTaskDescription()
-        {
-            return $"Moves mouse by ({_xAxis},{_yAxis})";
-        }
+        public override string GetMacroTaskDescription() => $"Moves mouse by ({_xAxis},{_yAxis})";
 
-        public override string SerializeMacro()
-        {
-            return SerializeMacro(MacroName, Note, MacroType.MouseMove, $"({_xAxis},{_yAxis})");
-        }
+        public override string SerializeMacro() => SerializeMacro(MacroName, Note, MacroType.MouseMove, $"({_xAxis},{_yAxis})");
 
         public static MouseMovementMacro DeserializeMacro(string macroName, string note, string options)
         {

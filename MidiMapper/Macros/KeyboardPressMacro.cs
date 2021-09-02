@@ -14,25 +14,13 @@ namespace MidiMapper.Macros
             _kbdKey = kbdKey;
         }
 
-        public override void Execute()
-        {
-            Keyboard.KeyDown(_kbdKey);
-        }
+        public override void Execute() => Keyboard.KeyDown(_kbdKey);
 
-        public override void Stop()
-        {
-            Keyboard.KeyUp(_kbdKey);
-        }
+        public override void Stop() => Keyboard.KeyUp(_kbdKey);
 
-        public override string GetMacroTaskDescription()
-        {
-            return $"Presses '{_kbdKey}' keyboard key";
-        }
+        public override string GetMacroTaskDescription() => $"Presses '{_kbdKey}' keyboard key";
 
-        public override string SerializeMacro()
-        {
-            return SerializeMacro(MacroName, Note, MacroType.KbdPress, _kbdKey.ToString());
-        }
+        public override string SerializeMacro() => SerializeMacro(MacroName, Note, MacroType.KbdPress, _kbdKey.ToString());
 
         public static KeyboardPressMacro DeserializeMacro(string macroName, string note, string options)
         {

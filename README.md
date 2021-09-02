@@ -1,7 +1,7 @@
 # MidiMapper (In Development)
 
 ## Overview
-MidiMapper is a Windows Form Application that maps MIDI signals into customizable keyboard/mouse input. The keyboard/mouse input is done using the [InputManager class](https://docs.microsoft.com/en-us/dotnet/api/system.windows.input.inputmanager?view=net-5.0) which supports DirectX and therefore allows in-game inputs. To receive and process MIDI messages the application uses [NAudio](https://github.com/naudio/NAudio) as a library.
+MidiMapper is a Windows Form Application that maps MIDI signals into customizable keyboard/mouse input. The keyboard/mouse input is done using the [InputManager library](https://www.codeproject.com/Articles/117657/InputManager-library-Track-user-input-and-simulate) which supports DirectX and therefore allows in-game inputs. To receive and process MIDI messages the application uses [NAudio](https://github.com/naudio/NAudio) as a library.
 
 The application allows for profiles to be created and loaded. This way it is possible to easily switch between user-made profiles. These profiles can be described through `.txt` files as explained [here](user-profiles) or can be managed via the application's interface.
 

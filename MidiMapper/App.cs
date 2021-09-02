@@ -97,15 +97,10 @@ namespace MidiMapper
             eventLog.Invoke(logMessage);
         }
 
-        private void RefreshMidiDeviceButton_Click(object sender, EventArgs e)
-        {
-            LoadMidiDevices();
-        }
+        private void RefreshMidiDeviceButton_Click(object sender, EventArgs e) => LoadMidiDevices();
 
-        private void SelectMidiDevice_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        private void SelectMidiDevice_SelectedIndexChanged(object sender, EventArgs e) => 
             startMidiButton.Enabled = selectMidiDevice.SelectedIndex != -1;
-        }
 
         private void StartMidiButton_Click(object sender, EventArgs e)
         {
@@ -179,10 +174,7 @@ namespace MidiMapper
             editProfileNameButton.Enabled = false;
         }
 
-        private void ProfileNameTextBox_FocusLost(object sender, EventArgs e)
-        {
-            UpdateProfileName();
-        }
+        private void ProfileNameTextBox_FocusLost(object sender, EventArgs e) => UpdateProfileName();
 
         private void ProfileNameTextBox_KeyDown(object sender, KeyEventArgs e)
         {
@@ -279,48 +271,44 @@ namespace MidiMapper
             if (e.CloseReason != CloseReason.UserClosing || _isCloseApp) return;
             e.Cancel = true;
 
-            // Minimize app to tray icon
-            this.ShowIcon = false;
-            this.Hide();
+            MinimizeAppToTray();
         }
 
-        private void AppNotifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            this.ShowInTaskbar = true;
-            this.Show();
-        }
+        private void AppNotifyIcon_MouseDoubleClick(object sender, MouseEventArgs e) => OpenAppFromTray();
 
-        private void AboutMidiMapperMenuItem_Click(object sender, EventArgs e)
-        {
-            // TODO: Check if it works in release mode
+        // TODO: Check if it works in release mode
+        private void AboutMidiMapperMenuItem_Click(object sender, EventArgs e) =>
             System.Diagnostics.Process.Start(GitHubProjectUrl);
-        }
 
         private void HideShowAppToolStripItem_Click(object sender, EventArgs e)
         {
-            if (_isMinimized)
-            {
-                // Show Form
-                this.ShowInTaskbar = true;
-                this.Show();
-
-                _isMinimized = false;
-                hideShowAppToolStripItem.Text = "Minimize to Tray";
-            } else
-            {
-                // Hide Form
-                this.ShowIcon = false;
-                this.Hide();
-
-                _isMinimized = true;
-                hideShowAppToolStripItem.Text = "Show MidiMapper";
-            }
+            if (_isMinimized) OpenAppFromTray();
+            else MinimizeAppToTray();
         }
 
         private void ExitMidiMapperToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _isCloseApp = true;
             this.Close();
+        }
+
+        private void MinimizeAppToTray()
+        {
+            this.ShowIcon = false;
+            this.Hide();
+
+            _isMinimized = true;
+            hideShowAppToolStripItem.Text = "Show MidiMapper";
+        }
+
+        private void OpenAppFromTray()
+        {
+            this.ShowInTaskbar = true;
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+
+            _isMinimized = false;
+            hideShowAppToolStripItem.Text = "Minimize to Tray";
         }
         #endregion
     }

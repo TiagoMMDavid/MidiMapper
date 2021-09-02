@@ -13,25 +13,13 @@ namespace MidiMapper.Macros
             _mouseKey = mouseKey;
         }
 
-        public override void Execute()
-        {
-            Mouse.ButtonDown(_mouseKey);
-        }
+        public override void Execute() => Mouse.ButtonDown(_mouseKey);
 
-        public override void Stop()
-        {
-            Mouse.ButtonUp(_mouseKey);
-        }
+        public override void Stop() => Mouse.ButtonUp(_mouseKey);
 
-        public override string GetMacroTaskDescription()
-        {
-            return $"Presses '{_mouseKey}' mouse button";
-        }
+        public override string GetMacroTaskDescription() => $"Presses '{_mouseKey}' mouse button";
 
-        public override string SerializeMacro()
-        {
-            return SerializeMacro(MacroName, Note, MacroType.MousePress, _mouseKey.ToString());
-        }
+        public override string SerializeMacro() => SerializeMacro(MacroName, Note, MacroType.MousePress, _mouseKey.ToString());
 
         public static MousePressMacro DeserializeMacro(string macroName, string note, string options)
         {
