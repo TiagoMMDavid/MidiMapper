@@ -7,13 +7,16 @@ namespace MidiMapper.Forms
 {
     public partial class MacrosForm : Form
     {
+        private readonly MidiMapperController _controller;
         private readonly Profile _profile;
 
-        public MacrosForm(Profile profile)
+        public MacrosForm(MidiMapperController controller)
         {
             InitializeComponent();
 
-            _profile = profile;
+            _controller = controller;
+            _profile = _controller.Profile;
+
             KeyDown += MacrosForm_KeyDown;
             LoadMacrosList();
         }
@@ -49,23 +52,20 @@ namespace MidiMapper.Forms
         #region Macro Buttons
         private void NewMacroButton_Click(object sender, EventArgs e)
         {
-            MacroForm newMacroForm = new MacroForm(_profile, newMacro =>
-            {
-                // Called when new macro has been created
-                // TODO:
-            });
+            ManageMacroForm newMacroForm = new ManageMacroForm(_controller);
             newMacroForm.ShowDialog();
+            LoadMacrosList();
         }
 
         private void EditMacroButton_Click(object sender, EventArgs e)
         {
+            editMacroButton.Enabled = false;
+            deleteMacroButton.Enabled = false;
+
             Macro selectedMacro = _profile.GetMacroAtIndex(macrosList.SelectedIndex);
-            MacroForm editMacroForm = new MacroForm(selectedMacro, _profile, newMacro =>
-            {
-                // Called when new macro has been edited
-                // TODO:
-            });
+            ManageMacroForm editMacroForm = new ManageMacroForm(_controller, selectedMacro);
             editMacroForm.ShowDialog();
+            LoadMacrosList();
         }
 
         private void DeleteMacroButton_Click(object sender, EventArgs e) => DeleteSelectedMacro();

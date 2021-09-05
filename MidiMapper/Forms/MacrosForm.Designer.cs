@@ -101,7 +101,7 @@
             this.Name = "MacrosForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MidiMapper - Macros";
+            this.Text = " ";
             this.ResumeLayout(false);
 
         }

@@ -201,7 +201,7 @@ namespace MidiMapper
 
         private void MacrosButton_Click(object sender, EventArgs e)
         {
-            MacrosForm macrosForm = new MacrosForm(_controller.Profile);
+            MacrosForm macrosForm = new MacrosForm(_controller);
             macrosForm.ShowDialog();
         }
         

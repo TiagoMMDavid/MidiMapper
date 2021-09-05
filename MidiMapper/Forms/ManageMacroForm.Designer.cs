@@ -1,6 +1,6 @@
 ﻿namespace MidiMapper.Forms
 {
-    partial class MacroForm
+    partial class ManageMacroForm
     {
         /// <summary>
         /// Required designer variable.
@@ -50,7 +50,18 @@
             this.noteNameListBox = new System.Windows.Forms.ComboBox();
             this.pitchLabel = new System.Windows.Forms.Label();
             this.octaveListBox = new System.Windows.Forms.ComboBox();
+            this.deleteMacroButton = new System.Windows.Forms.Button();
+            this.keyboardKeysListBox = new System.Windows.Forms.ComboBox();
+            this.keyboardPressRadioButton = new System.Windows.Forms.RadioButton();
+            this.macroTypePanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.mousePressRadioButton = new System.Windows.Forms.RadioButton();
+            this.mouseMoveRadioButton = new System.Windows.Forms.RadioButton();
+            this.mouseMoveX = new System.Windows.Forms.NumericUpDown();
+            this.mouseMoveY = new System.Windows.Forms.NumericUpDown();
             this.panel1.SuspendLayout();
+            this.macroTypePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mouseMoveX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mouseMoveY)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -243,6 +254,7 @@
             this.cancelButton.TabIndex = 16;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // okButton
             // 
@@ -349,13 +361,132 @@
             this.octaveListBox.TabIndex = 24;
             this.octaveListBox.SelectedIndexChanged += new System.EventHandler(this.OctaveListBox_SelectedIndexChanged);
             // 
-            // MacroForm
+            // deleteMacroButton
+            // 
+            this.deleteMacroButton.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteMacroButton.Location = new System.Drawing.Point(678, 734);
+            this.deleteMacroButton.Name = "deleteMacroButton";
+            this.deleteMacroButton.Size = new System.Drawing.Size(114, 47);
+            this.deleteMacroButton.TabIndex = 25;
+            this.deleteMacroButton.Text = "Delete Macro";
+            this.deleteMacroButton.UseVisualStyleBackColor = true;
+            this.deleteMacroButton.Visible = false;
+            this.deleteMacroButton.Click += new System.EventHandler(this.DeleteMacroButton_Click);
+            // 
+            // keyboardKeysListBox
+            // 
+            this.keyboardKeysListBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.keyboardKeysListBox.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.keyboardKeysListBox.FormattingEnabled = true;
+            this.keyboardKeysListBox.IntegralHeight = false;
+            this.keyboardKeysListBox.Location = new System.Drawing.Point(291, 166);
+            this.keyboardKeysListBox.MaxDropDownItems = 15;
+            this.keyboardKeysListBox.MaxLength = 2;
+            this.keyboardKeysListBox.Name = "keyboardKeysListBox";
+            this.keyboardKeysListBox.Size = new System.Drawing.Size(256, 26);
+            this.keyboardKeysListBox.TabIndex = 26;
+            // 
+            // keyboardPressRadioButton
+            // 
+            this.keyboardPressRadioButton.AutoSize = true;
+            this.keyboardPressRadioButton.Checked = true;
+            this.keyboardPressRadioButton.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.keyboardPressRadioButton.Location = new System.Drawing.Point(3, 3);
+            this.keyboardPressRadioButton.Name = "keyboardPressRadioButton";
+            this.keyboardPressRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.keyboardPressRadioButton.Size = new System.Drawing.Size(135, 25);
+            this.keyboardPressRadioButton.TabIndex = 27;
+            this.keyboardPressRadioButton.TabStop = true;
+            this.keyboardPressRadioButton.Text = "Keyboard Press";
+            this.keyboardPressRadioButton.UseVisualStyleBackColor = true;
+            this.keyboardPressRadioButton.CheckedChanged += new System.EventHandler(this.KeyboardPressRadioButton_CheckedChanged);
+            // 
+            // macroTypePanel
+            // 
+            this.macroTypePanel.Controls.Add(this.keyboardPressRadioButton);
+            this.macroTypePanel.Controls.Add(this.mousePressRadioButton);
+            this.macroTypePanel.Controls.Add(this.mouseMoveRadioButton);
+            this.macroTypePanel.Location = new System.Drawing.Point(74, 164);
+            this.macroTypePanel.Name = "macroTypePanel";
+            this.macroTypePanel.Size = new System.Drawing.Size(200, 104);
+            this.macroTypePanel.TabIndex = 29;
+            // 
+            // mousePressRadioButton
+            // 
+            this.mousePressRadioButton.AutoSize = true;
+            this.mousePressRadioButton.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mousePressRadioButton.Location = new System.Drawing.Point(3, 34);
+            this.mousePressRadioButton.Name = "mousePressRadioButton";
+            this.mousePressRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.mousePressRadioButton.Size = new System.Drawing.Size(117, 25);
+            this.mousePressRadioButton.TabIndex = 28;
+            this.mousePressRadioButton.Text = "Mouse Press";
+            this.mousePressRadioButton.UseVisualStyleBackColor = true;
+            this.mousePressRadioButton.CheckedChanged += new System.EventHandler(this.MousePressRadioButton_CheckedChanged);
+            // 
+            // mouseMoveRadioButton
+            // 
+            this.mouseMoveRadioButton.AutoSize = true;
+            this.mouseMoveRadioButton.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mouseMoveRadioButton.Location = new System.Drawing.Point(3, 65);
+            this.mouseMoveRadioButton.Name = "mouseMoveRadioButton";
+            this.mouseMoveRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.mouseMoveRadioButton.Size = new System.Drawing.Size(157, 25);
+            this.mouseMoveRadioButton.TabIndex = 29;
+            this.mouseMoveRadioButton.Text = "Mouse Movement";
+            this.mouseMoveRadioButton.UseVisualStyleBackColor = true;
+            this.mouseMoveRadioButton.CheckedChanged += new System.EventHandler(this.MouseMoveRadioButton_CheckedChanged);
+            // 
+            // mouseMoveX
+            // 
+            this.mouseMoveX.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mouseMoveX.Location = new System.Drawing.Point(330, 228);
+            this.mouseMoveX.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.mouseMoveX.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.mouseMoveX.Name = "mouseMoveX";
+            this.mouseMoveX.Size = new System.Drawing.Size(65, 26);
+            this.mouseMoveX.TabIndex = 30;
+            this.mouseMoveX.Visible = false;
+            // 
+            // mouseMoveY
+            // 
+            this.mouseMoveY.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mouseMoveY.Location = new System.Drawing.Point(409, 228);
+            this.mouseMoveY.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.mouseMoveY.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.mouseMoveY.Name = "mouseMoveY";
+            this.mouseMoveY.Size = new System.Drawing.Size(65, 26);
+            this.mouseMoveY.TabIndex = 31;
+            this.mouseMoveY.Visible = false;
+            // 
+            // ManageMacroForm
             // 
             this.AcceptButton = this.okButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(822, 806);
+            this.Controls.Add(this.mouseMoveY);
+            this.Controls.Add(this.mouseMoveX);
+            this.Controls.Add(this.macroTypePanel);
+            this.Controls.Add(this.keyboardKeysListBox);
+            this.Controls.Add(this.deleteMacroButton);
             this.Controls.Add(this.octaveListBox);
             this.Controls.Add(this.pitchLabel);
             this.Controls.Add(this.noteNameListBox);
@@ -368,11 +499,15 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "MacroForm";
+            this.Name = "ManageMacroForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MidiMapper - Customize Macro";
             this.panel1.ResumeLayout(false);
+            this.macroTypePanel.ResumeLayout(false);
+            this.macroTypePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mouseMoveX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mouseMoveY)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -403,5 +538,13 @@
         private System.Windows.Forms.ComboBox noteNameListBox;
         private System.Windows.Forms.Label pitchLabel;
         private System.Windows.Forms.ComboBox octaveListBox;
+        private System.Windows.Forms.Button deleteMacroButton;
+        private System.Windows.Forms.ComboBox keyboardKeysListBox;
+        private System.Windows.Forms.RadioButton keyboardPressRadioButton;
+        private System.Windows.Forms.FlowLayoutPanel macroTypePanel;
+        private System.Windows.Forms.RadioButton mousePressRadioButton;
+        private System.Windows.Forms.RadioButton mouseMoveRadioButton;
+        private System.Windows.Forms.NumericUpDown mouseMoveX;
+        private System.Windows.Forms.NumericUpDown mouseMoveY;
     }
 }

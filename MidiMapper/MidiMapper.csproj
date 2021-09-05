@@ -102,11 +102,11 @@
     <Compile Include="Controller\MidiDevice.cs" />
     <Compile Include="Macros\MouseMovementMacro.cs" />
     <Compile Include="Macros\MousePressMacro.cs" />
-    <Compile Include="Forms\MacroForm.cs">
+    <Compile Include="Forms\ManageMacroForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MacroForm.Designer.cs">
-      <DependentUpon>MacroForm.cs</DependentUpon>
+    <Compile Include="Forms\ManageMacroForm.Designer.cs">
+      <DependentUpon>ManageMacroForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Controller\Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -117,8 +117,8 @@
     <EmbeddedResource Include="Forms\MacrosForm.resx">
       <DependentUpon>MacrosForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MacroForm.resx">
-      <DependentUpon>MacroForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ManageMacroForm.resx">
+      <DependentUpon>ManageMacroForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

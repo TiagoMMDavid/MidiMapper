@@ -1,4 +1,5 @@
-﻿using NAudio.Midi;
+﻿using System.Collections.Generic;
+using NAudio.Midi;
 using MidiMapper.Macros;
 
 namespace MidiMapper.Controller
@@ -9,30 +10,46 @@ namespace MidiMapper.Controller
     public class MidiMapperController
     {
         public Profile Profile { get; set; }
+        public bool MacrosExecuting = true;
         
         private MidiDevice _midiDevice;
-        private OnKeyPressed _onKeyPressedListener;
-        private OnKeyReleased _onKeyReleasedListener;
+        private readonly List<OnKeyPressed> _onKeyPressedListeners = new List<OnKeyPressed>();
+        private readonly List<OnKeyReleased> _onKeyReleasedListeners = new List<OnKeyReleased>();
 
         public void AddMidiDevice(MidiIn midiInput, OnKeyPressed onKeyPressedListener = null, OnKeyReleased onKeyReleasedListener = null)
         {
             _midiDevice = new MidiDevice(midiInput, OnNoteOn, OnNoteOff);
-            _onKeyPressedListener = onKeyPressedListener;
-            _onKeyReleasedListener = onKeyReleasedListener;
+
+            if (onKeyPressedListener != null) _onKeyPressedListeners.Add(onKeyPressedListener);
+            if (onKeyReleasedListener != null) _onKeyReleasedListeners.Add(onKeyReleasedListener);
         }
 
         private void OnNoteOn(string note, int velocity)
         {
-            Macro macro = Profile?.ExecuteMacroIfExists(note, velocity);
-            _onKeyPressedListener?.Invoke(note, velocity, macro);
+            Macro macro = MacrosExecuting ?
+                Profile?.ExecuteMacroIfExists(note, velocity) :
+                Profile?.GetMacro(note);
+
+            // Call all listeners
+            foreach(OnKeyPressed listener in _onKeyPressedListeners)
+                listener?.Invoke(note, velocity, macro);
         }
 
         private void OnNoteOff(string note)
         {
-            Macro macro = Profile?.StopMacroIfExists(note);
-            _onKeyReleasedListener?.Invoke(note, macro);
+            Macro macro = MacrosExecuting ?
+                Profile?.StopMacroIfExists(note) :
+                Profile?.GetMacro(note);
+
+            // Call all listeners
+            foreach (OnKeyReleased listener in _onKeyReleasedListeners)
+                listener?.Invoke(note, macro);
         }
 
+        public void AddKeyPressedListener(OnKeyPressed listener) => _onKeyPressedListeners.Add(listener);
+        public void RemoveKeyPressedListener(OnKeyPressed listener) => _onKeyPressedListeners.Remove(listener);
+        public void AddKeyReleasedListener(OnKeyReleased listener) => _onKeyReleasedListeners.Add(listener);
+        public void RemoveKeyReleasedListener(OnKeyReleased listener) => _onKeyReleasedListeners.Remove(listener);
 
         public void CloseMidiDevice()
         {
