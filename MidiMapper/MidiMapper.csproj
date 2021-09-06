@@ -39,29 +39,11 @@
     <Reference Include="InputManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\InputManager.1.0.0\lib\InputManager.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Win32.Registry, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Win32.Registry.4.7.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
-    </Reference>
-    <Reference Include="NAudio, Version=2.0.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
-      <HintPath>packages\NAudio.2.0.1\lib\netstandard2.0\NAudio.dll</HintPath>
-    </Reference>
-    <Reference Include="NAudio.Asio, Version=2.0.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
-      <HintPath>packages\NAudio.Asio.2.0.0\lib\netstandard2.0\NAudio.Asio.dll</HintPath>
-    </Reference>
     <Reference Include="NAudio.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
       <HintPath>packages\NAudio.Core.2.0.0\lib\netstandard2.0\NAudio.Core.dll</HintPath>
     </Reference>
     <Reference Include="NAudio.Midi, Version=2.0.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
       <HintPath>packages\NAudio.Midi.2.0.1\lib\netstandard2.0\NAudio.Midi.dll</HintPath>
-    </Reference>
-    <Reference Include="NAudio.Wasapi, Version=2.0.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
-      <HintPath>packages\NAudio.Wasapi.2.0.0\lib\netstandard2.0\NAudio.Wasapi.dll</HintPath>
-    </Reference>
-    <Reference Include="NAudio.WinForms, Version=2.0.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
-      <HintPath>packages\NAudio.WinForms.2.0.1\lib\net472\NAudio.WinForms.dll</HintPath>
-    </Reference>
-    <Reference Include="NAudio.WinMM, Version=2.0.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
-      <HintPath>packages\NAudio.WinMM.2.0.1\lib\netstandard2.0\NAudio.WinMM.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -88,36 +70,38 @@
     <Compile Include="App.Designer.cs">
       <DependentUpon>App.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controller\MidiMapperController.cs" />
-    <Compile Include="Exceptions\DeserializeMacroException.cs" />
-    <Compile Include="Exceptions\ParseProfileFileException.cs" />
-    <Compile Include="Macros\KeyboardPressMacro.cs" />
-    <Compile Include="Macros\Macro.cs" />
-    <Compile Include="Forms\MacrosForm.cs">
+    <Compile Include="Source\Controller\MidiMapperController.cs" />
+    <Compile Include="Source\Enums\MouseButtons.cs" />
+    <Compile Include="Source\Enums\KeyboardKeys.cs" />
+    <Compile Include="Source\Exceptions\DeserializeMacroException.cs" />
+    <Compile Include="Source\Exceptions\ParseProfileFileException.cs" />
+    <Compile Include="Source\Macros\KeyboardPressMacro.cs" />
+    <Compile Include="Source\Macros\Macro.cs" />
+    <Compile Include="Source\Forms\MacrosForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MacrosForm.Designer.cs">
+    <Compile Include="Source\Forms\MacrosForm.Designer.cs">
       <DependentUpon>MacrosForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controller\MidiDevice.cs" />
-    <Compile Include="Macros\MouseMovementMacro.cs" />
-    <Compile Include="Macros\MousePressMacro.cs" />
-    <Compile Include="Forms\ManageMacroForm.cs">
+    <Compile Include="Source\Controller\MidiDevice.cs" />
+    <Compile Include="Source\Macros\MouseMovementMacro.cs" />
+    <Compile Include="Source\Macros\MousePressMacro.cs" />
+    <Compile Include="Source\Forms\ManageMacroForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ManageMacroForm.Designer.cs">
+    <Compile Include="Source\Forms\ManageMacroForm.Designer.cs">
       <DependentUpon>ManageMacroForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controller\Profile.cs" />
+    <Compile Include="Source\Controller\Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\MidiUtils.cs" />
+    <Compile Include="Source\Utils\MidiUtils.cs" />
     <EmbeddedResource Include="App.resx">
       <DependentUpon>App.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MacrosForm.resx">
+    <EmbeddedResource Include="Source\Forms\MacrosForm.resx">
       <DependentUpon>MacrosForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ManageMacroForm.resx">
+    <EmbeddedResource Include="Source\Forms\ManageMacroForm.resx">
       <DependentUpon>ManageMacroForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -174,5 +158,6 @@
   <ItemGroup>
     <None Include="Resources\notification-icon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -37,14 +37,9 @@ namespace MidiMapper.Controller
             _macros.Add(note, macro);
         }
 
-        public Macro GetMacro(string note)
-        {
-            Macro macro = _macros[note] as Macro;
-            if (macro == null)
-                throw new ArgumentException($"Macro in note '{note}' does not exist");
+        public bool HasMacro(string note) => _macros.Contains(note);
 
-            return macro;
-        }
+        public Macro GetMacro(string note) => _macros[note] as Macro;
 
         public Macro GetMacroAtIndex(int idx)
         {

@@ -4,8 +4,8 @@ Accelerate;D#4;KBD_Press;W
 Reverse;C#4;KBD_Press;S
 Turn left;B3;KBD_Press;A
 Turn right;F4;KBD_Press;D
-Boost;F3;Mouse_Press;Left
-Jump;G3;Mouse_Press;Right
-Drift;E3;KBD_Press;LShiftKey
+Boost;F3;Mouse_Press;LeftButton
+Jump;G3;Mouse_Press;RightButton
+Drift;E3;KBD_Press;LeftShift
 ScoreBoard;C6;KBD_Press;Tab
 Camera;C3;KBD_Press;Space

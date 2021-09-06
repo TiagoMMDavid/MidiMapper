@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using InputManager;
+using MidiMapper.Enums;
 using MidiMapper.Exceptions;
 
 namespace MidiMapper.Macros
@@ -8,23 +9,26 @@ namespace MidiMapper.Macros
     public class KeyboardPressMacro : Macro
     {
         private readonly Keys _kbdKey;
+        private readonly string _keyName;
 
-        public KeyboardPressMacro(string macroName, string note, Keys kbdKey) : base(macroName, note)
+        public KeyboardPressMacro(string macroName, string note, KeyboardKeys kbdKey) : base(macroName, note)
         {
-            _kbdKey = kbdKey;
+            _keyName = kbdKey.ToString();
+            string enumName = Enum.GetName(typeof(Keys), (int) kbdKey);
+            _kbdKey = (Keys) Enum.Parse(typeof(Keys), enumName, true);
         }
 
         public override void Execute() => Keyboard.KeyDown(_kbdKey);
 
         public override void Stop() => Keyboard.KeyUp(_kbdKey);
 
-        public override string GetMacroTaskDescription() => $"Presses '{_kbdKey}' keyboard key";
+        public override string GetMacroTaskDescription() => $"Presses '{_keyName}' keyboard key";
 
         public override string SerializeMacro() => SerializeMacro(MacroName, Note, MacroType.KbdPress, _kbdKey.ToString());
 
         public static KeyboardPressMacro DeserializeMacro(string macroName, string note, string options)
         {
-            if (!Enum.TryParse(options, false, out Keys key))
+            if (!Enum.TryParse(options, true, out KeyboardKeys key))
                 throw new DeserializeMacroException($"'{options}' is not a valid keyboard key");
             
             return new KeyboardPressMacro(macroName, note, key);

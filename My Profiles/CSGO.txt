@@ -17,11 +17,11 @@ Weapon 2;G#2;KBD_Press;D2
 Weapon 3;A#2;KBD_Press;D3
 Weapon 4;C#3;KBD_Press;D4
 Weapon 5;D#3;KBD_Press;D5
-Sneak;A#3;KBD_Press;LShiftKey
-Crouch;B3;KBD_Press;LControlKey
+Sneak;A#3;KBD_Press;LeftShift
+Crouch;B3;KBD_Press;RightShift
 ScoreBoard;C7;KBD_Press;Tab
-Shoot;D5;Mouse_Press;Left
-Scope;F5;Mouse_Press;Right
+Shoot;D5;Mouse_Press;LeftButton
+Scope;F5;Mouse_Press;RightButton
 Look up;D#5;Mouse_Move;(0,-1)
 Look down;C#5;Mouse_Move;(0,1)
 Look left;C5;Mouse_Move;(-1,0)

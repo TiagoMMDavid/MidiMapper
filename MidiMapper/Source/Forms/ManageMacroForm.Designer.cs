@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pianoKeyboardPanel = new System.Windows.Forms.Panel();
             this.aSharpButton = new System.Windows.Forms.Button();
             this.gSharpButton = new System.Windows.Forms.Button();
             this.fSharpButton = new System.Windows.Forms.Button();
@@ -51,37 +51,40 @@
             this.pitchLabel = new System.Windows.Forms.Label();
             this.octaveListBox = new System.Windows.Forms.ComboBox();
             this.deleteMacroButton = new System.Windows.Forms.Button();
-            this.keyboardKeysListBox = new System.Windows.Forms.ComboBox();
+            this.keysListBox = new System.Windows.Forms.ComboBox();
             this.keyboardPressRadioButton = new System.Windows.Forms.RadioButton();
-            this.macroTypePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.mousePressRadioButton = new System.Windows.Forms.RadioButton();
             this.mouseMoveRadioButton = new System.Windows.Forms.RadioButton();
             this.mouseMoveX = new System.Windows.Forms.NumericUpDown();
             this.mouseMoveY = new System.Windows.Forms.NumericUpDown();
-            this.panel1.SuspendLayout();
-            this.macroTypePanel.SuspendLayout();
+            this.midiTipLabel = new System.Windows.Forms.Label();
+            this.mouseXLabel = new System.Windows.Forms.Label();
+            this.mouseYLabel = new System.Windows.Forms.Label();
+            this.macroTypePanel = new System.Windows.Forms.Panel();
+            this.pianoKeyboardPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mouseMoveX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mouseMoveY)).BeginInit();
+            this.macroTypePanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // pianoKeyboardPanel
             // 
-            this.panel1.Controls.Add(this.aSharpButton);
-            this.panel1.Controls.Add(this.gSharpButton);
-            this.panel1.Controls.Add(this.fSharpButton);
-            this.panel1.Controls.Add(this.dSharpButton);
-            this.panel1.Controls.Add(this.cSharpButton);
-            this.panel1.Controls.Add(this.bButton);
-            this.panel1.Controls.Add(this.aButton);
-            this.panel1.Controls.Add(this.gButton);
-            this.panel1.Controls.Add(this.fButton);
-            this.panel1.Controls.Add(this.eButton);
-            this.panel1.Controls.Add(this.dButton);
-            this.panel1.Controls.Add(this.cButton);
-            this.panel1.Location = new System.Drawing.Point(225, 469);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(441, 200);
-            this.panel1.TabIndex = 2;
+            this.pianoKeyboardPanel.Controls.Add(this.aSharpButton);
+            this.pianoKeyboardPanel.Controls.Add(this.gSharpButton);
+            this.pianoKeyboardPanel.Controls.Add(this.fSharpButton);
+            this.pianoKeyboardPanel.Controls.Add(this.dSharpButton);
+            this.pianoKeyboardPanel.Controls.Add(this.cSharpButton);
+            this.pianoKeyboardPanel.Controls.Add(this.bButton);
+            this.pianoKeyboardPanel.Controls.Add(this.aButton);
+            this.pianoKeyboardPanel.Controls.Add(this.gButton);
+            this.pianoKeyboardPanel.Controls.Add(this.fButton);
+            this.pianoKeyboardPanel.Controls.Add(this.eButton);
+            this.pianoKeyboardPanel.Controls.Add(this.dButton);
+            this.pianoKeyboardPanel.Controls.Add(this.cButton);
+            this.pianoKeyboardPanel.Location = new System.Drawing.Point(225, 469);
+            this.pianoKeyboardPanel.Name = "pianoKeyboardPanel";
+            this.pianoKeyboardPanel.Size = new System.Drawing.Size(441, 200);
+            this.pianoKeyboardPanel.TabIndex = 2;
             // 
             // aSharpButton
             // 
@@ -373,25 +376,25 @@
             this.deleteMacroButton.Visible = false;
             this.deleteMacroButton.Click += new System.EventHandler(this.DeleteMacroButton_Click);
             // 
-            // keyboardKeysListBox
+            // keysListBox
             // 
-            this.keyboardKeysListBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.keyboardKeysListBox.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.keyboardKeysListBox.FormattingEnabled = true;
-            this.keyboardKeysListBox.IntegralHeight = false;
-            this.keyboardKeysListBox.Location = new System.Drawing.Point(291, 166);
-            this.keyboardKeysListBox.MaxDropDownItems = 15;
-            this.keyboardKeysListBox.MaxLength = 2;
-            this.keyboardKeysListBox.Name = "keyboardKeysListBox";
-            this.keyboardKeysListBox.Size = new System.Drawing.Size(256, 26);
-            this.keyboardKeysListBox.TabIndex = 26;
+            this.keysListBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.keysListBox.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.keysListBox.FormattingEnabled = true;
+            this.keysListBox.IntegralHeight = false;
+            this.keysListBox.Location = new System.Drawing.Point(317, 282);
+            this.keysListBox.MaxDropDownItems = 15;
+            this.keysListBox.MaxLength = 2;
+            this.keysListBox.Name = "keysListBox";
+            this.keysListBox.Size = new System.Drawing.Size(256, 26);
+            this.keysListBox.TabIndex = 26;
             // 
             // keyboardPressRadioButton
             // 
             this.keyboardPressRadioButton.AutoSize = true;
             this.keyboardPressRadioButton.Checked = true;
             this.keyboardPressRadioButton.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.keyboardPressRadioButton.Location = new System.Drawing.Point(3, 3);
+            this.keyboardPressRadioButton.Location = new System.Drawing.Point(15, 25);
             this.keyboardPressRadioButton.Name = "keyboardPressRadioButton";
             this.keyboardPressRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.keyboardPressRadioButton.Size = new System.Drawing.Size(135, 25);
@@ -401,21 +404,11 @@
             this.keyboardPressRadioButton.UseVisualStyleBackColor = true;
             this.keyboardPressRadioButton.CheckedChanged += new System.EventHandler(this.KeyboardPressRadioButton_CheckedChanged);
             // 
-            // macroTypePanel
-            // 
-            this.macroTypePanel.Controls.Add(this.keyboardPressRadioButton);
-            this.macroTypePanel.Controls.Add(this.mousePressRadioButton);
-            this.macroTypePanel.Controls.Add(this.mouseMoveRadioButton);
-            this.macroTypePanel.Location = new System.Drawing.Point(74, 164);
-            this.macroTypePanel.Name = "macroTypePanel";
-            this.macroTypePanel.Size = new System.Drawing.Size(200, 104);
-            this.macroTypePanel.TabIndex = 29;
-            // 
             // mousePressRadioButton
             // 
             this.mousePressRadioButton.AutoSize = true;
             this.mousePressRadioButton.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mousePressRadioButton.Location = new System.Drawing.Point(3, 34);
+            this.mousePressRadioButton.Location = new System.Drawing.Point(202, 25);
             this.mousePressRadioButton.Name = "mousePressRadioButton";
             this.mousePressRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.mousePressRadioButton.Size = new System.Drawing.Size(117, 25);
@@ -428,7 +421,7 @@
             // 
             this.mouseMoveRadioButton.AutoSize = true;
             this.mouseMoveRadioButton.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mouseMoveRadioButton.Location = new System.Drawing.Point(3, 65);
+            this.mouseMoveRadioButton.Location = new System.Drawing.Point(365, 25);
             this.mouseMoveRadioButton.Name = "mouseMoveRadioButton";
             this.mouseMoveRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.mouseMoveRadioButton.Size = new System.Drawing.Size(157, 25);
@@ -440,7 +433,7 @@
             // mouseMoveX
             // 
             this.mouseMoveX.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mouseMoveX.Location = new System.Drawing.Point(330, 228);
+            this.mouseMoveX.Location = new System.Drawing.Point(380, 326);
             this.mouseMoveX.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -459,7 +452,7 @@
             // mouseMoveY
             // 
             this.mouseMoveY.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mouseMoveY.Location = new System.Drawing.Point(409, 228);
+            this.mouseMoveY.Location = new System.Drawing.Point(380, 358);
             this.mouseMoveY.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -475,6 +468,48 @@
             this.mouseMoveY.TabIndex = 31;
             this.mouseMoveY.Visible = false;
             // 
+            // midiTipLabel
+            // 
+            this.midiTipLabel.AutoSize = true;
+            this.midiTipLabel.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.midiTipLabel.Location = new System.Drawing.Point(442, 671);
+            this.midiTipLabel.Name = "midiTipLabel";
+            this.midiTipLabel.Size = new System.Drawing.Size(222, 14);
+            this.midiTipLabel.TabIndex = 32;
+            this.midiTipLabel.Text = "Tip: Press your MIDI device to pick a key";
+            // 
+            // mouseXLabel
+            // 
+            this.mouseXLabel.AutoSize = true;
+            this.mouseXLabel.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mouseXLabel.Location = new System.Drawing.Point(327, 328);
+            this.mouseXLabel.Name = "mouseXLabel";
+            this.mouseXLabel.Size = new System.Drawing.Size(51, 21);
+            this.mouseXLabel.TabIndex = 33;
+            this.mouseXLabel.Text = "X Axis";
+            this.mouseXLabel.Visible = false;
+            // 
+            // mouseYLabel
+            // 
+            this.mouseYLabel.AutoSize = true;
+            this.mouseYLabel.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mouseYLabel.Location = new System.Drawing.Point(328, 360);
+            this.mouseYLabel.Name = "mouseYLabel";
+            this.mouseYLabel.Size = new System.Drawing.Size(50, 21);
+            this.mouseYLabel.TabIndex = 34;
+            this.mouseYLabel.Text = "Y Axis";
+            this.mouseYLabel.Visible = false;
+            // 
+            // macroTypePanel
+            // 
+            this.macroTypePanel.Controls.Add(this.mousePressRadioButton);
+            this.macroTypePanel.Controls.Add(this.keyboardPressRadioButton);
+            this.macroTypePanel.Controls.Add(this.mouseMoveRadioButton);
+            this.macroTypePanel.Location = new System.Drawing.Point(155, 118);
+            this.macroTypePanel.Name = "macroTypePanel";
+            this.macroTypePanel.Size = new System.Drawing.Size(604, 132);
+            this.macroTypePanel.TabIndex = 35;
+            // 
             // ManageMacroForm
             // 
             this.AcceptButton = this.okButton;
@@ -482,10 +517,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(822, 806);
+            this.Controls.Add(this.macroTypePanel);
+            this.Controls.Add(this.mouseYLabel);
+            this.Controls.Add(this.mouseXLabel);
+            this.Controls.Add(this.midiTipLabel);
             this.Controls.Add(this.mouseMoveY);
             this.Controls.Add(this.mouseMoveX);
-            this.Controls.Add(this.macroTypePanel);
-            this.Controls.Add(this.keyboardKeysListBox);
+            this.Controls.Add(this.keysListBox);
             this.Controls.Add(this.deleteMacroButton);
             this.Controls.Add(this.octaveListBox);
             this.Controls.Add(this.pitchLabel);
@@ -496,18 +534,19 @@
             this.Controls.Add(this.macroNameTextBox);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okButton);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pianoKeyboardPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "ManageMacroForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MidiMapper - Customize Macro";
-            this.panel1.ResumeLayout(false);
-            this.macroTypePanel.ResumeLayout(false);
-            this.macroTypePanel.PerformLayout();
+            this.pianoKeyboardPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mouseMoveX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mouseMoveY)).EndInit();
+            this.macroTypePanel.ResumeLayout(false);
+            this.macroTypePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -527,7 +566,7 @@
         private System.Windows.Forms.Button gButton;
         private System.Windows.Forms.Button gSharpButton;
         private System.Windows.Forms.Button okButton;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pianoKeyboardPanel;
 
         #endregion
 
@@ -539,12 +578,15 @@
         private System.Windows.Forms.Label pitchLabel;
         private System.Windows.Forms.ComboBox octaveListBox;
         private System.Windows.Forms.Button deleteMacroButton;
-        private System.Windows.Forms.ComboBox keyboardKeysListBox;
+        private System.Windows.Forms.ComboBox keysListBox;
         private System.Windows.Forms.RadioButton keyboardPressRadioButton;
-        private System.Windows.Forms.FlowLayoutPanel macroTypePanel;
         private System.Windows.Forms.RadioButton mousePressRadioButton;
         private System.Windows.Forms.RadioButton mouseMoveRadioButton;
         private System.Windows.Forms.NumericUpDown mouseMoveX;
         private System.Windows.Forms.NumericUpDown mouseMoveY;
+        private System.Windows.Forms.Label midiTipLabel;
+        private System.Windows.Forms.Label mouseXLabel;
+        private System.Windows.Forms.Label mouseYLabel;
+        private System.Windows.Forms.Panel macroTypePanel;
     }
 }
