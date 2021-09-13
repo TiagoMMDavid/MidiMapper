@@ -19,7 +19,8 @@ The following diagram displays the system's overview:
 MidiMapper exposes the following functionalities:
 - Functional and intuitive Windows Form Application to map MIDI signals into keyboard/mouse input
 - MIDI device selection
-- Text box that displays the keys being pressed and its respective macros
+- Run in background option
+- Event Log which displays the keys being pressed and its respective macros
 - Profile management
     - Create unlimited profiles with sets of macros
     - Customize macros
@@ -30,8 +31,6 @@ MidiMapper exposes the following functionalities:
     - Load profiles into MidiMapper
 
 ## Preview
-*To be added...*
-
 <img src="resources/app-preview.png" width="850">
 
 ## MIDI Device Setup

@@ -288,6 +288,39 @@
   <metadata name="notificationMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>146, 17</value>
   </metadata>
+  <data name="midiMapperMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="midiMapperMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 22</value>
+  </data>
+  <data name="midiMapperMenuItem.Text" xml:space="preserve">
+    <value>MidiMapper</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 6</value>
+  </data>
+  <data name="aboutMidiMapperMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 22</value>
+  </data>
+  <data name="aboutMidiMapperMenuItem.Text" xml:space="preserve">
+    <value>About MidiMapper</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 6</value>
+  </data>
+  <data name="hideShowAppToolStripItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 22</value>
+  </data>
+  <data name="hideShowAppToolStripItem.Text" xml:space="preserve">
+    <value>Minimize to Tray</value>
+  </data>
+  <data name="exitMidiMapperToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 22</value>
+  </data>
+  <data name="exitMidiMapperToolStripMenuItem.Text" xml:space="preserve">
+    <value>Exit MidiMapper</value>
+  </data>
   <data name="notificationMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>176, 104</value>
   </data>
@@ -2014,43 +2047,10 @@
 </value>
   </data>
   <data name="appNotifyIcon.Text" xml:space="preserve">
-    <value>appNotifyIcon</value>
+    <value>MidiMapper</value>
   </data>
   <data name="appNotifyIcon.Visible" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="midiMapperMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="midiMapperMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
-  </data>
-  <data name="midiMapperMenuItem.Text" xml:space="preserve">
-    <value>MidiMapper</value>
-  </data>
-  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 6</value>
-  </data>
-  <data name="aboutMidiMapperMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
-  </data>
-  <data name="aboutMidiMapperMenuItem.Text" xml:space="preserve">
-    <value>About MidiMapper</value>
-  </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 6</value>
-  </data>
-  <data name="hideShowAppToolStripItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
-  </data>
-  <data name="hideShowAppToolStripItem.Text" xml:space="preserve">
-    <value>Minimize to Tray</value>
-  </data>
-  <data name="exitMidiMapperToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
-  </data>
-  <data name="exitMidiMapperToolStripMenuItem.Text" xml:space="preserve">
-    <value>Exit MidiMapper</value>
   </data>
   <data name="editProfileNameButton.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>

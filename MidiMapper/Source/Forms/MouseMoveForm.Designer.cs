@@ -108,12 +108,12 @@
             this.mouseMoveY.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mouseMoveY.Location = new System.Drawing.Point(99, 139);
             this.mouseMoveY.Maximum = new decimal(new int[] {
-            1000,
+            2147483647,
             0,
             0,
             0});
             this.mouseMoveY.Minimum = new decimal(new int[] {
-            1000,
+            -2147483648,
             0,
             0,
             -2147483648});
@@ -127,12 +127,12 @@
             this.mouseMoveX.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mouseMoveX.Location = new System.Drawing.Point(99, 107);
             this.mouseMoveX.Maximum = new decimal(new int[] {
-            1000,
+            2147483647,
             0,
             0,
             0});
             this.mouseMoveX.Minimum = new decimal(new int[] {
-            1000,
+            -2147483648,
             0,
             0,
             -2147483648});
