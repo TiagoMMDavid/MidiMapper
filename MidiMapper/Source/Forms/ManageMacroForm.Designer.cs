@@ -1,4 +1,6 @@
-﻿namespace MidiMapper.Forms
+﻿using MidiMapper.Source.Forms.Controls;
+
+namespace MidiMapper.Forms
 {
     partial class ManageMacroForm
     {
@@ -40,10 +42,10 @@
             this.macroTypePanel = new System.Windows.Forms.Panel();
             this.midiTipLabel = new System.Windows.Forms.Label();
             this.macroTypeLabel = new System.Windows.Forms.Label();
-            this.keyboardForm = new MidiMapper.Source.Forms.KeyboardForm();
-            this.pianoForm = new MidiMapper.Source.Forms.PianoForm();
-            this.mousePressForm = new MidiMapper.Source.Forms.MousePressForm();
-            this.mouseMoveForm = new MidiMapper.Source.Forms.MouseMoveForm();
+            this.keyboardForm = new KeyboardControl();
+            this.pianoForm = new PianoControl();
+            this.mousePressForm = new MousePressControl();
+            this.mouseMoveForm = new MouseMoveControl();
             this.macroTypePanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -247,11 +249,11 @@
         private System.Windows.Forms.RadioButton mousePressRadioButton;
         private System.Windows.Forms.RadioButton mouseMoveRadioButton;
         private System.Windows.Forms.Panel macroTypePanel;
-        private Source.Forms.PianoForm pianoForm;
+        private PianoControl pianoForm;
         private System.Windows.Forms.Label midiTipLabel;
-        private Source.Forms.KeyboardForm keyboardForm;
+        private KeyboardControl keyboardForm;
         private System.Windows.Forms.Label macroTypeLabel;
-        private Source.Forms.MousePressForm mousePressForm;
-        private Source.Forms.MouseMoveForm mouseMoveForm;
+        private MousePressControl mousePressForm;
+        private MouseMoveControl mouseMoveForm;
     }
 }

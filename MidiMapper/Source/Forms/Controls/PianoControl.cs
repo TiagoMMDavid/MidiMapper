@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace MidiMapper.Source.Forms
+namespace MidiMapper.Source.Forms.Controls
 {
-    public partial class PianoForm : UserControl
+    public partial class PianoControl : UserControl
     {
         public string Note { get => noteNameLabel.Text; }
 
-        public PianoForm()
+        public PianoControl()
         {
             InitializeComponent();
             UpdateNote("C", "4");

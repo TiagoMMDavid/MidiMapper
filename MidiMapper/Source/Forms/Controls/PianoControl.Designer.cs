@@ -1,6 +1,6 @@
-﻿namespace MidiMapper.Source.Forms
+﻿namespace MidiMapper.Source.Forms.Controls
 {
-    partial class PianoForm
+    partial class PianoControl
     {
         /// <summary> 
         /// Required designer variable.

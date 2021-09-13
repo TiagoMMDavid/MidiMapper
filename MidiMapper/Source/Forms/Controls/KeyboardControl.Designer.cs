@@ -1,6 +1,6 @@
-﻿namespace MidiMapper.Source.Forms
+﻿namespace MidiMapper.Source.Forms.Controls
 {
-    partial class KeyboardForm
+    partial class KeyboardControl
     {
         /// <summary> 
         /// Required designer variable.

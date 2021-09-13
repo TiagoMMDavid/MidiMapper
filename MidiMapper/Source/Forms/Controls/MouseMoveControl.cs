@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace MidiMapper.Source.Forms
+namespace MidiMapper.Source.Forms.Controls
 {
-    public partial class MouseMoveForm : UserControl
+    public partial class MouseMoveControl : UserControl
     {
         public int X { get; private set; }
         public int Y { get; private set; }
 
-        public MouseMoveForm()
+        public MouseMoveControl()
         {
             InitializeComponent();
         }

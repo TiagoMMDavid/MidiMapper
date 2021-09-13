@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
-using MidiMapper.Enums;
 
-namespace MidiMapper.Source.Forms
+namespace MidiMapper.Source.Forms.Controls
 {
-    public partial class MousePressForm : UserControl
+    public partial class MousePressControl : UserControl
     {
         public Enums.MouseButtons? MouseButton { get; private set; }
 
-        public MousePressForm()
+        public MousePressControl()
         {
             InitializeComponent();
 

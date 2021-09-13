@@ -1,6 +1,6 @@
-﻿namespace MidiMapper.Source.Forms
+﻿namespace MidiMapper.Source.Forms.Controls
 {
-    partial class MousePressForm
+    partial class MousePressControl
     {
         /// <summary> 
         /// Required designer variable.

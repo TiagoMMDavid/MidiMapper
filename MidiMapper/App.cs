@@ -124,6 +124,7 @@ namespace MidiMapper
             refreshMidiDevicesButton.Enabled = true;
             LoadMidiDevices();
 
+            _controller.RemoveKeyPressedListener(OnKeyPressed);
             _controller.CloseMidiDevice();
             LogMessage("Device successfully disconnected");
         }

@@ -4,13 +4,13 @@ using System.Linq;
 using System.Windows.Forms;
 using MidiMapper.Enums;
 
-namespace MidiMapper.Source.Forms
+namespace MidiMapper.Source.Forms.Controls
 {
-    public partial class KeyboardForm : UserControl
+    public partial class KeyboardControl : UserControl
     {
         public KeyboardKeys? Key { get; private set; }
 
-        public KeyboardForm()
+        public KeyboardControl()
         {
             InitializeComponent();
 

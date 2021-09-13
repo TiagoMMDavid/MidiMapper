@@ -73,29 +73,29 @@
     <Compile Include="Source\Enums\KeyboardKeys.cs" />
     <Compile Include="Source\Exceptions\DeserializeMacroException.cs" />
     <Compile Include="Source\Exceptions\ParseProfileFileException.cs" />
-    <Compile Include="Source\Forms\MouseMoveForm.cs">
+    <Compile Include="Source\Forms\Controls\MouseMoveControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\Forms\MouseMoveForm.Designer.cs">
-      <DependentUpon>MouseMoveForm.cs</DependentUpon>
+    <Compile Include="Source\Forms\Controls\MouseMoveControl.Designer.cs">
+      <DependentUpon>MouseMoveControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\MousePressForm.cs">
+    <Compile Include="Source\Forms\Controls\MousePressControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\Forms\MousePressForm.Designer.cs">
-      <DependentUpon>MousePressForm.cs</DependentUpon>
+    <Compile Include="Source\Forms\Controls\MousePressControl.Designer.cs">
+      <DependentUpon>MousePressControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\KeyboardForm.cs">
+    <Compile Include="Source\Forms\Controls\KeyboardControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\Forms\KeyboardForm.Designer.cs">
-      <DependentUpon>KeyboardForm.cs</DependentUpon>
+    <Compile Include="Source\Forms\Controls\KeyboardControl.Designer.cs">
+      <DependentUpon>KeyboardControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\PianoForm.cs">
+    <Compile Include="Source\Forms\Controls\PianoControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\Forms\PianoForm.Designer.cs">
-      <DependentUpon>PianoForm.cs</DependentUpon>
+    <Compile Include="Source\Forms\Controls\PianoControl.Designer.cs">
+      <DependentUpon>PianoControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\Macros\KeyboardPressMacro.cs" />
     <Compile Include="Source\Macros\Macro.cs" />
@@ -120,14 +120,14 @@
     <EmbeddedResource Include="App.resx">
       <DependentUpon>App.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Forms\MouseMoveForm.resx">
-      <DependentUpon>MouseMoveForm.cs</DependentUpon>
+    <EmbeddedResource Include="Source\Forms\Controls\MouseMoveControl.resx">
+      <DependentUpon>MouseMoveControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Forms\MousePressForm.resx">
-      <DependentUpon>MousePressForm.cs</DependentUpon>
+    <EmbeddedResource Include="Source\Forms\Controls\MousePressControl.resx">
+      <DependentUpon>MousePressControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Forms\KeyboardForm.resx">
-      <DependentUpon>KeyboardForm.cs</DependentUpon>
+    <EmbeddedResource Include="Source\Forms\Controls\KeyboardControl.resx">
+      <DependentUpon>KeyboardControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\Forms\MacrosForm.resx">
       <DependentUpon>MacrosForm.cs</DependentUpon>
@@ -145,8 +145,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Source\Forms\PianoForm.resx">
-      <DependentUpon>PianoForm.cs</DependentUpon>
+    <EmbeddedResource Include="Source\Forms\Controls\PianoControl.resx">
+      <DependentUpon>PianoControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
