@@ -51,50 +51,28 @@ namespace MidiMapper.Forms
                     keyboardForm.UpdateKey((macro as KeyboardPressMacro).Key);
                     break;
                 case Macro.MacroType.MousePress:
-                    // TODO:
+                    mousePressRadioButton.Checked = true;
+                    mousePressForm.UpdateButton((macro as MousePressMacro).MouseButton);
                     break;
                 case Macro.MacroType.MouseMove:
-                    //TODO:
+                    mouseMoveRadioButton.Checked = true;
+                    MouseMovementMacro mouseMacro = macro as MouseMovementMacro;
+                    mouseMoveForm.UpdateAxis(mouseMacro.X, mouseMacro.Y);
                     break;
             }
         }
 
         #region Macro Function Controls
-        private void KeyboardPressRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
+
+        private void KeyboardPressRadioButton_CheckedChanged(object sender, EventArgs e) =>
             keyboardForm.Visible = keyboardPressRadioButton.Checked;
-            /*
-            keysListBox.Visible = mousePressRadioButton.Checked || keyboardPressRadioButton.Checked;
-            if (!keyboardPressRadioButton.Checked) return;
 
-            keysListBox.Items.Clear();
-            string[] keyboardKeys = Enum.GetNames(typeof(KeyboardKeys));
-            keysListBox.Items.AddRange(keyboardKeys); */
-        }
+        private void MousePressRadioButton_CheckedChanged(object sender, EventArgs e) =>
+            mousePressForm.Visible = mousePressRadioButton.Checked;
 
-        private void MousePressRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            /*
-            keysListBox.Visible = mousePressRadioButton.Checked || keyboardPressRadioButton.Checked;
-            if (!mousePressRadioButton.Checked) return;
+        private void MouseMoveRadioButton_CheckedChanged(object sender, EventArgs e) =>
+            mouseMoveForm.Visible = mouseMoveRadioButton.Checked;
 
-            string[] mouseButtons = Enum.GetNames(typeof(Enums.MouseButtons));
-            keysListBox.Items.Clear();
-            keysListBox.Items.AddRange(mouseButtons); */
-        }
-
-        private void MouseMoveRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            /*
-            mouseMoveX.Visible = mouseMoveRadioButton.Checked;
-            mouseMoveY.Visible = mouseMoveRadioButton.Checked;
-            mouseXLabel.Visible = mouseMoveRadioButton.Checked;
-            mouseYLabel.Visible = mouseMoveRadioButton.Checked;
-
-            if (!mouseMoveRadioButton.Checked) return;
-
-            */
-        }
         #endregion
 
         #region Piano Keys Controls
@@ -131,8 +109,6 @@ namespace MidiMapper.Forms
             }
 
             // Create or Edit macro
-            if (_isEdit) _controller.Profile.RemoveMacro(_macro.Note);
-
             Macro newMacro = null;
             // Check which radio button is checked
             switch (macroTypePanel.Controls.OfType<RadioButton>().First(button => button.Checked).Name)
@@ -146,15 +122,25 @@ namespace MidiMapper.Forms
                     newMacro = new KeyboardPressMacro(macroName, note, (KeyboardKeys) keyboardForm.Key);
                     break;
                 case "mousePressRadioButton":
-                    // TODO: Form for mouse press macro
-                    newMacro = new MousePressMacro(macroName, note, Enums.MouseButtons.LeftButton);
+                    if (mousePressForm.MouseButton == null)
+                    {
+                        MessageBox.Show("Mouse Button must not be empty", "Mouse Button Error", MessageBoxButtons.OK);
+                        return;
+                    }
+                    newMacro = new MousePressMacro(macroName, note, (Enums.MouseButtons) mousePressForm.MouseButton);
                     break;
                 case "mouseMoveRadioButton":
-                    newMacro = new MouseMovementMacro(macroName, note,
-                        (int) mouseMoveX.Value, (int) mouseMoveY.Value);
+                    if (mouseMoveForm.X == 0 && mouseMoveForm.Y == 0)
+                    {
+                        MessageBox.Show("Mouse Movement must not be (0, 0)", "Mouse Movement Error", MessageBoxButtons.OK);
+                        return;
+                    }
+                    newMacro = new MouseMovementMacro(macroName, note, mouseMoveForm.X, mouseMoveForm.Y);
                     break;
             }
 
+            // TODO: Replace this with a single EditMacro function
+            if (_isEdit) _controller.Profile.RemoveMacro(_macro.Note);
             _controller.Profile.AddMacro(note, newMacro);
             this.Close();
         }

@@ -7,16 +7,16 @@ namespace MidiMapper.Macros
 {
     public class MouseMovementMacro : Macro
     {
-        private readonly int _xAxis;
-        private readonly int _yAxis;
-
         private const int TimerInterval = 1;
         private readonly Timer _timer;
 
+        public int X { get; private set; }
+        public int Y { get; private set; }
+
         public MouseMovementMacro(string macroName, string note, int xAxis, int yAxis) : base(macroName, note)
         {
-            _xAxis = xAxis;
-            _yAxis = yAxis;
+            X = xAxis;
+            Y = yAxis;
 
             _timer = new Timer()
             {
@@ -31,13 +31,13 @@ namespace MidiMapper.Macros
         public override void Stop() => _timer.Stop();
 
         // Event is only called when the macro is being executed
-        private void Timer_OnTimedEvent(object sender, ElapsedEventArgs e) => Mouse.MoveRelative(_xAxis, _yAxis);
+        private void Timer_OnTimedEvent(object sender, ElapsedEventArgs e) => Mouse.MoveRelative(X, Y);
 
-        public override string GetMacroTaskDescription() => $"Moves mouse by ({_xAxis},{_yAxis})";
+        public override string GetMacroTaskDescription() => $"Moves mouse by ({X},{Y})";
 
         public override MacroType GetMacroType() => MacroType.MouseMove;
 
-        public override string SerializeMacro() => SerializeMacro(MacroName, Note, MacroType.MouseMove, $"({_xAxis},{_yAxis})");
+        public override string SerializeMacro() => SerializeMacro(MacroName, Note, MacroType.MouseMove, $"({X},{Y})");
 
         public static MouseMovementMacro DeserializeMacro(string macroName, string note, string options)
         {

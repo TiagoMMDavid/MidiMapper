@@ -73,6 +73,18 @@
     <Compile Include="Source\Enums\KeyboardKeys.cs" />
     <Compile Include="Source\Exceptions\DeserializeMacroException.cs" />
     <Compile Include="Source\Exceptions\ParseProfileFileException.cs" />
+    <Compile Include="Source\Forms\MouseMoveForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\MouseMoveForm.Designer.cs">
+      <DependentUpon>MouseMoveForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Forms\MousePressForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\MousePressForm.Designer.cs">
+      <DependentUpon>MousePressForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Source\Forms\KeyboardForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -107,6 +119,12 @@
     <Compile Include="Source\Utils\MidiUtils.cs" />
     <EmbeddedResource Include="App.resx">
       <DependentUpon>App.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\MouseMoveForm.resx">
+      <DependentUpon>MouseMoveForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\MousePressForm.resx">
+      <DependentUpon>MousePressForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\Forms\KeyboardForm.resx">
       <DependentUpon>KeyboardForm.cs</DependentUpon>
@@ -173,6 +191,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\notification-icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mouse-image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

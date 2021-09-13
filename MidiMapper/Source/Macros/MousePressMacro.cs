@@ -8,11 +8,12 @@ namespace MidiMapper.Macros
     public class MousePressMacro : Macro
     {
         private readonly Mouse.MouseKeys _mouseButton;
-        private readonly string _keyName;
+
+        public MouseButtons MouseButton { get; private set; }
 
         public MousePressMacro(string macroName, string note, MouseButtons mouseButton) : base(macroName, note)
         {
-            _keyName = mouseButton.ToString();
+            MouseButton = mouseButton;
             string enumName = Enum.GetName(typeof(Mouse.MouseKeys), (int) mouseButton);
             _mouseButton = (Mouse.MouseKeys) Enum.Parse(typeof(Mouse.MouseKeys), enumName, true);
         }
@@ -21,7 +22,7 @@ namespace MidiMapper.Macros
 
         public override void Stop() => Mouse.ButtonUp(_mouseButton);
 
-        public override string GetMacroTaskDescription() => $"Presses '{_keyName}' mouse button";
+        public override string GetMacroTaskDescription() => $"Presses '{MouseButton}' mouse button";
 
         public override MacroType GetMacroType() => MacroType.MousePress;
 
