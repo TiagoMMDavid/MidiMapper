@@ -35,6 +35,8 @@ namespace MidiMapper.Macros
 
         public override string GetMacroTaskDescription() => $"Moves mouse by ({_xAxis},{_yAxis})";
 
+        public override MacroType GetMacroType() => MacroType.MouseMove;
+
         public override string SerializeMacro() => SerializeMacro(MacroName, Note, MacroType.MouseMove, $"({_xAxis},{_yAxis})");
 
         public static MouseMovementMacro DeserializeMacro(string macroName, string note, string options)

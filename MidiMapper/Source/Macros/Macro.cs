@@ -33,13 +33,15 @@ namespace MidiMapper.Macros
         
         public abstract string GetMacroTaskDescription();
 
+        public abstract MacroType GetMacroType();
+
         public abstract string SerializeMacro();
 
         protected static string SerializeMacro(string macroName, string note, MacroType type, string macroOptions)
         {
             // Appends all macro information with a delimiter in between values
             return $"{macroName}{SerializeDelimiter}{note}{SerializeDelimiter}" +
-                   $"{type.ToString()}{SerializeDelimiter}{macroOptions}";
+                   $"{type}{SerializeDelimiter}{macroOptions}";
         }
         
         public enum MacroType

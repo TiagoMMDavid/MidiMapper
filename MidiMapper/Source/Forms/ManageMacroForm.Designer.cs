@@ -233,9 +233,9 @@
             // 
             // keyboardForm
             // 
-            this.keyboardForm.Location = new System.Drawing.Point(12, 102);
+            this.keyboardForm.Location = new System.Drawing.Point(36, 102);
             this.keyboardForm.Name = "keyboardForm";
-            this.keyboardForm.Size = new System.Drawing.Size(853, 325);
+            this.keyboardForm.Size = new System.Drawing.Size(829, 287);
             this.keyboardForm.TabIndex = 37;
             // 
             // ManageMacroForm

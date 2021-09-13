@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Linq;
 using MidiMapper.Controller;
 using MidiMapper.Macros;
+using MidiMapper.Enums;
 
 namespace MidiMapper.Forms
 {
@@ -33,12 +34,29 @@ namespace MidiMapper.Forms
             
             okButton.Text = "Edit Macro";
             macroNameTextBox.Text = macroToEdit.MacroName;
+            deleteMacroButton.Visible = true;
 
             string pitch = macroToEdit.Note.Substring(0, macroToEdit.Note.Length - 1); // Extract Pitch
             string octave = $"{macroToEdit.Note[macroToEdit.Note.Length - 1]}"; // Extract Octave
             pianoForm.UpdateNote(pitch, octave);
+            UpdateMacroFunctionality(macroToEdit);
+        }
 
-            deleteMacroButton.Visible = true;
+        private void UpdateMacroFunctionality(Macro macro)
+        {
+            switch (macro.GetMacroType())
+            {
+                case Macro.MacroType.KbdPress:
+                    keyboardPressRadioButton.Checked = true;
+                    keyboardForm.UpdateKey((macro as KeyboardPressMacro).Key);
+                    break;
+                case Macro.MacroType.MousePress:
+                    // TODO:
+                    break;
+                case Macro.MacroType.MouseMove:
+                    //TODO:
+                    break;
+            }
         }
 
         #region Macro Function Controls
@@ -116,10 +134,16 @@ namespace MidiMapper.Forms
             if (_isEdit) _controller.Profile.RemoveMacro(_macro.Note);
 
             Macro newMacro = null;
+            // Check which radio button is checked
             switch (macroTypePanel.Controls.OfType<RadioButton>().First(button => button.Checked).Name)
             {
                 case "keyboardPressRadioButton":
-                    newMacro = new KeyboardPressMacro(macroName, note, keyboardForm.Key);
+                    if (keyboardForm.Key == null)
+                    {
+                        MessageBox.Show("Keyboard key must not be empty", "Keyboard Key Error", MessageBoxButtons.OK);
+                        return;
+                    }
+                    newMacro = new KeyboardPressMacro(macroName, note, (KeyboardKeys) keyboardForm.Key);
                     break;
                 case "mousePressRadioButton":
                     // TODO: Form for mouse press macro

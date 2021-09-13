@@ -23,6 +23,8 @@ namespace MidiMapper.Macros
 
         public override string GetMacroTaskDescription() => $"Presses '{_keyName}' mouse button";
 
+        public override MacroType GetMacroType() => MacroType.MousePress;
+
         public override string SerializeMacro() => SerializeMacro(MacroName, Note, MacroType.MousePress, _mouseButton.ToString());
 
         public static MousePressMacro DeserializeMacro(string macroName, string note, string options)
