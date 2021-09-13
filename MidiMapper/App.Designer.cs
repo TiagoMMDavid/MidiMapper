@@ -110,7 +110,6 @@
             // midiMapperMenuItem
             // 
             resources.ApplyResources(this.midiMapperMenuItem, "midiMapperMenuItem");
-            this.midiMapperMenuItem.Image = global::MidiMapper.Properties.Resources.notification_icon;
             this.midiMapperMenuItem.Name = "midiMapperMenuItem";
             // 
             // toolStripSeparator2

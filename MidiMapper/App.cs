@@ -211,6 +211,7 @@ namespace MidiMapper
 
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
+                Title = "MidiMapper - Save Profile",
                 Filter = "Txt files (*.txt)|*.txt",
                 //RestoreDirectory = true
             };
