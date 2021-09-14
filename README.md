@@ -34,7 +34,13 @@ MidiMapper exposes the following functionalities:
 <img src="resources/app-preview.png" width="850">
 
 ## MIDI Device Setup
-...
+MidiMapper's interface displays a selection of connected MIDI devices allowing the user to pick the desired one. Furthermore, the application provides buttons to start and stop the listening of key presses on the selected device.
+
+In order to avoid unexpected errors, make sure the MIDI drivers for the specific device are correctly installed!
+
+The following image exhibits an example of the device selection provided by the application's interface:
+
+<img src="resources/app-midi-device-selection.png">
 
 ## User Profiles
 ...
