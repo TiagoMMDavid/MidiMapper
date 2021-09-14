@@ -1,4 +1,4 @@
-# MidiMapper (In Development)
+# MidiMapper
 
 ## Overview
 MidiMapper is a Windows Form Application that maps MIDI signals into customizable keyboard/mouse input. The keyboard/mouse input is done using the [InputManager library](https://www.codeproject.com/Articles/117657/InputManager-library-Track-user-input-and-simulate) which supports DirectX and therefore allows in-game inputs. To receive and process MIDI messages the application uses [NAudio](https://github.com/naudio/NAudio) as a library.
@@ -15,6 +15,7 @@ The following diagram displays the system's overview:
 - [MIDI Device Setup](#midi-device-setup)
 - [User Profiles](#user-profiles)
   - [Profile File Syntax](#profile-file-syntax)
+- [Credits](#credits)
 
 ## Functionalities
 MidiMapper exposes the following functionalities:
@@ -96,3 +97,9 @@ Walk forward;D#4;KBD_Press;W
 Shoot;D5;Mouse_Press;LeftButton
 Look up;D#5;Mouse_Move;(0,-1)
 ```
+
+## Credits
+All icons used in MidiMapper's design were taken from [icons8](https://icons8.com/).
+
+Application developed by:
+- [TiagoMMDavid](https://github.com/TiagoMMDavid)

@@ -278,7 +278,6 @@ namespace MidiMapper
 
         private void AppNotifyIcon_MouseDoubleClick(object sender, MouseEventArgs e) => OpenAppFromTray();
 
-        // TODO: Check if it works in release mode
         private void AboutMidiMapperMenuItem_Click(object sender, EventArgs e) =>
             System.Diagnostics.Process.Start(GitHubProjectUrl);
 

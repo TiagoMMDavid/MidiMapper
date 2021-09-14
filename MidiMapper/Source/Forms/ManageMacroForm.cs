@@ -139,8 +139,7 @@ namespace MidiMapper.Forms
                     break;
             }
 
-            // TODO: Replace this with a single EditMacro function
-            if (_isEdit) _controller.Profile.RemoveMacro(_macro.Note);
+            if (_isEdit) _controller.Profile.RemoveMacro(_macro.Note); // Remove previous macro
             _controller.Profile.AddMacro(note, newMacro);
             this.Close();
         }

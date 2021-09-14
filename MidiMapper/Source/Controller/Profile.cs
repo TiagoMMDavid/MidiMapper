@@ -48,8 +48,6 @@ namespace MidiMapper.Controller
 
             return _macros[idx] as Macro;
         }
-        
-        // TODO: Edit macro
 
         public void RemoveMacro(string note)
         {
