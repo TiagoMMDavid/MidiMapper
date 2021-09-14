@@ -9,6 +9,8 @@ The following diagram displays the system's overview:
 
 <img src="resources/app-overview.png" width="850">
 
+A portable version of MidiMapper can be found on the [releases](https://github.com/TiagoMMDavid/MidiMapper/releases) tab.
+
 ## Table of Contents
 - [Functionalities](#functionalities)
 - [Preview](#preview)
