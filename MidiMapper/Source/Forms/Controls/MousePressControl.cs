@@ -29,6 +29,8 @@ namespace MidiMapper.Source.Forms.Controls
         {
             // Remove placeholder
             buttonsListBox.Items.Remove("Select a Button");
+
+            MouseButton = (Enums.MouseButtons) Enum.Parse(typeof(Enums.MouseButtons), buttonsListBox.Text, true);
         }
 
         #region Mouse Buttons

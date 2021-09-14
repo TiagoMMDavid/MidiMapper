@@ -46,6 +46,8 @@ namespace MidiMapper.Source.Forms.Controls
         {
             // Remove placeholder
             keysListBox.Items.Remove("Select a Key");
+
+            Key = (KeyboardKeys) Enum.Parse(typeof(KeyboardKeys), keysListBox.Text, true);
         }
     }
 }
