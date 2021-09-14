@@ -3,7 +3,7 @@
 ## Overview
 MidiMapper is a Windows Form Application that maps MIDI signals into customizable keyboard/mouse input. The keyboard/mouse input is done using the [InputManager library](https://www.codeproject.com/Articles/117657/InputManager-library-Track-user-input-and-simulate) which supports DirectX and therefore allows in-game inputs. To receive and process MIDI messages the application uses [NAudio](https://github.com/naudio/NAudio) as a library.
 
-The application allows for profiles to be created and loaded. This way it is possible to easily switch between user-made profiles. These profiles can be described through `.txt` files as explained [here](profile-file-syntax) or can be managed via the application's interface.
+The application allows for profiles to be created and loaded. This way it is possible to easily switch between user-made profiles. These profiles can be described through `.txt` files as explained [here](#profile-file-syntax) or can be managed via the application's interface.
 
 The following diagram displays the system's overview:
 
@@ -83,9 +83,9 @@ Currently, the list of supported macros and its respective syntax are:
 - Keyboard Press
   - Described by the keyboard key name present in the [KeyboardKeys](MidiMapper/Source/Enums/KeyboardKeys.cs) Enum (e.g: `W`)
 - Mouse Button Click
-  - Described by the mouse button name present in the [MouseButtons](MidiMapper/Source/Enums/MouseButtons.cs) Enum (e.g: `W`)
+  - Described by the mouse button name present in the [MouseButtons](MidiMapper/Source/Enums/MouseButtons.cs) Enum (e.g: `LeftButton`)
 - Mouse Movement
-  - Described by (x, y) integer coordinates (e.g: `(0, -1)`);
+  - Described by (x, y) integer coordinates (e.g: `(0, -1)`)
 
 
 Below is an example of a possible profile file:
